@@ -4,6 +4,7 @@ export default config({
   storage: {
     kind: "github",
     repo: "i4mt3hwin/regtekconsultingwebsite",
+    pathPrefix: "05-build",
   },
   ui: {
     brand: { name: "Regtek Consulting" },
