@@ -1,0 +1,98 @@
+{
+  "url": "/about",
+  "status": 200,
+  "title": "About Regtek Consulting | Founder-Led Marketing Agency",
+  "metaDescription": "No account managers or hand-offs. Work directly with a founder who's scaled businesses to Inc 5000. Learn the story behind Regtek Consulting.",
+  "ogTitle": "About Regtek Consulting | Founder-Led Marketing Agency",
+  "ogDescription": "No account managers or hand-offs. Work directly with a founder who's scaled businesses to Inc 5000. Learn the story behind Regtek Consulting.",
+  "canonical": "https://regtekconsulting.com/about/",
+  "h1": "What I Bring To Your Business",
+  "headings": [
+    {
+      "tag": "H2",
+      "text": "From Healthcare Operations To Digital Marketing"
+    },
+    {
+      "tag": "H1",
+      "text": "What I Bring To Your Business"
+    },
+    {
+      "tag": "H1",
+      "text": "Healthcare Operations Experience"
+    },
+    {
+      "tag": "H1",
+      "text": "Digital Marketing Expertise"
+    },
+    {
+      "tag": "H1",
+      "text": "Technical Skills"
+    },
+    {
+      "tag": "H1",
+      "text": "Strategic Consulting"
+    },
+    {
+      "tag": "H3",
+      "text": "Regtek"
+    },
+    {
+      "tag": "H3",
+      "text": "Quick Links"
+    },
+    {
+      "tag": "H3",
+      "text": "Services"
+    },
+    {
+      "tag": "H3",
+      "text": "Contact Us"
+    }
+  ],
+  "bodyContent": "Home\nServices\nAbout\nTips & Tricks\nContact\nBook Free Consultation\nFrom Healthcare Operations To Digital Marketing\n\nHi, I'm the founder of Regtek Consulting. Before I ran digital marketing campaigns, I ran operations for a healthcare clinic that grew from a single location to five offices and achieved Inc 5000 recognition.\n\nHere's what I learned during that journey: marketing isn't just about getting clicks. It's about understanding your entire business model, your operations, your capacity, your customer lifetime value, and your growth constraints.\n\nMost agencies don't think about those things. They optimize for conversions without asking if you can handle more customers. They run ads without understanding your margins. They chase vanity metrics instead of revenue.\n\nThat's why I started Regtek. To bring operational expertise to digital marketing. To be a true strategic partner, not just an ad buyer.\nWhat I Bring To Your Business\nA unique combination of operational experience, digital marketing expertise, and technical skills.\n\n\nHealthcare Operations Experience\n\nScaled clinic from 1 to 5 locations\nAchieved Inc 5000 fastest-growing company recognition\nDeep understanding of medical practice economics\nPatient lifetime value optimization\n\nOperational constraints and capacity planning\nDigital Marketing Expertise\nGoogle Ads management and optimization\nMeta Ads strategy and execution\nWebsite design and conversion rate optimization\nAdvanced tracking and attribution modeling\n\nMulti-channel campaign coordination\nTechnical Skills\nCustom domain and email setup\nWeb hosting, security, and SSL certificates\nGoogle Business Profile optimization\nCall tracking and analytics integration\n\nHIPAA-compliant marketing infrastructure\nStrategic Consulting\nBusiness model optimization\nPricing strategy development\nCustomer acquisition cost analysis\nLifetime value maximization strategies\n\nGrowth constraint identification and solutions\nRegtek\n\nData-Driven Marketing. Real Results.\n\n\nNamed after our founder's best friend \n\n\nQuick Links\nAbout us\nServices\nContact\nTips & Tricks\nServices\nWebsite Design\nGoogle Ads\nMeta Ads\nContact Us\nPhone: (908) 900-4799\nEmail: kdillon@regtekconsulting.com\n©2025 Regtek Consulting - All rights reserved",
+  "wordCount": 301,
+  "links": [
+    "https://regtekconsulting.com/",
+    "https://regtekconsulting.com/home/",
+    "https://regtekconsulting.com/services/",
+    "https://regtekconsulting.com/website-design/",
+    "https://regtekconsulting.com/google-ads/",
+    "https://regtekconsulting.com/meta-ads/",
+    "https://regtekconsulting.com/about/",
+    "https://regtekconsulting.com/tips-tricks/",
+    "https://regtekconsulting.com/contact/",
+    "https://regtekconsulting.com/contact/",
+    "https://regtekconsulting.com/about/",
+    "https://regtekconsulting.com/services/",
+    "https://regtekconsulting.com/contact/",
+    "https://regtekconsulting.com/tips-tricks/",
+    "https://regtekconsulting.com/website-design/",
+    "https://regtekconsulting.com/google-ads/",
+    "https://regtekconsulting.com/meta-ads/",
+    "tel:19089004799",
+    "mailto:kdillon@regtekconsulting.com"
+  ],
+  "images": [
+    {
+      "src": "https://regtekconsulting.com/wp-content/uploads/2025/10/Regtek-Consulting-Logo.png",
+      "alt": "",
+      "width": 326,
+      "height": 326
+    },
+    {
+      "src": "https://regtekconsulting.com/wp-content/uploads/2025/10/20250531_180453-768x1024.jpg",
+      "alt": "",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "src": "https://s.w.org/images/core/emoji/17.0.2/svg/1f415.svg",
+      "alt": "🐕",
+      "width": 150,
+      "height": 150
+    }
+  ],
+  "schemas": [
+    "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":[\"ProfessionalService\",\"Organization\"],\"@id\":\"https://regtekconsulting.com/#organization\",\"name\":\"Regtek Consulting LLC\",\"url\":\"https://regtekconsulting.com\",\"logo\":{\"@type\":\"ImageObject\",\"@id\":\"https://regtekconsulting.com/#logo\",\"url\":\"https://regtekconsulting.com/wp-content/uploads/2025/10/cropped-Regtek-Consulting-Logo-1.png\",\"contentUrl\":\"https://regtekconsulting.com/wp-content/uploads/2025/10/cropped-Regtek-Consulting-Logo-1.png\",\"caption\":\"regtekconsulting.com\",\"inLanguage\":\"en-US\",\"width\":\"512\",\"height\":\"512\"},\"openingHours\":[\"Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday 09:00-17:00\"],\"image\":{\"@id\":\"https://regtekconsulting.com/#logo\"}},{\"@type\":\"WebSite\",\"@id\":\"https://regtekconsulting.com/#website\",\"url\":\"https://regtekconsulting.com\",\"name\":\"regtekconsulting.com\",\"alternateName\":\"www.regtekconsulting.com\",\"publisher\":{\"@id\":\"https://regtekconsulting.com/#organization\"},\"inLanguage\":\"en-US\"},{\"@type\":\"ImageObject\",\"@id\":\"https://regtekconsulting.com/wp-content/uploads/2025/10/cropped-Regtek-Consulting-Logo-1.png\",\"url\":\"https://regtekconsulting.com/wp-content/uploads/2025/10/cropped-Regtek-Consulting-Logo-1.png\",\"width\":\"512\",\"height\":\"512\",\"inLanguage\":\"en-US\"},{\"@type\":\"WebPage\",\"@id\":\"https://regtekconsulting.com/about/#webpage\",\"url\":\"https://regtekconsulting.com/about/\",\"name\":\"About Regtek Consulting | Founder-Led Marketing Agency\",\"datePublished\":\"2025-10-16T19:01:24+00:00\",\"dateModified\":\"2025-12-30T21:03:30+00:00\",\"isPartOf\":{\"@id\":\"https://regtekconsulting.com/#website\"},\"primaryImageOfPage\":{\"@id\":\"https://regtekconsulting.com/wp-content/uploads/2025/10/cropped-Regtek-Consulting-Logo-1.png\"},\"inLanguage\":\"en-US\"},{\"@type\":\"Person\",\"@id\":\"https://regtekconsulting.com/author/kevin/\",\"name\":\"Kevin\",\"url\":\"https://regtekconsulting.com/author/kevin/\",\"image\":{\"@type\":\"ImageObject\",\"@id\":\"https://secure.gravatar.com/avatar/ea65780d0aa232b9bec5d3cfd5112005b8a5c604457776ee63bd39588ff36ff1?s=96&amp;d=mm&amp;r=g\",\"url\":\"https://secure.gravatar.com/avatar/ea65780d0aa232b9bec5d3cfd5112005b8a5c604457776ee63bd39588ff36ff1?s=96&amp;d=mm&amp;r=g\",\"caption\":\"Kevin\",\"inLanguage\":\"en-US\"},\"sameAs\":[\"https://wordpress-1377023-5930325.cloudwaysapps.com\"],\"worksFor\":{\"@id\":\"https://regtekconsulting.com/#organization\"}},{\"@type\":\"Article\",\"headline\":\"About Regtek Consulting | Founder-Led Marketing Agency\",\"datePublished\":\"2025-10-16T19:01:24+00:00\",\"dateModified\":\"2025-12-30T21:03:30+00:00\",\"author\":{\"@id\":\"https://regtekconsulting.com/author/kevin/\",\"name\":\"Kevin\"},\"publisher\":{\"@id\":\"https://regtekconsulting.com/#organization\"},\"description\":\"No account managers or hand-offs. Work directly with a founder who&#039;s scaled businesses to Inc 5000. Learn the story behind Regtek Consulting.\",\"name\":\"About Regtek Consulting | Founder-Led Marketing Agency\",\"@id\":\"https://regtekconsulting.com/about/#richSnippet\",\"isPartOf\":{\"@id\":\"https://regtekconsulting.com/about/#webpage\"},\"image\":{\"@id\":\"https://regtekconsulting.com/wp-content/uploads/2025/10/cropped-Regtek-Consulting-Logo-1.png\"},\"inLanguage\":\"en-US\",\"mainEntityOfPage\":{\"@id\":\"https://regtekconsulting.com/about/#webpage\"}}]}"
+  ]
+}

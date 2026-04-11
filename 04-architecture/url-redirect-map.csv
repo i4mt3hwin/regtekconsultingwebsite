@@ -1,0 +1,33 @@
+Old URL,New URL,Status,Page Type,Source,Notes
+/,/,keep,homepage,"cms,sitemap,crawl",
+/home,/,redirect,homepage-alias,crawl,Crawler found /home alias — redirect to root
+/about/,/about,keep,page,"cms,sitemap,crawl",Expand thin content in rebuild
+/about,/about,keep,page,"cms,sitemap,crawl",Trailing-slash variant
+/services/,/services,keep,page,"cms,sitemap,crawl",
+/services,/services,keep,page,"cms,sitemap,crawl",Trailing-slash variant
+/contact/,/contact,keep,page,"cms,sitemap,crawl",Wire up Resend form
+/contact,/contact,keep,page,"cms,sitemap,crawl",Trailing-slash variant
+/google-ads/,/services/google-ads,redirect,service,"cms,sitemap,crawl",Move to nested service URL for clarity
+/google-ads,/services/google-ads,redirect,service,"cms,sitemap,crawl",Trailing-slash variant
+/meta-ads/,/services/meta-ads,redirect,service,"cms,sitemap,crawl",Move to nested service URL
+/meta-ads,/services/meta-ads,redirect,service,"cms,sitemap,crawl",Trailing-slash variant
+/website-design/,/services/website-design,redirect,service,"cms,sitemap,crawl",Move to nested service URL
+/website-design,/services/website-design,redirect,service,"cms,sitemap,crawl",Trailing-slash variant
+/tips-tricks/,/tips-tricks,review,page,"cms,sitemap,crawl",Thin content — expand or cut pending operator decision
+/tips-tricks,/tips-tricks,review,page,"cms,sitemap,crawl",Trailing-slash variant
+/sample-page/,/,redirect,cut,"cms,sitemap,crawl",Default WordPress sample page — cut and redirect to home
+/sample-page,/,redirect,cut,"cms,sitemap,crawl",Trailing-slash variant
+/coming-soon/,/,redirect,cut-or-keep,"cms,sitemap,crawl",Pending operator — if abandoned cut; if real service launch keep
+/coming-soon,/,redirect,cut-or-keep,"cms,sitemap,crawl",Trailing-slash variant
+/blog/cro-optimization-healthcare-practices/,/blog/cro-optimization-healthcare-practices,keep,post,"cms,sitemap,crawl",
+/blog/dermatology-lead-cost-case-study/,/blog/dermatology-lead-cost-case-study,keep,post,"cms,sitemap,crawl",
+/blog/google-business-profile-optimization-medical-practices/,/blog/google-business-profile-optimization-medical-practices,keep,post,"cms,sitemap,crawl",
+/blog/healthcare-website-conversion-killers/,/blog/healthcare-website-conversion-killers,keep,post,"cms,crawl",Not in sitemap — recent publish
+/blog/marketing-leads-not-converting/,/blog/marketing-leads-not-converting,keep,post,"cms,sitemap,crawl",
+/blog/medical-spa-marketing-roi-lifetime-value-case-study/,/blog/medical-spa-marketing-roi-lifetime-value-case-study,keep,post,"cms,sitemap,crawl",
+/blog/provider-intro-videos-medical-practices/,/blog/provider-intro-videos-medical-practices,keep,post,"cms,sitemap,crawl",
+/blog/seo-strategy-basics-h1-meta-titles-descriptions-healthcare-6/,/blog/seo-strategy-basics,redirect,post,"cms,crawl",Rename ugly slug — strip the -6 iteration suffix
+/blog/why-i-started-regtek-consulting/,/blog/why-i-started-regtek-consulting,keep,post,"cms,sitemap,crawl",
+/blog/category/case-studies-results/,/blog/category/case-studies-results,keep,category,"cms,sitemap,crawl",
+/blog/category/general/,/blog/category/general,keep,category,"cms,sitemap,crawl",Consider renaming to something more descriptive
+/blog/category/website-conversion-optimization/,/blog/category/website-conversion-optimization,keep,category,"cms,sitemap,crawl",

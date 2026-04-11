@@ -1,0 +1,186 @@
+---
+export const prerender = true;
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { getSiteSettings } from "../lib/content";
+
+const site = getSiteSettings();
+const testimonials = await getCollection("testimonials");
+const featuredTestimonial = testimonials.find((t) => t.data.featured) ?? testimonials[0];
+
+const title = "About Regtek Consulting | Healthcare Operations Expertise";
+const description =
+  "Meet Kevin Dillon — the founder who ran operations for a healthcare clinic that grew from 1 to 5 offices and Inc 5000 before starting Regtek. Operator-led marketing, not agency-speak.";
+
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: "About Regtek Consulting",
+  mainEntity: {
+    "@type": "Person",
+    name: "Kevin Dillon",
+    jobTitle: "Founder",
+    worksFor: {
+      "@type": "Organization",
+      name: "Regtek Consulting",
+      url: "https://www.regtekconsulting.com",
+    },
+    knowsAbout: ["Healthcare Marketing", "Google Ads", "Meta Ads", "Conversion Rate Optimization"],
+  },
+};
+---
+
+<BaseLayout {title} {description} extraSchema={aboutSchema}>
+  <!-- HERO -->
+  <section class="bg-gray-50 pt-20 pb-16">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-wider text-[color:var(--color-brand)] mb-4">
+            About Regtek
+          </p>
+          <h1 class="text-4xl md:text-5xl font-bold text-[color:var(--color-ink)] mb-6 leading-tight tracking-tight">
+            From Healthcare Operations to Digital Marketing
+          </h1>
+          <p class="text-lg text-gray-600 leading-relaxed mb-4">
+            Hi, I'm <strong class="text-[color:var(--color-ink)]">Kevin Dillon</strong> — the founder of Regtek Consulting.
+          </p>
+          <p class="text-lg text-gray-600 leading-relaxed">
+            Before I ran digital marketing campaigns, I ran operations for a healthcare clinic that grew from a single location to five offices and achieved Inc&nbsp;5000 recognition.
+          </p>
+        </div>
+        <div>
+          <img
+            src="/images/hero/homepage-hero.webp"
+            alt="Kevin Dillon with Reggie"
+            width="640"
+            height="420"
+            class="w-full h-auto"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE OPERATOR LENS -->
+  <section class="bg-white py-20 md:py-24">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold text-[color:var(--color-ink)] mb-6">
+        The Operator's Lens on Marketing
+      </h2>
+      <div class="prose prose-lg max-w-none text-gray-700 space-y-5">
+        <p>
+          Here's what I learned scaling that business: marketing isn't just about getting clicks. It's about understanding your <strong>entire business model</strong> — your operations, your capacity, your customer lifetime value, and your growth constraints.
+        </p>
+        <p>
+          Most agencies don't think about those things. They optimize for conversions without asking if you can handle more patients. They run ads without understanding your margins. They chase vanity metrics instead of revenue. And when leads don't convert, they blame your sales process — even though the leads they sent were never going to convert in the first place.
+        </p>
+        <p>
+          That's why I started Regtek. To bring operational expertise to digital marketing. To be a true strategic partner, not just an ad buyer.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT I BRING -->
+  <section class="bg-gray-100 py-20 md:py-24">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold text-[color:var(--color-ink)] mb-12 text-center">
+        What I Bring To Your Practice
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-8">
+          <div class="text-3xl font-bold text-[color:var(--color-brand)] mb-3">01</div>
+          <h3 class="text-xl font-bold text-[color:var(--color-ink)] mb-3">Operational experience</h3>
+          <p class="text-gray-600 leading-relaxed">
+            I've run the P&amp;L, managed provider capacity, and watched the wrong marketing strategy burn cash in real time. That lens informs every decision I make for clients.
+          </p>
+        </div>
+        <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-8">
+          <div class="text-3xl font-bold text-[color:var(--color-brand)] mb-3">02</div>
+          <h3 class="text-xl font-bold text-[color:var(--color-ink)] mb-3">Healthcare vertical depth</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Dermatology, med spas, regenerative medicine, and general medical. I know the compliance landscape, the patient-journey patterns, and the specific objections that healthcare leads raise before they book.
+          </p>
+        </div>
+        <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-8">
+          <div class="text-3xl font-bold text-[color:var(--color-brand)] mb-3">03</div>
+          <h3 class="text-xl font-bold text-[color:var(--color-ink)] mb-3">Direct founder access</h3>
+          <p class="text-gray-600 leading-relaxed">
+            No account managers. No project coordinators. Every campaign, every strategy call, every optimization — it's me. When you message Regtek, you're messaging the person building your campaigns.
+          </p>
+        </div>
+        <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-8">
+          <div class="text-3xl font-bold text-[color:var(--color-brand)] mb-3">04</div>
+          <h3 class="text-xl font-bold text-[color:var(--color-ink)] mb-3">Measurement that matters</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Lifetime value over last-click. Booked appointments over lead-form submits. Revenue over impressions. Every campaign is tracked against the metrics that actually affect your bottom line.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <section class="bg-[color:var(--color-brand-dark)] py-12">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        {site.proofStats.map((stat) => (
+          <div>
+            <div class="text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
+            <div class="mt-1 text-xs text-gray-200">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  {featuredTestimonial && (
+    <section class="bg-white py-20 md:py-24">
+      <div class="max-w-4xl mx-auto px-6">
+        <figure class="text-center">
+          <div class="text-[color:var(--color-brand)] text-6xl font-serif leading-none mb-4">&ldquo;</div>
+          <blockquote class="text-2xl md:text-3xl font-medium text-[color:var(--color-ink)] leading-snug">
+            {featuredTestimonial.data.quote}
+          </blockquote>
+          <figcaption class="mt-8">
+            <div class="font-bold text-[color:var(--color-ink)]">{featuredTestimonial.data.author}</div>
+            <div class="text-sm text-gray-500">{featuredTestimonial.data.role}</div>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+  )}
+
+  <!-- REGGIE STORY -->
+  <section class="bg-gray-100 py-20">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-2xl md:text-3xl font-bold text-[color:var(--color-ink)] mb-5">
+        Oh, and about the name…
+      </h2>
+      <p class="text-lg text-gray-700 leading-relaxed">
+        Regtek is named after my dog, Reggie. He's the real boss around here — and he's in every hero illustration on this site for a reason. If you book a call, don't be surprised if you hear him in the background.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-[color:var(--color-brand-dark)] py-20 md:py-24">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-5xl font-bold text-white leading-tight mb-6">
+        Let's Talk About Your Practice
+      </h2>
+      <p class="text-lg text-gray-100 mb-10 max-w-2xl mx-auto">
+        Book a free consultation. We'll dig into your business, your goals, and whether Regtek is the right fit.
+      </p>
+      <a
+        href="/contact"
+        class="inline-flex items-center px-8 py-4 bg-white text-[color:var(--color-brand-dark)] font-semibold rounded-md hover:bg-gray-100 transition-colors shadow-lg"
+      >
+        Book a Free Consultation →
+      </a>
+    </div>
+  </section>
+</BaseLayout>

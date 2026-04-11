@@ -1,0 +1,94 @@
+{
+  "url": "/blog/category/website-conversion-optimization/",
+  "status": 200,
+  "title": "Website & Conversion Optimization - regtekconsulting.com",
+  "metaDescription": "",
+  "ogTitle": "Website & Conversion Optimization - regtekconsulting.com",
+  "ogDescription": "",
+  "canonical": "https://regtekconsulting.com/blog/category/website-conversion-optimization/",
+  "h1": "",
+  "headings": [
+    {
+      "tag": "H3",
+      "text": "CRO Optimization: Why Healthcare Websites Lose 97% of Visitors"
+    },
+    {
+      "tag": "H3",
+      "text": "Why Your Best Marketing Asset Is Already Walking Around Your Clinic"
+    },
+    {
+      "tag": "H3",
+      "text": "Regtek"
+    },
+    {
+      "tag": "H3",
+      "text": "Quick Links"
+    },
+    {
+      "tag": "H3",
+      "text": "Services"
+    },
+    {
+      "tag": "H3",
+      "text": "Contact Us"
+    }
+  ],
+  "bodyContent": "CRO Optimization: Why Healthcare Websites Lose 97% of Visitors\nKevin\nDecember 30, 2025 \nNo Comments\nHere’s a number that should bother you: the average healthcare website converts between 2-3% of visitors into leads or booked appointments. For every 100 people who find your practice online,…\nRead more",
+  "wordCount": 47,
+  "links": [
+    "https://regtekconsulting.com/",
+    "https://regtekconsulting.com/home/",
+    "https://regtekconsulting.com/services/",
+    "https://regtekconsulting.com/website-design/",
+    "https://regtekconsulting.com/google-ads/",
+    "https://regtekconsulting.com/meta-ads/",
+    "https://regtekconsulting.com/about/",
+    "https://regtekconsulting.com/tips-tricks/",
+    "https://regtekconsulting.com/contact/",
+    "https://regtekconsulting.com/contact/",
+    "https://regtekconsulting.com/blog/cro-optimization-healthcare-practices/",
+    "https://regtekconsulting.com/blog/cro-optimization-healthcare-practices/",
+    "https://regtekconsulting.com/blog/cro-optimization-healthcare-practices/",
+    "https://regtekconsulting.com/blog/provider-intro-videos-medical-practices/",
+    "https://regtekconsulting.com/blog/provider-intro-videos-medical-practices/",
+    "https://regtekconsulting.com/blog/provider-intro-videos-medical-practices/",
+    "https://regtekconsulting.com/about/",
+    "https://regtekconsulting.com/services/",
+    "https://regtekconsulting.com/contact/",
+    "https://regtekconsulting.com/tips-tricks/",
+    "https://regtekconsulting.com/website-design/",
+    "https://regtekconsulting.com/google-ads/",
+    "https://regtekconsulting.com/meta-ads/",
+    "tel:19089004799",
+    "mailto:kdillon@regtekconsulting.com"
+  ],
+  "images": [
+    {
+      "src": "https://regtekconsulting.com/wp-content/uploads/2025/10/Regtek-Consulting-Logo.png",
+      "alt": "",
+      "width": 326,
+      "height": 326
+    },
+    {
+      "src": "https://regtekconsulting.com/wp-content/uploads/2025/12/CRO-Optimization-For-Healthcare-scaled.webp",
+      "alt": "CRO Optimization: Why Healthcare Websites Lose 97% of Visitors",
+      "width": 1080,
+      "height": 589
+    },
+    {
+      "src": "https://regtekconsulting.com/wp-content/uploads/2025/12/Small-Business-Doctor-Being-Filmed.webp",
+      "alt": "Why Your Best Marketing Asset Is Already Walking Around Your Clinic",
+      "width": 1024,
+      "height": 559
+    },
+    {
+      "src": "https://s.w.org/images/core/emoji/17.0.2/svg/1f415.svg",
+      "alt": "🐕",
+      "width": 150,
+      "height": 150
+    }
+  ],
+  "schemas": [
+    "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"ProfessionalService\",\"@id\":\"https://regtekconsulting.com/#organization\",\"name\":\"Regtek Consulting LLC\",\"url\":\"https://regtekconsulting.com\",\"logo\":{\"@type\":\"ImageObject\",\"@id\":\"https://regtekconsulting.com/#logo\",\"url\":\"https://regtekconsulting.com/wp-content/uploads/2025/10/cropped-Regtek-Consulting-Logo-1.png\",\"contentUrl\":\"https://regtekconsulting.com/wp-content/uploads/2025/10/cropped-Regtek-Consulting-Logo-1.png\",\"caption\":\"regtekconsulting.com\",\"inLanguage\":\"en-US\",\"width\":\"512\",\"height\":\"512\"},\"openingHours\":[\"Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday 09:00-17:00\"],\"image\":{\"@id\":\"https://regtekconsulting.com/#logo\"}},{\"@type\":\"WebSite\",\"@id\":\"https://regtekconsulting.com/#website\",\"url\":\"https://regtekconsulting.com\",\"name\":\"regtekconsulting.com\",\"alternateName\":\"www.regtekconsulting.com\",\"publisher\":{\"@id\":\"https://regtekconsulting.com/#organization\"},\"inLanguage\":\"en-US\"},{\"@type\":\"CollectionPage\",\"@id\":\"https://regtekconsulting.com/blog/category/website-conversion-optimization/#webpage\",\"url\":\"https://regtekconsulting.com/blog/category/website-conversion-optimization/\",\"name\":\"Website &amp; Conversion Optimization - regtekconsulting.com\",\"isPartOf\":{\"@id\":\"https://regtekconsulting.com/#website\"},\"inLanguage\":\"en-US\"}]}"
+  ]
+}

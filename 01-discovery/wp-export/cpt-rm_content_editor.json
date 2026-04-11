@@ -1,0 +1,59 @@
+[
+  {
+    "id": 649,
+    "date": "2025-12-06T03:23:02",
+    "date_gmt": "2025-12-06T03:23:02",
+    "guid": {
+      "rendered": "https://regtekconsulting.com/?post_type=rm_content_editor&#038;p=649"
+    },
+    "modified": "2025-12-06T03:23:02",
+    "modified_gmt": "2025-12-06T03:23:02",
+    "slug": "",
+    "status": "draft",
+    "type": "rm_content_editor",
+    "link": "https://regtekconsulting.com/?post_type=rm_content_editor&p=649",
+    "content": {
+      "rendered": "",
+      "protected": false
+    },
+    "template": "",
+    "_links": {
+      "self": [
+        {
+          "href": "https://regtekconsulting.com/wp-json/wp/v2/rm_content_editor/649",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH",
+              "DELETE"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://regtekconsulting.com/wp-json/wp/v2/rm_content_editor"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://regtekconsulting.com/wp-json/wp/v2/types/rm_content_editor"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://regtekconsulting.com/wp-json/wp/v2/media?parent=649"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  }
+]

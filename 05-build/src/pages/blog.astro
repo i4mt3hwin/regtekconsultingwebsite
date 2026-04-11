@@ -1,0 +1,111 @@
+---
+export const prerender = true;
+
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const allPosts = (await getCollection("posts")).sort(
+  (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
+);
+
+// Group by category for the filter buttons
+const CATEGORY_LABELS: Record<string, string> = {
+  "case-studies-results": "Case Studies & Results",
+  "website-conversion-optimization": "Website & Conversion Optimization",
+  general: "General",
+};
+
+const activeCategories = [...new Set(allPosts.map((p) => p.data.category))];
+
+const title = "Healthcare Marketing Blog | Regtek Consulting";
+const description =
+  "Data-driven marketing insights and case studies for healthcare practices. PPC strategies, CRO, lead quality — no fluff.";
+
+function formatDate(d: Date): string {
+  return d.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+---
+
+<BaseLayout {title} {description}>
+  <section class="bg-gray-50 pt-20 pb-16">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <p class="text-sm font-semibold uppercase tracking-wider text-[color:var(--color-brand)] mb-4">
+        Tips &amp; Tricks That Actually Work
+      </p>
+      <h1 class="text-4xl md:text-5xl font-bold text-[color:var(--color-ink)] mb-5 tracking-tight">
+        Healthcare Marketing Blog
+      </h1>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        Data-driven marketing insights, PPC strategies, and business growth tactics from the field. No fluff, no jargon — just proven strategies you can use today.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-white py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <!-- Category filters -->
+      <div class="flex flex-wrap justify-center gap-3 mb-12" role="tablist" aria-label="Blog category filters">
+        <a
+          href="/blog"
+          class="px-5 py-2 rounded-full text-sm font-semibold bg-[color:var(--color-brand-dark)] text-white hover:bg-[color:var(--color-brand-darker)] transition-colors"
+        >
+          All Posts
+        </a>
+        {activeCategories.map((cat) => (
+          <a
+            href={`/blog/category/${cat}`}
+            class="px-5 py-2 rounded-full text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
+          >
+            {CATEGORY_LABELS[cat] ?? cat}
+          </a>
+        ))}
+      </div>
+
+      <!-- Posts grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {allPosts.map((post) => (
+          <article class="bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg hover:border-[color:var(--color-brand)] transition-all overflow-hidden flex flex-col">
+            <a href={`/blog/${post.id}`} class="flex-1 flex flex-col p-6">
+              <p class="text-xs font-semibold uppercase tracking-wider text-[color:var(--color-brand)] mb-3">
+                {CATEGORY_LABELS[post.data.category] ?? post.data.category}
+              </p>
+              <h2 class="text-xl font-bold text-[color:var(--color-ink)] mb-3 leading-snug">
+                {post.data.title}
+              </h2>
+              <p class="text-sm text-gray-600 mb-4 flex-1 leading-relaxed line-clamp-4">
+                {post.data.excerpt}
+              </p>
+              <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                <time datetime={post.data.publishDate.toISOString()} class="text-xs text-gray-500">
+                  {formatDate(post.data.publishDate)}
+                </time>
+                <span class="text-sm font-semibold text-[color:var(--color-brand-dark)]">Read →</span>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-[color:var(--color-brand-dark)] py-16">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-2xl md:text-4xl font-bold text-white mb-4">
+        Want These Insights Applied to Your Practice?
+      </h2>
+      <p class="text-gray-100 mb-8 max-w-2xl mx-auto">
+        Reading about it is one thing. Implementing it is another. Book a free call and we'll walk through what would move the needle for your business.
+      </p>
+      <a
+        href="/contact"
+        class="inline-flex items-center px-8 py-4 bg-white text-[color:var(--color-brand-dark)] font-semibold rounded-md hover:bg-gray-100 transition-colors shadow-lg"
+      >
+        Book a Free Consultation →
+      </a>
+    </div>
+  </section>
+</BaseLayout>

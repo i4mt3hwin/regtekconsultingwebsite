@@ -1,0 +1,49 @@
+---
+import { SITE } from "../lib/site";
+
+interface Props {
+  type?: "organization" | "article" | "service" | "about";
+  extraSchema?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const { type = "organization", extraSchema } = Astro.props;
+
+const organization = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: SITE.name,
+  url: SITE.domain,
+  logo: `${SITE.domain}/images/regtek-logo.png`,
+  founder: {
+    "@type": "Person",
+    name: SITE.founder,
+    jobTitle: "Founder",
+  },
+  description: SITE.description,
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer support",
+    email: SITE.email,
+  },
+  areaServed: "United States",
+  knowsAbout: [
+    "Healthcare Marketing",
+    "Medical Practice Marketing",
+    "Dermatology Marketing",
+    "Medical Spa Marketing",
+    "Google Ads",
+    "Meta Ads",
+    "Conversion Rate Optimization",
+  ],
+};
+
+const schemaArray: Array<Record<string, unknown>> = [organization];
+if (extraSchema) {
+  if (Array.isArray(extraSchema)) schemaArray.push(...extraSchema);
+  else schemaArray.push(extraSchema);
+}
+---
+
+{schemaArray.map((schema) => (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+))}

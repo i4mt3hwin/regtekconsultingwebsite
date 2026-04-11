@@ -1,0 +1,69 @@
+{
+  "url": "/sample-page/",
+  "status": 200,
+  "title": "Sample Page - regtekconsulting.com",
+  "metaDescription": "This is an example page. It's different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most",
+  "ogTitle": "Sample Page - regtekconsulting.com",
+  "ogDescription": "This is an example page. It's different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most",
+  "canonical": "https://regtekconsulting.com/sample-page/",
+  "h1": "",
+  "headings": [
+    {
+      "tag": "H3",
+      "text": "Regtek"
+    },
+    {
+      "tag": "H3",
+      "text": "Quick Links"
+    },
+    {
+      "tag": "H3",
+      "text": "Services"
+    },
+    {
+      "tag": "H3",
+      "text": "Contact Us"
+    }
+  ],
+  "bodyContent": "Home\nServices\nAbout\nTips & Tricks\nContact\nBook Free Consultation\n\nThis is an example page. It’s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this:\n\nHi there! I’m a bike messenger by day, aspiring actor by night, and this is my website. I live in Los Angeles, have a great dog named Jack, and I like piña coladas. (And gettin’ caught in the rain.)\n\n…or something like this:\n\nThe XYZ Doohickey Company was founded in 1971, and has been providing quality doohickeys to the public ever since. Located in Gotham City, XYZ employs over 2,000 people and does all kinds of awesome things for the Gotham community.\n\nAs a new WordPress user, you should go to your dashboard to delete this page and create new pages for your content. Have fun!\n\nRegtek\n\nData-Driven Marketing. Real Results.\n\n\nNamed after our founder's best friend \n\n\nQuick Links\nAbout us\nServices\nContact\nTips & Tricks\nServices\nWebsite Design\nGoogle Ads\nMeta Ads\nContact Us\nPhone: (908) 900-4799\nEmail: kdillon@regtekconsulting.com\n©2025 Regtek Consulting - All rights reserved",
+  "wordCount": 206,
+  "links": [
+    "https://regtekconsulting.com/",
+    "https://regtekconsulting.com/home/",
+    "https://regtekconsulting.com/services/",
+    "https://regtekconsulting.com/website-design/",
+    "https://regtekconsulting.com/google-ads/",
+    "https://regtekconsulting.com/meta-ads/",
+    "https://regtekconsulting.com/about/",
+    "https://regtekconsulting.com/tips-tricks/",
+    "https://regtekconsulting.com/contact/",
+    "https://regtekconsulting.com/contact/",
+    "https://regtekconsulting.com/wp-admin/",
+    "https://regtekconsulting.com/about/",
+    "https://regtekconsulting.com/services/",
+    "https://regtekconsulting.com/contact/",
+    "https://regtekconsulting.com/tips-tricks/",
+    "https://regtekconsulting.com/website-design/",
+    "https://regtekconsulting.com/google-ads/",
+    "https://regtekconsulting.com/meta-ads/",
+    "tel:19089004799",
+    "mailto:kdillon@regtekconsulting.com"
+  ],
+  "images": [
+    {
+      "src": "https://regtekconsulting.com/wp-content/uploads/2025/10/Regtek-Consulting-Logo.png",
+      "alt": "",
+      "width": 326,
+      "height": 326
+    },
+    {
+      "src": "https://s.w.org/images/core/emoji/17.0.2/svg/1f415.svg",
+      "alt": "🐕",
+      "width": 150,
+      "height": 150
+    }
+  ],
+  "schemas": [
+    "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":[\"ProfessionalService\",\"Organization\"],\"@id\":\"https://regtekconsulting.com/#organization\",\"name\":\"Regtek Consulting LLC\",\"url\":\"https://regtekconsulting.com\",\"logo\":{\"@type\":\"ImageObject\",\"@id\":\"https://regtekconsulting.com/#logo\",\"url\":\"https://regtekconsulting.com/wp-content/uploads/2025/10/cropped-Regtek-Consulting-Logo-1.png\",\"contentUrl\":\"https://regtekconsulting.com/wp-content/uploads/2025/10/cropped-Regtek-Consulting-Logo-1.png\",\"caption\":\"regtekconsulting.com\",\"inLanguage\":\"en-US\",\"width\":\"512\",\"height\":\"512\"},\"openingHours\":[\"Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday 09:00-17:00\"],\"image\":{\"@id\":\"https://regtekconsulting.com/#logo\"}},{\"@type\":\"WebSite\",\"@id\":\"https://regtekconsulting.com/#website\",\"url\":\"https://regtekconsulting.com\",\"name\":\"regtekconsulting.com\",\"alternateName\":\"www.regtekconsulting.com\",\"publisher\":{\"@id\":\"https://regtekconsulting.com/#organization\"},\"inLanguage\":\"en-US\"},{\"@type\":\"ImageObject\",\"@id\":\"https://regtekconsulting.com/wp-content/uploads/2025/10/cropped-Regtek-Consulting-Logo-1.png\",\"url\":\"https://regtekconsulting.com/wp-content/uploads/2025/10/cropped-Regtek-Consulting-Logo-1.png\",\"width\":\"512\",\"height\":\"512\",\"inLanguage\":\"en-US\"},{\"@type\":\"WebPage\",\"@id\":\"https://regtekconsulting.com/sample-page/#webpage\",\"url\":\"https://regtekconsulting.com/sample-page/\",\"name\":\"Sample Page - regtekconsulting.com\",\"datePublished\":\"2025-10-16T18:30:29+00:00\",\"dateModified\":\"2025-10-16T18:30:29+00:00\",\"isPartOf\":{\"@id\":\"https://regtekconsulting.com/#website\"},\"primaryImageOfPage\":{\"@id\":\"https://regtekconsulting.com/wp-content/uploads/2025/10/cropped-Regtek-Consulting-Logo-1.png\"},\"inLanguage\":\"en-US\"},{\"@type\":\"Person\",\"@id\":\"https://regtekconsulting.com/author/kevin/\",\"name\":\"Kevin\",\"url\":\"https://regtekconsulting.com/author/kevin/\",\"image\":{\"@type\":\"ImageObject\",\"@id\":\"https://secure.gravatar.com/avatar/ea65780d0aa232b9bec5d3cfd5112005b8a5c604457776ee63bd39588ff36ff1?s=96&amp;d=mm&amp;r=g\",\"url\":\"https://secure.gravatar.com/avatar/ea65780d0aa232b9bec5d3cfd5112005b8a5c604457776ee63bd39588ff36ff1?s=96&amp;d=mm&amp;r=g\",\"caption\":\"Kevin\",\"inLanguage\":\"en-US\"},\"sameAs\":[\"https://wordpress-1377023-5930325.cloudwaysapps.com\"],\"worksFor\":{\"@id\":\"https://regtekconsulting.com/#organization\"}},{\"@type\":\"Article\",\"headline\":\"Sample Page - regtekconsulting.com\",\"datePublished\":\"2025-10-16T18:30:29+00:00\",\"dateModified\":\"2025-10-16T18:30:29+00:00\",\"author\":{\"@id\":\"https://regtekconsulting.com/author/kevin/\",\"name\":\"Kevin\"},\"publisher\":{\"@id\":\"https://regtekconsulting.com/#organization\"},\"description\":\"This is an example page. It&#039;s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most\",\"name\":\"Sample Page - regtekconsulting.com\",\"@id\":\"https://regtekconsulting.com/sample-page/#richSnippet\",\"isPartOf\":{\"@id\":\"https://regtekconsulting.com/sample-page/#webpage\"},\"image\":{\"@id\":\"https://regtekconsulting.com/wp-content/uploads/2025/10/cropped-Regtek-Consulting-Logo-1.png\"},\"inLanguage\":\"en-US\",\"mainEntityOfPage\":{\"@id\":\"https://regtekconsulting.com/sample-page/#webpage\"}}]}"
+  ]
+}

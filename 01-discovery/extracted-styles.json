@@ -1,0 +1,1089 @@
+{
+  "body": {
+    "font-family": "system-ui, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+    "color": "rgb(10, 10, 11)",
+    "background-color": "rgb(255, 255, 255)",
+    "font-size": "16px",
+    "line-height": "22.4px"
+  },
+  "h1": {
+    "font-family": "system-ui, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+    "font-size": "16px",
+    "font-weight": "700",
+    "color": "rgb(10, 10, 11)",
+    "line-height": "19.2px",
+    "text-transform": "none",
+    "letter-spacing": "normal"
+  },
+  "h2": {
+    "font-family": "system-ui, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+    "font-size": "39.0625px",
+    "font-weight": "700",
+    "color": "rgb(6, 182, 212)",
+    "line-height": "46.875px",
+    "text-transform": "none",
+    "letter-spacing": "normal"
+  },
+  "h3": {
+    "font-family": "system-ui, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+    "font-size": "32px",
+    "font-weight": "700",
+    "color": "rgb(6, 182, 212)",
+    "line-height": "38.4px"
+  },
+  "a": {
+    "color": "rgb(6, 182, 212)",
+    "text-decoration-line": "underline",
+    "font-weight": "400"
+  },
+  "fontLinks": [],
+  "fontFaces": [],
+  "tokens": {
+    "--bde-woo-quicklook-button-icon": "url(//regtekconsulting.com/wp-content/uploads/breakdance/css/icons/eye.svg)",
+    "--bde-button-font-weight": "500",
+    "--bde-woo-quicklook-modal-background-color": "#fff",
+    "--pink-600": "#db2777",
+    "--wp--preset--font-size--large": "36px",
+    "--bde-button-primary-text-color-hover": "#fff",
+    "--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan": "linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%)",
+    "--bde-woo-quicklook-close-button-color": "#06B6D4",
+    "--bde-woo-payment-box-border-width": "1px",
+    "--bde-button-padding-lg": "28px 54px",
+    "--bde-button-text-text-color-hover": "#06B6D4",
+    "--bde-woo-base-border-color": "#d1d5db",
+    "--bde-form-input-border-top-right-radius": "16px",
+    "--bde-woo-payment-box-background-color": "#f3f4f6",
+    "--bde-woo-wrappers__shadow": "rgba(0,0,0,0.05) 0 1px 3px,rgba(0,0,0,0.05) 0 1px 2px",
+    "--bde-woo-swatch-shadow-hover": "none",
+    "--bde-form-input-background-color": "#fff",
+    "--bde-form-after-label": "8px",
+    "--bde-form-input-border-radius": "16px",
+    "--bde-woo-forms__wrappers-small": "360px",
+    "--bde-woo-typography__size-large": "calc(calc(16px * 1.250) * 1.250)",
+    "--wp--preset--gradient--electric-grass": "linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%)",
+    "--chevron-svg-icon": "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z\"/></svg>')",
+    "--wp--preset--gradient--blush-bordeaux": "linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%)",
+    "--wp--preset--shadow--deep": "12px 12px 50px rgba(0, 0, 0, 0.4)",
+    "--bde-woo-typography__size-large-font-family": "system-ui,-apple-system,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"",
+    "--bde-woo-quicklook-button-text-color": "#fff",
+    "--bde-woo-quicklook-arrow-color-hover": "#fff",
+    "--bde-woo-notices__info-link-text-hover": "#0ea5e9",
+    "--bde-form-input-focused-border-color": "#06B6D4",
+    "--bde-form-checkbox-size": "1em",
+    "--bde-brand-primary-color": "#06B6D4",
+    "--bde-woo-swatch-color-background": "#fff",
+    "--bde-woo-base-headings-color": "#06B6D4",
+    "--bde-palette-color-1-9cad3921-e7f8-4ea3-8ee5-78a6c5a2fddc": "#6B7280",
+    "--blue-600": "#2563eb",
+    "--wp--preset--color--luminous-vivid-orange": "#ff6900",
+    "--bde-woo-wrappers__border-color": "#d1d5db",
+    "--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple": "linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%)",
+    "--bde-woo-buttons-and-links__nav-link-color": "#0A0A0B",
+    "--bde-woo-product-images__border-width": "0px",
+    "--bde-form-input-padding-left": "16px",
+    "--bde-woo-quicklook-arrow-background-color": "#06B6D4",
+    "--bde-woo-swatch-border-color-hover": "#9ca3af",
+    "--bde-woo-forms__inputs-shadow": "none",
+    "--bde-form-input-padding-right": "16px",
+    "--bde-button-primary-border-color": "transparent",
+    "--wp--preset--color--vivid-cyan-blue": "#0693e3",
+    "--wp--preset--shadow--natural": "6px 6px 9px rgba(0, 0, 0, 0.2)",
+    "--bde-woo-quicklook-arrow-background-color-hover": "#06B6D4",
+    "--bde-woo-widgets__handle-border-color-hover": "#06B6D4",
+    "--bde-z-index-scroll-progress": "300",
+    "--bde-z-index-lightbox": "1100",
+    "--bde-woo-quicklook-button-background-color": "none",
+    "--bde-palette-color-1-a9362277-64e1-4450-95ef-0c2ffa21f1b8": "#06B6D4",
+    "--bde-woo-notices__info-text": "#0ea5e9",
+    "--bde-woo-swatch-shadow": "none",
+    "--success-svg-icon-color": "#047857",
+    "--bde-woo-quicklook-button-backdrop-color": "rgba(0,0,0,0.15)",
+    "--bde-woo-forms__inputs-select2-selected-item": "#d1d5db",
+    "--bde-woo-forms__inputs-placeholder-color": "#787e8b",
+    "--bde-button-line-height": "1",
+    "--bde-woo-payment-box-border-color": "#e5e7eb",
+    "--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange": "linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%)",
+    "--checkbox-svg-icon-color": "#111827",
+    "--bde-z-index-medium": "200",
+    "--bde-woo-typography__size-small": "calc(16px / 1.250)",
+    "--wp--preset--shadow--crisp": "6px 6px 0px rgb(0, 0, 0)",
+    "--bde-z-index-sticky": "10",
+    "--success-svg-icon": "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1 17l-5-5.299 1.399-1.43 3.574 3.736 6.572-7.007 1.455 1.403-8 8.597z\"/></svg>')",
+    "--bde-woo-swatch-shadow-selected": "none",
+    "--bde-woo-quicklook-button-backdrop-opacity": "0.7",
+    "--bde-woo-base-primary-color": "#06B6D4",
+    "--wp--preset--spacing--80": "5.06rem",
+    "--bde-palette-color-1-4c404398-dc64-4a07-b0a3-79cec592caff": "#F3F4F6",
+    "--wp--preset--font-size--medium": "20px",
+    "--bde-button-secondary-text-color-hover": "#fff",
+    "--wp--preset--gradient--luminous-vivid-orange-to-vivid-red": "linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%)",
+    "--bde-z-index-search-fullscreen": "1000",
+    "--bde-woo-widgets__chip-text-color-hover": "#06B6D4",
+    "--bde-woo-base-transition": "all ease 300ms",
+    "--bde-button-border-width": "1px",
+    "--bde-woo-widgets__handle-background-color": "#fff",
+    "--bde-form-input-border-bottom-left-radius": "16px",
+    "--info-svg-icon": "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm1 18h-2v-6h-2v-2h4v8zm-1-9.75c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z\"/></svg>')",
+    "--bde-woo-swatch-background-selected": "#f9fafb",
+    "--bde-button-border-radius": "3px",
+    "--bde-form-input-border-color": "#d1d5db",
+    "--bde-woo-typography__size-medium": "calc(16px * 1.250)",
+    "--bde-z-index-modal-backdrop": "calc(1000 - 1)",
+    "--bde-woo-notices__error-text": "#ef4444",
+    "--wp--preset--aspect-ratio--16-9": "16/9",
+    "--wp--preset--color--pale-pink": "#f78da7",
+    "--bde-woo-buttons-and-links__nav-link-background-active": "#f9fafb",
+    "--bde-woo-notices__success-link-text-hover": "#047857",
+    "--bde-woo-notices__error-background": "#fef2f2",
+    "--bde-woo-notices__padding": "24px",
+    "--white": "#fff",
+    "--bde-column-gap": "60px",
+    "--bde-button-custom-background-color": "#111827",
+    "--bde-button-primary-background-color": "#06B6D4",
+    "--indigo-600": "#4f46e5",
+    "--bde-button-custom-background-color-hover": "#374151",
+    "--bde-button-secondary-border-color-hover": "#06B6D4",
+    "--emerald-100": "#d1fae5",
+    "--bde-woo-wrappers__border-radius": "4px",
+    "--bde-button-secondary-background-color-hover": "#06B6D4",
+    "--bde-form-label-font-weight": "500",
+    "--bde-woo-notices__success-link-text": "#047857",
+    "--chevron-svg-icon-color": "#111827",
+    "--bde-woo-widgets__handle-shadow": "rgba(0,0,0,0.05) 0 1px 3px,rgba(0,0,0,0.05) 0 1px 2px",
+    "--bde-form-font-size": "16px",
+    "--bde-woo-buttons-and-links__disabled-button-color": "#d1d5db",
+    "--bde-woo-quicklook-overlay-color": "rgba(0,0,0,0.7)",
+    "--bde-woo-notices__success-background": "#d1fae5",
+    "--bde-woo-swatch-border-color-selected": "#9ca3af",
+    "--bde-woo-tables__border-width": "1px",
+    "--bde-woo-product-images__border-radius": "4px",
+    "--red-500": "#ef4444",
+    "--bde-woo-forms__labels-required-nudge-x": "0",
+    "--wp--preset--aspect-ratio--2-3": "2/3",
+    "--wp--preset--font-size--x-large": "42px",
+    "--bde-woo-buttons-and-links-line-height": "1",
+    "--bde-h6-font-size": "16px",
+    "--bde-woo-ratings__empty-star-svg": "url('data:image/svg+xml;utf8,<svg width=\"24px\" height=\"24px\" viewBox=\"0 0 24 24\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><path d=\"M12,5.173 L14.335,9.99 L19.64,10.722 L15.779,14.432 L16.721,19.702 L12,17.178 L7.279,19.703 L8.221,14.433 L4.36,10.723 L9.665,9.99 L12,5.173 L12,5.173 Z M12,0.587 L8.332,8.155 L0,9.306 L6.064,15.134 L4.584,23.413 L12,19.446 L19.416,23.412 L17.936,15.133 L24,9.306 L15.668,8.156 L12,0.587 Z\" id=\"Shape\"></path></svg>')",
+    "--hide-password-svg-icon-color": "#111827",
+    "--bde-woo-forms__labels-required-size": "",
+    "--bde-z-index-popup": "1050",
+    "--bde-woo-widgets__handle-shadow-hover": "#d1d5db 0 0 4px",
+    "--bde-woo-base-medium-gaps": "calc(8px * 1.618)",
+    "--bde-button-custom-text-color-hover": "#fff",
+    "--bde-form-label-required-nudge-x": "0",
+    "--bde-headings-color": "#06B6D4",
+    "--bde-woo-sale-badge__font-weight": "600",
+    "--bde-section-horizontal-padding": "0px",
+    "--bde-woo-typography__size-small-font-family": "system-ui,-apple-system,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"",
+    "--wp--preset--font-size--small": "13px",
+    "--bde-form-input-placeholder-color": "#787e8b",
+    "--bde-palette-color-1-7347c70a-e147-45cf-b7c7-ad30064c3ad9": "#0E7490",
+    "--emerald-700": "#047857",
+    "--bde-woo-base-large-gaps": "calc(calc(calc(8px * 1.618) * 1.618) * 1.618)",
+    "--show-password-svg-icon-color": "#111827",
+    "--hide-password-svg-icon": "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19.604 2.562l-3.346 3.137c-1.27-.428-2.686-.699-4.243-.699-7.569 0-12.015 6.551-12.015 6.551s1.928 2.951 5.146 5.138l-2.911 2.909 1.414 1.414 17.37-17.035-1.415-1.415zm-6.016 5.779c-3.288-1.453-6.681 1.908-5.265 5.206l-1.726 1.707c-1.814-1.16-3.225-2.65-4.06-3.66 1.493-1.648 4.817-4.594 9.478-4.594.927 0 1.796.119 2.61.315l-1.037 1.026zm-2.883 7.431l5.09-4.993c1.017 3.111-2.003 6.067-5.09 4.993zm13.295-4.221s-4.252 7.449-11.985 7.449c-1.379 0-2.662-.291-3.851-.737l1.614-1.583c.715.193 1.458.32 2.237.32 4.791 0 8.104-3.527 9.504-5.364-.729-.822-1.956-1.99-3.587-2.952l1.489-1.46c2.982 1.9 4.579 4.327 4.579 4.327z\"/></svg>')",
+    "--bde-body-font-size": "16px",
+    "--bde-woo-product-images__border-color": "#d1d5db",
+    "--yellow-500": "#fbbf24",
+    "--bde-woo-base-big-gaps": "calc(calc(8px * 1.618) * 1.618)",
+    "--bde-background-color": "#FFF",
+    "--bde-woo-wrappers__background-color": "#fff",
+    "--red-700": "#b91c1c",
+    "--bde-woo-base-primary-color-hover": "#06B6D4",
+    "--bde-woo-typography__size-standard": "16px",
+    "--wp--preset--color--light-green-cyan": "#7bdcb5",
+    "--bde-section-width": "1080px",
+    "--bde-form-checkbox-selected-color": "#06B6D4",
+    "--bde-form-label-color": "#06B6D4",
+    "--bde-woo-notices__error-link-text-hover": "#ef4444",
+    "--bde-woo-products-list-gap": "calc(calc(calc(8px * 1.618) * 1.618) * 1.618)",
+    "--wp--preset--gradient--pale-ocean": "linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%)",
+    "--grey-800": "#1f2937",
+    "--bde-woo-forms__labels-required-color": "#b91c1c",
+    "--info-svg-icon-color": "#0ea5e9",
+    "--bde-h2-font-size": "calc(calc(calc(calc(16px * 1.250) * 1.250) * 1.250) * 1.250)",
+    "--indigo-50": "#eef2ff",
+    "--bde-palette-color-1-7badc20e-5285-4d6d-a36a-828134acbf2c": "#F5F1E8",
+    "--wp--preset--spacing--20": "0.44rem",
+    "--bde-palette-color-1-b4c93ad9-f1fa-4395-91fc-8ff954fc8b1c": "#F59E0B",
+    "--bde-woo-notices__error-link-text": "#ef4444",
+    "--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray": "linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%)",
+    "--bde-woo-typography__size-extra-large-font-family": "system-ui,-apple-system,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"",
+    "--bde-button-padding-sm": "8px 16px",
+    "--bde-woo-base-space": "8px",
+    "--bde-woo-tables__border-radius": "4px",
+    "--bde-woo-typography__size-medium-font-family": "system-ui,-apple-system,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"",
+    "--bde-woo-forms__labels-required-nudge-y": "0",
+    "--bde-h3-font-size": "calc(calc(calc(16px * 1.250) * 1.250) * 1.250)",
+    "--wp--preset--shadow--outlined": "6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0)",
+    "--bde-woo-base-text-on-primary-color": "#fff",
+    "--bde-button-primary-background-color-hover": "#06B6D4",
+    "--bde-z-index-modal": "1000",
+    "--wp--preset--color--vivid-purple": "#9b51e0",
+    "--bde-woo-typography-font-weight-medium": "500",
+    "--grey-400": "#9ca3af",
+    "--bde-woo-typography-font-weight-heavy": "600",
+    "--wp--preset--gradient--blush-light-purple": "linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%)",
+    "--blue-500": "#3b82f6",
+    "--bde-button-text-text-color": "#06B6D4",
+    "--bde-woo-sale-badge__padding": "4px 8px",
+    "--bde-z-index-header-sticky": "200",
+    "--bde-woo-swatch-color-width": "30px",
+    "--bde-z-index-minicart-backdrop": "calc(1000 - 1)",
+    "--grey-200": "#e5e7eb",
+    "--bde-woo-buttons-and-links__nav-link-color-active": "#06B6D4",
+    "--bde-woo-buttons-and-links__text-link-color": "#06B6D4",
+    "--bde-woo-base-standard-gaps": "8px",
+    "--bde-woo-tables__background-color": "#fff",
+    "--bde-woo-buttons-and-links__disabled-button-text-color": "#fff",
+    "--wp--preset--spacing--40": "1rem",
+    "--bde-h1-font-size": "calc(calc(calc(calc(calc(16px * 1.250) * 1.250) * 1.250) * 1.250) * 1.250)",
+    "--bde-form-input-border-left": "1px solid #d1d5db",
+    "--bde-woo-forms__inputs-text-color": "#374151",
+    "--bde-woo-sale-badge__border-radius": "2px",
+    "--bde-woo-ratings__filled-star-svg": "url('data:image/svg+xml;utf8,<svg width=\"24px\" height=\"24px\" viewBox=\"0 0 24 24\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><polygon id=\"Path\" points=\"12 0.587 15.668 8.155 24 9.306 17.936 15.134 19.416 23.413 12 19.446 4.583 23.413 6.064 15.134 0 9.306 8.332 8.155\"></polygon></svg>')",
+    "--sky-100": "#e0f2fe",
+    "--bde-button-secondary-border-color": "#06B6D4",
+    "--bde-woo-wrappers__border-width": "1px",
+    "--bde-woo-widgets__chip-background-color": "transparent",
+    "--bde-woo-forms__spacing-between-fields": "16px",
+    "--bde-h4-font-size": "calc(calc(16px * 1.250) * 1.250)",
+    "--bde-woo-quicklook-button-icon-spacing": "8px",
+    "--grey-450": "#787e8b",
+    "--show-password-svg-icon": "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12.015 7c4.751 0 8.063 3.012 9.504 4.636-1.401 1.837-4.713 5.364-9.504 5.364-4.42 0-7.93-3.536-9.478-5.407 1.493-1.647 4.817-4.593 9.478-4.593zm0-2c-7.569 0-12.015 6.551-12.015 6.551s4.835 7.449 12.015 7.449c7.733 0 11.985-7.449 11.985-7.449s-4.291-6.551-11.985-6.551zm-.015 5c1.103 0 2 .897 2 2s-.897 2-2 2-2-.897-2-2 .897-2 2-2zm0-2c-2.209 0-4 1.792-4 4 0 2.209 1.791 4 4 4s4-1.791 4-4c0-2.208-1.791-4-4-4z\"/></svg>')",
+    "--checkbox-svg-icon": "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M9 21.035l-9-8.638 2.791-2.87 6.156 5.874 12.21-12.436 2.843 2.817z\"/></svg>')",
+    "--bde-woo-notices__padding-left": "calc(24px + 16px + (16px / 2))",
+    "--grey-500": "#6b7280",
+    "--wp--preset--spacing--30": "0.67rem",
+    "--wp--preset--spacing--50": "1.5rem",
+    "--bde-form-gap": "16px",
+    "--bde-woo-swatch-space-between-options": "10px",
+    "--wp--preset--color--pale-cyan-blue": "#8ed1fc",
+    "--bde-woo-gallery__zoom-icon-shadow": "rgba(0,0,0,0.05) 0 1px 3px,rgba(0,0,0,0.05) 0 1px 2px",
+    "--bde-woo-forms__inputs-select2-hover-item": "#06B6D4",
+    "--bde-body-font-family": "system-ui,-apple-system,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"",
+    "--error-svg-icon-color": "#ef4444",
+    "--wp--preset--gradient--luminous-dusk": "linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%)",
+    "--bde-woo-buttons-and-links__text-link-color-hover": "#06B6D4",
+    "--bde-z-index-high": "300",
+    "--bde-z-index-header-overlay": "calc(200 - 1)",
+    "--bde-button-secondary-background-color": "transparent",
+    "--bde-woo-forms__inputs-border-radius": "16px 16px 16px 16px",
+    "--bde-woo-buttons-and-links__nav-border-radius": "4px",
+    "--radiobutton-svg-icon-color": "#111827",
+    "--wp--preset--color--vivid-red": "#cf2e2e",
+    "--bde-woo-swatch-space-between-items": "calc(8px * 1.618)",
+    "--bde-palette-color-1-fcc8c972-9b01-4b15-bb24-aa25831c0bbe": "#0A0A0B",
+    "--bde-woo-swatch-background-hover": "#f9fafb",
+    "--bde-woo-notices__info-background": "#e0f2fe",
+    "--bde-woo-widgets__chip-background-color-hover": "#eef2ff",
+    "--bde-woo-base-extra-small-gaps": "calc(calc(8px / 1.618) / 1.618)",
+    "--bde-woo-swatch-tooltip-padding": "7px",
+    "--wp--preset--aspect-ratio--square": "1",
+    "--bde-palette-color-1-4c4ca5c6-c9cb-4e0d-ba9d-acbad3e5128c": "#FFF",
+    "--bde-links-color-hover": "#06B6D4",
+    "--bde-woo-typography__size-extra-large": "calc(calc(calc(16px * 1.250) * 1.250) * 1.250)",
+    "--indigo-700": "#4338ca",
+    "--wp--preset--color--black": "#000000",
+    "--bde-form-input-padding-bottom": "12px",
+    "--bde-woo-base-heading-line-height": "1.2",
+    "--bde-woo-forms__spacing-after-label": "8px",
+    "--bde-button-primary-text-color": "#fff",
+    "--bde-form-input-border-top": "1px solid #d1d5db",
+    "--bde-woo-select2__active-item-background-color": "#eef2ff",
+    "--wp--preset--gradient--cool-to-warm-spectrum": "linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%)",
+    "--bde-z-index-social-share-buttons": "100",
+    "--bde-z-index-minicart": "1000",
+    "--bde-woo-quicklook-arrow-color": "#fff",
+    "--bde-z-index-back-to-top": "300",
+    "--bde-woo-widgets__chip-text-color": "",
+    "--grey-600": "#4b5563",
+    "--bde-form-input-border-width": "1px",
+    "--bde-button-primary-border-color-hover": "transparent",
+    "--bde-woo-quicklook-arrow-size": "1em",
+    "--wp--preset--gradient--midnight": "linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%)",
+    "--error-svg-icon": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24v112c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zm-32 224a32 32 0 1 1 64 0 32 32 0 1 1-64 0z'/%3E%3C/svg%3E\")",
+    "--grey-900": "#111827",
+    "--bde-woo-notices__success-text": "#047857",
+    "--bde-z-index-low": "100",
+    "--bde-button-secondary-text-color": "#06B6D4",
+    "--bde-form-input-focused-background-color": "#fff",
+    "--bde-woo-sale-badge__background-color": "#06B6D4",
+    "--bde-woo-quicklook-button-background-color-hover": "none",
+    "--bde-woo-notices__border-radius": "4px",
+    "--bde-woo-quicklook-close-button-size": "2em",
+    "--bde-woo-typography-ratio": "1.250",
+    "--bde-form-label-required-nudge-y": "0",
+    "--bde-woo-swatch-background": "#fff",
+    "--bde-form-input-border-bottom-right-radius": "16px",
+    "--bde-z-index-menu-dropdown": "1000",
+    "--bde-z-index-menu-backdrop": "calc(1000 - 1)",
+    "--bde-woo-swatch-tooltip-background": "#111827",
+    "--bde-form-input-input-shadow": "none",
+    "--bde-woo-quicklook-button-icon-size": "20px",
+    "--sky-500": "#0ea5e9",
+    "--bde-button-custom-text-color": "#fff",
+    "--bde-heading-font-family": "system-ui,-apple-system,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"",
+    "--bde-woo-tables__border-color": "#d1d5db",
+    "--bde-woo-ratings__star-color": "#fbbf24",
+    "--wp--preset--color--cyan-bluish-gray": "#abb8c3",
+    "--bde-palette-color-1-aa5c669e-b61b-4a54-98a3-04d0de50d06a": "#67E8F9",
+    "--wp--preset--spacing--60": "2.25rem",
+    "--bde-woo-widgets__remove-item-from-cart-color": "#787e8b",
+    "--bde-form-after-sublabel": "8px",
+    "--bde-woo-swatch-padding": "7px 7px",
+    "--wp--preset--color--vivid-green-cyan": "#00d084",
+    "--bde-transition-duration": "300ms",
+    "--bde-woo-widgets__handle-border-color": "#d1d5db",
+    "--bde-palette-color-1-d828ea6d-57ba-4cbe-ae5b-f478bf2dc16b": "#1F2937",
+    "--bde-z-index-menu-mobile": "1000",
+    "--bde-woo-ratings__star-size": "18px",
+    "--bde-woo-sale-badge__font-size": "16px",
+    "--bde-body-text-color": "#0A0A0B",
+    "--grey-50": "#f9fafb",
+    "--bde-form-input-border-right": "1px solid #d1d5db",
+    "--bde-woo-tables__header-color": "#f3f4f6",
+    "--bde-links-color": "#06B6D4",
+    "--bde-button-custom-border-color": "#111827",
+    "--bde-form-label-required-size": "",
+    "--bde-woo-notices__icon-size": "16px",
+    "--wp--preset--aspect-ratio--3-2": "3/2",
+    "--x-mark-svg-icon": "url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20384%20512%22%3E%3Cpath%20d%3D%22M342.6%20150.6c12.5-12.5%2012.5-32.8%200-45.3s-32.8-12.5-45.3%200L192%20210.7%2086.6%20105.4c-12.5-12.5-32.8-12.5-45.3%200s-12.5%2032.8%200%2045.3L146.7%20256%2041.4%20361.4c-12.5%2012.5-12.5%2032.8%200%2045.3s32.8%2012.5%2045.3%200L192%20301.3l105.4%20105.3c12.5%2012.5%2032.8%2012.5%2045.3%200s12.5-32.8%200-45.3L237.3%20256l105.3-105.4z%22%2F%3E%3C%2Fsvg%3E)",
+    "--radiobutton-svg-icon": "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"12\"/></svg>')",
+    "--bde-woo-widgets__handle-background-color-hover": "#fff",
+    "--bde-woo-notices__info-link-text": "#0ea5e9",
+    "--bde-woo-forms__inputs-border-width": "1px",
+    "--bde-woo-forms__inputs-border-color-focused": "#06B6D4",
+    "--bde-brand-primary-color-hover": "#06B6D4",
+    "--bde-button-padding-base": "14px 24px",
+    "--bde-woo-base-small-gaps": "calc(8px / 1.618)",
+    "--red-50": "#fef2f2",
+    "--bde-form-text-color": "#374151",
+    "--bde-woo-base-paragraph-line-height": "1.4",
+    "--bde-base-font-size": "16px",
+    "--bde-woo-forms__inputs-shadow-focused": "#06B6D4 0 0 2px",
+    "--bde-woo-base-text-color": "#0A0A0B",
+    "--bde-woo-swatch-border": "1px solid #e5e7eb",
+    "--bde-section-vertical-padding": "100px",
+    "--bde-button-custom-border-color-hover": "#374151",
+    "--bde-woo-forms__labels-color": "#06B6D4",
+    "--wp--preset--aspect-ratio--4-3": "4/3",
+    "--bde-woo-swatch-tooltip-color": "#fff",
+    "--bde-woo-responsive__stack": "row",
+    "--grey-300": "#d1d5db",
+    "--wp--preset--spacing--70": "3.38rem",
+    "--bde-woo-forms__spacing-between-columns": "calc(calc(calc(calc(8px * 1.618) * 1.618) * 1.618) * 1.618)",
+    "--bde-form-label-required-color": "#b91c1c",
+    "--bde-woo-sale-badge__text-color": "#fff",
+    "--bde-woo-buttons-and-links__nav-link-color-hover": "#fff",
+    "--wp--preset--color--luminous-vivid-amber": "#fcb900",
+    "--bde-button-font-size": "16px",
+    "--bde-form-input-border-top-left-radius": "16px",
+    "--wp--preset--aspect-ratio--9-16": "9/16",
+    "--bde-woo-typography-font-weight-normal": "400",
+    "--bde-h5-font-size": "calc(16px * 1.250)",
+    "--wp--preset--shadow--sharp": "6px 6px 0px rgba(0, 0, 0, 0.2)",
+    "--bde-form-input-focused-shadow": "#06B6D4 0 0 2px",
+    "--wp--preset--color--white": "#ffffff",
+    "--bde-woo-base-extra-large-gaps": "calc(calc(calc(calc(8px * 1.618) * 1.618) * 1.618) * 1.618)",
+    "--grey-700": "#374151",
+    "--bde-woo-swatch-color-height": "30px",
+    "--bde-woo-swatch-color-padding": "2px",
+    "--bde-palette-color-1-c876b212-f0c2-462c-bd40-9874993b3d46": "#10B981",
+    "--bde-font-size-ratio": "1.250",
+    "--bde-woo-typography__size-standard-font-family": "system-ui,-apple-system,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"",
+    "--wp--preset--aspect-ratio--3-4": "3/4",
+    "--bde-form-input-border-bottom": "1px solid #d1d5db",
+    "--bde-woo-forms__inputs-background-color": "#fff",
+    "--bde-woo-base-ratio": "1.618",
+    "--bde-woo-swatch-space-after-label": "8px",
+    "--bde-woo-forms__inputs-background-color-focused": "#fff",
+    "--grey-100": "#f3f4f6",
+    "--bde-woo-forms__inputs-border-color": "#d1d5db",
+    "--bde-form-input-padding-top": "12px"
+  },
+  "sections": [
+    {
+      "index": 0,
+      "tag": "HEADER",
+      "classes": "bde-header-builder-18-100 bde-header-builder bde-header-builder--sticky bde-header-builder--sticky-scroll-slide",
+      "rect": {
+        "top": 0,
+        "width": 1440,
+        "height": 130
+      },
+      "text": "Close\n          \n  \n    \n        \n            \n            \n\n    \n    \n    \n    \n    \n    \n  Home\n    \n\n\n\n    \n      \n              \n       ",
+      "styles": {
+        "background-color": "rgb(255, 255, 255)",
+        "background-image": "none",
+        "color": "rgb(10, 10, 11)",
+        "padding": "0px",
+        "margin": "0px",
+        "border-radius": "0px",
+        "box-shadow": "none"
+      },
+      "heading": null,
+      "paragraph": null,
+      "buttons": [
+        {
+          "text": "",
+          "styles": {
+            "background-color": "rgba(0, 0, 0, 0)",
+            "color": "rgb(6, 182, 212)",
+            "border": "0px none rgb(6, 182, 212)",
+            "border-radius": "0px",
+            "font-weight": "400",
+            "padding": "0px",
+            "text-transform": "none",
+            "box-shadow": "none"
+          }
+        },
+        {
+          "text": "Close",
+          "styles": {
+            "background-color": "rgba(0, 0, 0, 0)",
+            "color": "rgb(0, 0, 0)",
+            "border": "0px none rgb(0, 0, 0)",
+            "border-radius": "0px",
+            "font-weight": "400",
+            "padding": "0px",
+            "text-transform": "none",
+            "box-shadow": "none"
+          }
+        },
+        {
+          "text": "Services",
+          "styles": {
+            "background-color": "rgba(0, 0, 0, 0)",
+            "color": "rgb(10, 10, 11)",
+            "border": "0px none rgb(10, 10, 11)",
+            "border-radius": "0px",
+            "font-weight": "500",
+            "padding": "0px 0px 3px",
+            "text-transform": "none",
+            "box-shadow": "none"
+          }
+        }
+      ],
+      "images": [
+        {
+          "src": "https://regtekconsulting.com/wp-content/uploads/2025/10/Regtek-Consulting-Logo.png",
+          "alt": "",
+          "width": 326,
+          "height": 326
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "tag": "SECTION",
+      "classes": "bde-section-23-100 bde-section",
+      "rect": {
+        "top": 0,
+        "width": 1440,
+        "height": 582
+      },
+      "text": "Small Business Digital Marketing \n\n\n\n            Turn Your Marketing Into\n\n            Predictable Revenue\n\n\n\n\nWork directly with a founder ",
+      "styles": {
+        "background-color": "rgb(247, 247, 247)",
+        "background-image": "url(\"https://regtekconsulting.com/wp-content/uploads/2025/11/k.1757_background_for_a_marketing_company_website_-ar_21_-s_17733e80-30ca-4e52-92d2-a68d086aacc9_2-1.png\")",
+        "color": "rgb(10, 10, 11)",
+        "padding": "0px",
+        "margin": "0px",
+        "border-radius": "0px",
+        "box-shadow": "none"
+      },
+      "heading": {
+        "tag": "H1",
+        "text": "Small Business Digital Marketing",
+        "styles": {
+          "font-family": "system-ui, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "font-size": "16px",
+          "font-weight": "700",
+          "color": "rgb(10, 10, 11)",
+          "text-transform": "none",
+          "letter-spacing": "normal",
+          "line-height": "19.2px"
+        }
+      },
+      "paragraph": null,
+      "buttons": [
+        {
+          "text": "Book Your Free Consultation Today",
+          "styles": {
+            "background-color": "rgb(14, 116, 144)",
+            "color": "rgb(255, 255, 255)",
+            "border": "1px solid rgba(0, 0, 0, 0)",
+            "border-radius": "8px",
+            "font-weight": "600",
+            "padding": "14px 24px",
+            "text-transform": "none",
+            "box-shadow": "rgb(10, 10, 11) 3px 3px 17px -4px"
+          }
+        }
+      ],
+      "images": [
+        {
+          "src": "https://regtekconsulting.com/wp-content/uploads/2026/01/Elise-Basinger.webp",
+          "alt": "",
+          "width": 36,
+          "height": 36
+        },
+        {
+          "src": "https://regtekconsulting.com/wp-content/uploads/2026/01/unnamed-48.webp",
+          "alt": "",
+          "width": 36,
+          "height": 36
+        },
+        {
+          "src": "https://regtekconsulting.com/wp-content/uploads/2026/01/unnamed-47.webp",
+          "alt": "",
+          "width": 36,
+          "height": 36
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "tag": "SECTION",
+      "classes": "bde-section-23-229 bde-section",
+      "rect": {
+        "top": 582,
+        "width": 1440,
+        "height": 251
+      },
+      "text": "Trusted by Small Businesses\n\n  \n          \n    \n            \n    \n                    \n        \n        \n        \n            \n    \n\n       ",
+      "styles": {
+        "background-color": "rgb(14, 116, 144)",
+        "background-image": "none",
+        "color": "rgb(10, 10, 11)",
+        "padding": "0px",
+        "margin": "0px",
+        "border-radius": "0px",
+        "box-shadow": "none"
+      },
+      "heading": {
+        "tag": "H2",
+        "text": "Trusted by Small Businesses",
+        "styles": {
+          "font-family": "Inter, sans-serif",
+          "font-size": "32px",
+          "font-weight": "700",
+          "color": "rgb(243, 244, 246)",
+          "text-transform": "none",
+          "letter-spacing": "normal",
+          "line-height": "38.4px"
+        }
+      },
+      "paragraph": {
+        "text": "Paid Search Growth",
+        "styles": {
+          "font-family": "system-ui, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "font-size": "14px",
+          "color": "rgb(90, 90, 90)",
+          "line-height": "19.6px"
+        }
+      },
+      "buttons": [],
+      "images": []
+    },
+    {
+      "index": 3,
+      "tag": "SECTION",
+      "classes": "bde-section-23-232 bde-section is-before",
+      "rect": {
+        "top": 834,
+        "width": 1440,
+        "height": 911
+      },
+      "text": "You've Built Something Great Through Word-of-Mouth. Now It's Time to Scale.\n\nYou've done the hard part - building a business that delivers r",
+      "styles": {
+        "background-color": "rgb(243, 244, 246)",
+        "background-image": "none",
+        "color": "rgb(10, 10, 11)",
+        "padding": "0px",
+        "margin": "0px",
+        "border-radius": "0px",
+        "box-shadow": "none"
+      },
+      "heading": {
+        "tag": "H2",
+        "text": "You've Built Something Great Through Word-of-Mouth. Now It's Time to Scale.",
+        "styles": {
+          "font-family": "Inter, sans-serif",
+          "font-size": "42px",
+          "font-weight": "700",
+          "color": "rgb(10, 10, 11)",
+          "text-transform": "none",
+          "letter-spacing": "normal",
+          "line-height": "50.4px"
+        }
+      },
+      "paragraph": {
+        "text": "You've done the hard part - building a business that delivers real value.",
+        "styles": {
+          "font-family": "Inter, sans-serif",
+          "font-size": "19px",
+          "color": "rgb(10, 10, 11)",
+          "line-height": "26.6px"
+        }
+      },
+      "buttons": [],
+      "images": []
+    },
+    {
+      "index": 4,
+      "tag": "SECTION",
+      "classes": "bde-section-23-276 bde-section",
+      "rect": {
+        "top": 1745,
+        "width": 1440,
+        "height": 591
+      },
+      "text": "The Results Speak\n\n            Louder Than We Do\n\n\n\n\n\n  \n\n\n      Local Practice Achieves 63% Booking Growth\n    \n      This podiatry clinic ",
+      "styles": {
+        "background-color": "rgb(14, 116, 144)",
+        "background-image": "none",
+        "color": "rgb(10, 10, 11)",
+        "padding": "0px",
+        "margin": "0px",
+        "border-radius": "0px",
+        "box-shadow": "none"
+      },
+      "heading": {
+        "tag": "H3",
+        "text": "The Results Speak\n\n            Louder Than We Do",
+        "styles": {
+          "font-family": "system-ui, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "font-size": "45px",
+          "font-weight": "700",
+          "color": "rgb(6, 182, 212)",
+          "text-transform": "none",
+          "letter-spacing": "normal",
+          "line-height": "54px"
+        }
+      },
+      "paragraph": {
+        "text": "Local Practice Achieves 63% Booking Growth",
+        "styles": {
+          "font-family": "Poppins, sans-serif",
+          "font-size": "31px",
+          "color": "rgb(255, 252, 252)",
+          "line-height": "43.4px"
+        }
+      },
+      "buttons": [],
+      "images": [
+        {
+          "src": "https://regtekconsulting.com/wp-content/uploads/2025/11/New-Patients-768x419.jpg",
+          "alt": "",
+          "width": 768,
+          "height": 419
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "tag": "SECTION",
+      "classes": "bde-section-23-240 bde-section is-before",
+      "rect": {
+        "top": 2336,
+        "width": 1440,
+        "height": 733
+      },
+      "text": "We Don't Just Do Marketing, We Understand Your Business.\n\nWe're not your typical agency. We're business consultants who happen to be marketi",
+      "styles": {
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background-image": "none",
+        "color": "rgb(10, 10, 11)",
+        "padding": "0px",
+        "margin": "0px",
+        "border-radius": "0px",
+        "box-shadow": "none"
+      },
+      "heading": {
+        "tag": "H2",
+        "text": "We Don't Just Do Marketing, We Understand Your Business.",
+        "styles": {
+          "font-family": "system-ui, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "font-size": "38px",
+          "font-weight": "700",
+          "color": "rgb(10, 10, 11)",
+          "text-transform": "none",
+          "letter-spacing": "normal",
+          "line-height": "45.6px"
+        }
+      },
+      "paragraph": null,
+      "buttons": [],
+      "images": []
+    },
+    {
+      "index": 6,
+      "tag": "SECTION",
+      "classes": "bde-section-23-385 bde-section",
+      "rect": {
+        "top": 3069,
+        "width": 1440,
+        "height": 551
+      },
+      "text": "From Growing Practice\n\n            To Market Leader\n\n\n\n\n\n  \n\n\n      Built a Scalable Patient Acquisition Engine\n    \n      A growing dermato",
+      "styles": {
+        "background-color": "rgb(14, 116, 144)",
+        "background-image": "none",
+        "color": "rgb(10, 10, 11)",
+        "padding": "0px",
+        "margin": "0px",
+        "border-radius": "0px",
+        "box-shadow": "none"
+      },
+      "heading": {
+        "tag": "H3",
+        "text": "From Growing Practice\n\n            To Market Leader",
+        "styles": {
+          "font-family": "system-ui, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "font-size": "45px",
+          "font-weight": "700",
+          "color": "rgb(6, 182, 212)",
+          "text-transform": "none",
+          "letter-spacing": "normal",
+          "line-height": "54px"
+        }
+      },
+      "paragraph": {
+        "text": "Built a Scalable Patient Acquisition Engine",
+        "styles": {
+          "font-family": "Poppins, sans-serif",
+          "font-size": "24px",
+          "color": "rgb(255, 252, 252)",
+          "line-height": "33.6px"
+        }
+      },
+      "buttons": [
+        {
+          "text": "Read The Case Study",
+          "styles": {
+            "background-color": "rgb(255, 255, 255)",
+            "color": "rgb(14, 116, 144)",
+            "border": "1px solid rgb(10, 10, 11)",
+            "border-radius": "5px",
+            "font-weight": "500",
+            "padding": "14px 24px",
+            "text-transform": "none",
+            "box-shadow": "rgba(0, 0, 0, 0.145) 5px 20px 75px 0px"
+          }
+        }
+      ],
+      "images": [
+        {
+          "src": "https://regtekconsulting.com/wp-content/uploads/2025/12/Cost-Per-Lead-Dermatology-1024x367.webp",
+          "alt": "Dermatology case study results showing 1.17 million impressions, 1,617 leads, and $37 cost per lead over 22 months",
+          "width": 1024,
+          "height": 367
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "tag": "SECTION",
+      "classes": "bde-section-23-352 bde-section is-before",
+      "rect": {
+        "top": 3620,
+        "width": 1440,
+        "height": 1253
+      },
+      "text": "What We Do\n\nDiscover how strategic marketing can transform your business. We offer comprehensive digital marketing solutions designed to dri",
+      "styles": {
+        "background-color": "rgb(243, 244, 246)",
+        "background-image": "none",
+        "color": "rgb(10, 10, 11)",
+        "padding": "0px",
+        "margin": "0px",
+        "border-radius": "0px",
+        "box-shadow": "none"
+      },
+      "heading": {
+        "tag": "H2",
+        "text": "What We Do",
+        "styles": {
+          "font-family": "system-ui, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "font-size": "39.0625px",
+          "font-weight": "700",
+          "color": "rgb(10, 10, 11)",
+          "text-transform": "none",
+          "letter-spacing": "normal",
+          "line-height": "46.875px"
+        }
+      },
+      "paragraph": null,
+      "buttons": [
+        {
+          "text": "Read More About Google Ads",
+          "styles": {
+            "background-color": "rgb(14, 116, 144)",
+            "color": "rgb(255, 255, 255)",
+            "border": "1px solid rgba(0, 0, 0, 0)",
+            "border-radius": "8px",
+            "font-weight": "600",
+            "padding": "14px 24px",
+            "text-transform": "none",
+            "box-shadow": "rgb(10, 10, 11) 3px 3px 17px -4px"
+          }
+        },
+        {
+          "text": "Read More About Meta Ads",
+          "styles": {
+            "background-color": "rgb(14, 116, 144)",
+            "color": "rgb(255, 255, 255)",
+            "border": "1px solid rgba(0, 0, 0, 0)",
+            "border-radius": "8px",
+            "font-weight": "600",
+            "padding": "14px 24px",
+            "text-transform": "none",
+            "box-shadow": "rgb(10, 10, 11) 3px 3px 17px -4px"
+          }
+        },
+        {
+          "text": "Read More About Web Design",
+          "styles": {
+            "background-color": "rgb(14, 116, 144)",
+            "color": "rgb(255, 255, 255)",
+            "border": "1px solid rgba(0, 0, 0, 0)",
+            "border-radius": "8px",
+            "font-weight": "600",
+            "padding": "14px 24px",
+            "text-transform": "none",
+            "box-shadow": "rgb(10, 10, 11) 3px 3px 17px -4px"
+          }
+        }
+      ],
+      "images": []
+    },
+    {
+      "index": 8,
+      "tag": "SECTION",
+      "classes": "bde-section-23-390 bde-section is-before",
+      "rect": {
+        "top": 4874,
+        "width": 1440,
+        "height": 550
+      },
+      "text": "Want to know which services fit your goals?\n\n Bookl Your Free Consultation Today\n\nSpeak 1 on 1 with our Founder and Learn How You can Scale ",
+      "styles": {
+        "background-color": "rgb(14, 116, 144)",
+        "background-image": "none",
+        "color": "rgb(10, 10, 11)",
+        "padding": "0px",
+        "margin": "0px",
+        "border-radius": "0px",
+        "box-shadow": "none"
+      },
+      "heading": {
+        "tag": "H2",
+        "text": "Want to know which services fit your goals?",
+        "styles": {
+          "font-family": "system-ui, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "font-size": "39.0625px",
+          "font-weight": "700",
+          "color": "rgb(10, 10, 11)",
+          "text-transform": "none",
+          "letter-spacing": "normal",
+          "line-height": "46.875px"
+        }
+      },
+      "paragraph": null,
+      "buttons": [
+        {
+          "text": "Book Today!",
+          "styles": {
+            "background-color": "rgb(14, 116, 144)",
+            "color": "rgb(255, 255, 255)",
+            "border": "1px solid rgba(0, 0, 0, 0)",
+            "border-radius": "8px",
+            "font-weight": "600",
+            "padding": "14px 24px",
+            "text-transform": "none",
+            "box-shadow": "rgb(10, 10, 11) 3px 3px 17px -4px"
+          }
+        }
+      ],
+      "images": [
+        {
+          "src": "https://regtekconsulting.com/wp-content/uploads/2025/10/k.1757_digital_marketing_dashboard_google_ads_-v_7_7586e10e-25f2-4289-8b88-c3098806b739_1-768x768.png",
+          "alt": "",
+          "width": 0,
+          "height": 0
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "tag": "SECTION",
+      "classes": "bde-section-23-318 bde-section",
+      "rect": {
+        "top": 5424,
+        "width": 1440,
+        "height": 739
+      },
+      "text": "You'll Work Directly With The Founder\n\nHi, I'm Kevin Dillon, the founder of Regtek Consulting. Before starting this agency, I ran operations",
+      "styles": {
+        "background-color": "rgb(216, 216, 216)",
+        "background-image": "none",
+        "color": "rgb(10, 10, 11)",
+        "padding": "0px",
+        "margin": "0px",
+        "border-radius": "0px",
+        "box-shadow": "none"
+      },
+      "heading": {
+        "tag": "H2",
+        "text": "You'll Work Directly With The Founder",
+        "styles": {
+          "font-family": "system-ui, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "font-size": "39.0625px",
+          "font-weight": "700",
+          "color": "rgb(10, 10, 11)",
+          "text-transform": "none",
+          "letter-spacing": "normal",
+          "line-height": "46.875px"
+        }
+      },
+      "paragraph": null,
+      "buttons": [
+        {
+          "text": "LEARN MORE",
+          "styles": {
+            "background-color": "rgba(0, 0, 0, 0)",
+            "color": "rgb(27, 27, 27)",
+            "border": "2px solid rgb(27, 27, 27)",
+            "border-radius": "0px",
+            "font-weight": "500",
+            "padding": "14px 24px",
+            "text-transform": "none",
+            "box-shadow": "rgba(0, 0, 0, 0.145) -10px -10px 0px 0px"
+          }
+        }
+      ],
+      "images": [
+        {
+          "src": "https://regtekconsulting.com/wp-content/uploads/2025/10/20250531_180453-768x1024.jpg",
+          "alt": "",
+          "width": 768,
+          "height": 1024
+        },
+        {
+          "src": "https://s.w.org/images/core/emoji/17.0.2/svg/1f415.svg",
+          "alt": "🐕",
+          "width": 150,
+          "height": 150
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "tag": "SECTION",
+      "classes": "bde-section-23-415 bde-section is-before",
+      "rect": {
+        "top": 6163,
+        "width": 1440,
+        "height": 575
+      },
+      "text": "Let's Talk Growth\n\nReady to Stop Guessing and Start Growing?\n\nDiscover exactly what it takes to scale your business beyond referrals.\n\n     ",
+      "styles": {
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background-image": "linear-gradient(126deg, rgb(14, 116, 144) 0%, rgb(17, 132, 160) 57.9487%)",
+        "color": "rgb(10, 10, 11)",
+        "padding": "0px",
+        "margin": "0px",
+        "border-radius": "0px",
+        "box-shadow": "none"
+      },
+      "heading": {
+        "tag": "H2",
+        "text": "Ready to Stop Guessing and Start Growing?",
+        "styles": {
+          "font-family": "system-ui, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "font-size": "39.0625px",
+          "font-weight": "700",
+          "color": "rgb(243, 244, 246)",
+          "text-transform": "none",
+          "letter-spacing": "normal",
+          "line-height": "46.875px"
+        }
+      },
+      "paragraph": null,
+      "buttons": [
+        {
+          "text": "Book A Free Consultation",
+          "styles": {
+            "background-color": "rgb(255, 255, 255)",
+            "color": "rgb(10, 10, 11)",
+            "border": "1px solid rgba(0, 0, 0, 0)",
+            "border-radius": "3px",
+            "font-weight": "700",
+            "padding": "14px 24px",
+            "text-transform": "none",
+            "box-shadow": "rgba(0, 0, 0, 0.11) 5px 10px 5px 0px"
+          }
+        },
+        {
+          "text": "Submit",
+          "styles": {
+            "background-color": "rgb(14, 116, 144)",
+            "color": "rgb(255, 255, 255)",
+            "border": "1px solid rgba(0, 0, 0, 0)",
+            "border-radius": "8px",
+            "font-weight": "600",
+            "padding": "14px 24px",
+            "text-transform": "none",
+            "box-shadow": "rgb(10, 10, 11) 3px 3px 17px -4px"
+          }
+        }
+      ],
+      "images": []
+    },
+    {
+      "index": 11,
+      "tag": "FOOTER",
+      "classes": "bde-section-16-100 bde-section",
+      "rect": {
+        "top": 6738,
+        "width": 1440,
+        "height": 439
+      },
+      "text": "Regtek\n\nData-Driven Marketing. Real Results.\n\nNamed after our founder's best friend \n\n\n  \n  \n\t\n\n\n\n\nQuick Links\n\n  \n  \n\t\n\n\n\n\n  About us\n\n\n  S",
+      "styles": {
+        "background-color": "rgb(31, 41, 55)",
+        "background-image": "none",
+        "color": "rgb(10, 10, 11)",
+        "padding": "0px",
+        "margin": "0px",
+        "border-radius": "0px",
+        "box-shadow": "none"
+      },
+      "heading": {
+        "tag": "H3",
+        "text": "Regtek",
+        "styles": {
+          "font-family": "system-ui, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "font-size": "31.25px",
+          "font-weight": "700",
+          "color": "rgb(243, 244, 246)",
+          "text-transform": "none",
+          "letter-spacing": "normal",
+          "line-height": "37.5px"
+        }
+      },
+      "paragraph": null,
+      "buttons": [],
+      "images": [
+        {
+          "src": "https://s.w.org/images/core/emoji/17.0.2/svg/1f415.svg",
+          "alt": "🐕",
+          "width": 150,
+          "height": 150
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "url": "/coming-soon/",
+  "status": 200,
+  "title": "Coming Soon - regtekconsulting.com",
+  "metaDescription": "",
+  "ogTitle": "Coming Soon - regtekconsulting.com",
+  "ogDescription": "Coming Soon Get ready for something amazing! Our brand new website is coming soon, packed with exciting features and information. Stay tuned and be among the first to experience it. Email* HP Name Submit",
+  "canonical": "https://regtekconsulting.com/coming-soon/",
+  "h1": "Coming Soon",
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "Coming Soon"
+    }
+  ],
+  "bodyContent": "Coming Soon\nGet ready for something amazing! Our brand new website is coming soon, packed with exciting features and information. Stay tuned and be among the first to experience it.\nEmail*\nHP Name\nSubmit",
+  "wordCount": 34,
+  "links": [],
+  "images": [
+    {
+      "src": "https://regtekconsulting.com/wp-content/uploads/2025/10/Regtek-Consulting-Logo-300x300.png",
+      "alt": "",
+      "width": 326,
+      "height": 326
+    }
+  ],
+  "schemas": [
+    "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":[\"ProfessionalService\",\"Organization\"],\"@id\":\"https://regtekconsulting.com/#organization\",\"name\":\"Regtek Consulting LLC\",\"url\":\"https://regtekconsulting.com\",\"logo\":{\"@type\":\"ImageObject\",\"@id\":\"https://regtekconsulting.com/#logo\",\"url\":\"https://regtekconsulting.com/wp-content/uploads/2025/10/cropped-Regtek-Consulting-Logo-1.png\",\"contentUrl\":\"https://regtekconsulting.com/wp-content/uploads/2025/10/cropped-Regtek-Consulting-Logo-1.png\",\"caption\":\"regtekconsulting.com\",\"inLanguage\":\"en-US\",\"width\":\"512\",\"height\":\"512\"},\"openingHours\":[\"Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday 09:00-17:00\"],\"image\":{\"@id\":\"https://regtekconsulting.com/#logo\"}},{\"@type\":\"WebSite\",\"@id\":\"https://regtekconsulting.com/#website\",\"url\":\"https://regtekconsulting.com\",\"name\":\"regtekconsulting.com\",\"alternateName\":\"www.regtekconsulting.com\",\"publisher\":{\"@id\":\"https://regtekconsulting.com/#organization\"},\"inLanguage\":\"en-US\"},{\"@type\":\"ImageObject\",\"@id\":\"https://regtekconsulting.com/wp-content/uploads/2025/10/cropped-Regtek-Consulting-Logo-1.png\",\"url\":\"https://regtekconsulting.com/wp-content/uploads/2025/10/cropped-Regtek-Consulting-Logo-1.png\",\"width\":\"512\",\"height\":\"512\",\"inLanguage\":\"en-US\"},{\"@type\":\"WebPage\",\"@id\":\"https://regtekconsulting.com/coming-soon/#webpage\",\"url\":\"https://regtekconsulting.com/coming-soon/\",\"name\":\"Coming Soon - regtekconsulting.com\",\"datePublished\":\"2025-11-10T20:31:27+00:00\",\"dateModified\":\"2025-11-14T16:46:02+00:00\",\"isPartOf\":{\"@id\":\"https://regtekconsulting.com/#website\"},\"primaryImageOfPage\":{\"@id\":\"https://regtekconsulting.com/wp-content/uploads/2025/10/cropped-Regtek-Consulting-Logo-1.png\"},\"inLanguage\":\"en-US\"},{\"@type\":\"Person\",\"@id\":\"https://regtekconsulting.com/author/kevin/\",\"name\":\"Kevin\",\"url\":\"https://regtekconsulting.com/author/kevin/\",\"image\":{\"@type\":\"ImageObject\",\"@id\":\"https://secure.gravatar.com/avatar/ea65780d0aa232b9bec5d3cfd5112005b8a5c604457776ee63bd39588ff36ff1?s=96&amp;d=mm&amp;r=g\",\"url\":\"https://secure.gravatar.com/avatar/ea65780d0aa232b9bec5d3cfd5112005b8a5c604457776ee63bd39588ff36ff1?s=96&amp;d=mm&amp;r=g\",\"caption\":\"Kevin\",\"inLanguage\":\"en-US\"},\"sameAs\":[\"https://wordpress-1377023-5930325.cloudwaysapps.com\"],\"worksFor\":{\"@id\":\"https://regtekconsulting.com/#organization\"}},{\"@type\":\"Article\",\"headline\":\"Coming Soon - regtekconsulting.com\",\"datePublished\":\"2025-11-10T20:31:27+00:00\",\"dateModified\":\"2025-11-14T16:46:02+00:00\",\"author\":{\"@id\":\"https://regtekconsulting.com/author/kevin/\",\"name\":\"Kevin\"},\"publisher\":{\"@id\":\"https://regtekconsulting.com/#organization\"},\"name\":\"Coming Soon - regtekconsulting.com\",\"@id\":\"https://regtekconsulting.com/coming-soon/#richSnippet\",\"isPartOf\":{\"@id\":\"https://regtekconsulting.com/coming-soon/#webpage\"},\"image\":{\"@id\":\"https://regtekconsulting.com/wp-content/uploads/2025/10/cropped-Regtek-Consulting-Logo-1.png\"},\"inLanguage\":\"en-US\",\"mainEntityOfPage\":{\"@id\":\"https://regtekconsulting.com/coming-soon/#webpage\"}}]}"
+  ]
+}

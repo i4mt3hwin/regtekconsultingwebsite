@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Kevin",
+    "url": "https://wordpress-1377023-5930325.cloudwaysapps.com",
+    "description": "",
+    "link": "https://regtekconsulting.com/author/kevin/",
+    "slug": "kevin",
+    "avatar_urls": {
+      "24": "https://secure.gravatar.com/avatar/ea65780d0aa232b9bec5d3cfd5112005b8a5c604457776ee63bd39588ff36ff1?s=24&d=mm&r=g",
+      "48": "https://secure.gravatar.com/avatar/ea65780d0aa232b9bec5d3cfd5112005b8a5c604457776ee63bd39588ff36ff1?s=48&d=mm&r=g",
+      "96": "https://secure.gravatar.com/avatar/ea65780d0aa232b9bec5d3cfd5112005b8a5c604457776ee63bd39588ff36ff1?s=96&d=mm&r=g"
+    },
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://regtekconsulting.com/wp-json/wp/v2/users/1",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH",
+              "DELETE"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://regtekconsulting.com/wp-json/wp/v2/users"
+        }
+      ]
+    }
+  }
+]

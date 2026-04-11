@@ -1,0 +1,107 @@
+{
+  "url": "/blog/category/general/",
+  "status": 200,
+  "title": "General - regtekconsulting.com",
+  "metaDescription": "",
+  "ogTitle": "General - regtekconsulting.com",
+  "ogDescription": "",
+  "canonical": "https://regtekconsulting.com/blog/category/general/",
+  "h1": "",
+  "headings": [
+    {
+      "tag": "H3",
+      "text": "Why Your Half-Finished Google Business Profile Is Costing You Patients"
+    },
+    {
+      "tag": "H3",
+      "text": "Why Your Marketing Leads Aren’t Converting (It’s Not What You Think)"
+    },
+    {
+      "tag": "H3",
+      "text": "Why I Started Regtek Consulting (And Why Your Marketing Agency Should Understand Your Business)"
+    },
+    {
+      "tag": "H3",
+      "text": "Regtek"
+    },
+    {
+      "tag": "H3",
+      "text": "Quick Links"
+    },
+    {
+      "tag": "H3",
+      "text": "Services"
+    },
+    {
+      "tag": "H3",
+      "text": "Contact Us"
+    }
+  ],
+  "bodyContent": "Why Your Half-Finished Google Business Profile Is Costing You Patients\nKevin\nDecember 8, 2025 \nNo Comments\nYou finally claimed your Google Business Profile. Maybe you uploaded a logo, added your phone number, your website, and called it done. That was two years ago. Here’s the problem:…\nRead more",
+  "wordCount": 48,
+  "links": [
+    "https://regtekconsulting.com/",
+    "https://regtekconsulting.com/home/",
+    "https://regtekconsulting.com/services/",
+    "https://regtekconsulting.com/website-design/",
+    "https://regtekconsulting.com/google-ads/",
+    "https://regtekconsulting.com/meta-ads/",
+    "https://regtekconsulting.com/about/",
+    "https://regtekconsulting.com/tips-tricks/",
+    "https://regtekconsulting.com/contact/",
+    "https://regtekconsulting.com/contact/",
+    "https://regtekconsulting.com/blog/google-business-profile-optimization-medical-practices/",
+    "https://regtekconsulting.com/blog/google-business-profile-optimization-medical-practices/",
+    "https://regtekconsulting.com/blog/google-business-profile-optimization-medical-practices/",
+    "https://regtekconsulting.com/blog/marketing-leads-not-converting/",
+    "https://regtekconsulting.com/blog/marketing-leads-not-converting/",
+    "https://regtekconsulting.com/blog/marketing-leads-not-converting/",
+    "https://regtekconsulting.com/blog/why-i-started-regtek-consulting/",
+    "https://regtekconsulting.com/blog/why-i-started-regtek-consulting/",
+    "https://regtekconsulting.com/blog/why-i-started-regtek-consulting/",
+    "https://regtekconsulting.com/about/",
+    "https://regtekconsulting.com/services/",
+    "https://regtekconsulting.com/contact/",
+    "https://regtekconsulting.com/tips-tricks/",
+    "https://regtekconsulting.com/website-design/",
+    "https://regtekconsulting.com/google-ads/",
+    "https://regtekconsulting.com/meta-ads/",
+    "tel:19089004799",
+    "mailto:kdillon@regtekconsulting.com"
+  ],
+  "images": [
+    {
+      "src": "https://regtekconsulting.com/wp-content/uploads/2025/10/Regtek-Consulting-Logo.png",
+      "alt": "",
+      "width": 326,
+      "height": 326
+    },
+    {
+      "src": "https://regtekconsulting.com/wp-content/uploads/2025/12/GMB-Profile-Optimization.webp",
+      "alt": "Why Your Half-Finished Google Business Profile Is Costing You Patients",
+      "width": 1024,
+      "height": 559
+    },
+    {
+      "src": "https://regtekconsulting.com/wp-content/uploads/2025/11/medical-practice-front-desk-modern.webp",
+      "alt": "Why Your Marketing Leads Aren’t Converting (It’s Not What You Think)",
+      "width": 1080,
+      "height": 589
+    },
+    {
+      "src": "https://regtekconsulting.com/wp-content/uploads/2025/10/20250531_180453.jpg",
+      "alt": "Why I Started Regtek Consulting (And Why Your Marketing Agency Should Understand Your Business)",
+      "width": 1080,
+      "height": 1440
+    },
+    {
+      "src": "https://s.w.org/images/core/emoji/17.0.2/svg/1f415.svg",
+      "alt": "🐕",
+      "width": 150,
+      "height": 150
+    }
+  ],
+  "schemas": [
+    "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"ProfessionalService\",\"@id\":\"https://regtekconsulting.com/#organization\",\"name\":\"Regtek Consulting LLC\",\"url\":\"https://regtekconsulting.com\",\"logo\":{\"@type\":\"ImageObject\",\"@id\":\"https://regtekconsulting.com/#logo\",\"url\":\"https://regtekconsulting.com/wp-content/uploads/2025/10/cropped-Regtek-Consulting-Logo-1.png\",\"contentUrl\":\"https://regtekconsulting.com/wp-content/uploads/2025/10/cropped-Regtek-Consulting-Logo-1.png\",\"caption\":\"regtekconsulting.com\",\"inLanguage\":\"en-US\",\"width\":\"512\",\"height\":\"512\"},\"openingHours\":[\"Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday 09:00-17:00\"],\"image\":{\"@id\":\"https://regtekconsulting.com/#logo\"}},{\"@type\":\"WebSite\",\"@id\":\"https://regtekconsulting.com/#website\",\"url\":\"https://regtekconsulting.com\",\"name\":\"regtekconsulting.com\",\"alternateName\":\"www.regtekconsulting.com\",\"publisher\":{\"@id\":\"https://regtekconsulting.com/#organization\"},\"inLanguage\":\"en-US\"},{\"@type\":\"CollectionPage\",\"@id\":\"https://regtekconsulting.com/blog/category/general/#webpage\",\"url\":\"https://regtekconsulting.com/blog/category/general/\",\"name\":\"General - regtekconsulting.com\",\"isPartOf\":{\"@id\":\"https://regtekconsulting.com/#website\"},\"inLanguage\":\"en-US\"}]}"
+  ]
+}

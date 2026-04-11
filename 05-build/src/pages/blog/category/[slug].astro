@@ -1,0 +1,111 @@
+---
+export const prerender = true;
+
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const CATEGORY_META = {
+    "case-studies-results": {
+      label: "Case Studies & Results",
+      description:
+        "Real results from healthcare marketing campaigns. $37 dermatology leads, 4x med spa ROAS, and more.",
+      metaTitle: "Healthcare Marketing Case Studies | Regtek Consulting",
+      metaDescription:
+        "Real results from healthcare marketing campaigns. $37 dermatology leads, 4x med spa ROAS, and more.",
+    },
+    "website-conversion-optimization": {
+      label: "Website & Conversion Optimization",
+      description:
+        "Conversion rate optimization insights for healthcare websites — what converts, what doesn't, and why.",
+      metaTitle: "Healthcare Website CRO Blog | Regtek Consulting",
+      metaDescription: "Conversion rate optimization insights for healthcare websites.",
+    },
+    general: {
+      label: "General",
+      description: "General insights on growing a healthcare practice through digital marketing.",
+      metaTitle: "Healthcare Marketing Insights | Regtek Consulting",
+      metaDescription: "General insights on growing a healthcare practice through digital marketing.",
+    },
+  } as const;
+
+  const allPosts = (await getCollection("posts")).sort(
+    (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
+  );
+
+  return Object.entries(CATEGORY_META).map(([slug, meta]) => ({
+    params: { slug },
+    props: {
+      meta,
+      posts: allPosts.filter((p) => p.data.category === slug),
+    },
+  }));
+}
+
+const { meta, posts } = Astro.props;
+
+function formatDate(d: Date): string {
+  return d.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+---
+
+<BaseLayout title={meta.metaTitle} description={meta.metaDescription}>
+  <section class="bg-gray-50 pt-20 pb-16">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <nav class="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-[color:var(--color-brand-dark)]">Home</a>
+        <span class="mx-2">›</span>
+        <a href="/blog" class="hover:text-[color:var(--color-brand-dark)]">Blog</a>
+      </nav>
+      <p class="text-sm font-semibold uppercase tracking-wider text-[color:var(--color-brand)] mb-4">
+        Category
+      </p>
+      <h1 class="text-4xl md:text-5xl font-bold text-[color:var(--color-ink)] mb-5 tracking-tight">
+        {meta.label}
+      </h1>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">{meta.description}</p>
+    </div>
+  </section>
+
+  <section class="bg-white py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      {posts.length === 0 ? (
+        <p class="text-center text-gray-500">No posts in this category yet.</p>
+      ) : (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {posts.map((post) => (
+            <article class="bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg hover:border-[color:var(--color-brand)] transition-all overflow-hidden flex flex-col">
+              <a href={`/blog/${post.id}`} class="flex-1 flex flex-col p-6">
+                <h2 class="text-xl font-bold text-[color:var(--color-ink)] mb-3 leading-snug">
+                  {post.data.title}
+                </h2>
+                <p class="text-sm text-gray-600 mb-4 flex-1 leading-relaxed line-clamp-4">
+                  {post.data.excerpt}
+                </p>
+                <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                  <time datetime={post.data.publishDate.toISOString()} class="text-xs text-gray-500">
+                    {formatDate(post.data.publishDate)}
+                  </time>
+                  <span class="text-sm font-semibold text-[color:var(--color-brand-dark)]">Read →</span>
+                </div>
+              </a>
+            </article>
+          ))}
+        </div>
+      )}
+
+      <div class="text-center mt-12">
+        <a
+          href="/blog"
+          class="inline-flex items-center text-[color:var(--color-brand-dark)] font-semibold hover:text-[color:var(--color-brand-darker)]"
+        >
+          ← Back to all posts
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

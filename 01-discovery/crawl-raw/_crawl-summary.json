@@ -1,0 +1,233 @@
+{
+  "totalPages": 38,
+  "pages": [
+    {
+      "url": "/",
+      "title": "Regtek Consulting | Data-Driven PPC, Web Design & CRO",
+      "status": 200,
+      "wordCount": 291
+    },
+    {
+      "url": "/about/",
+      "title": "About Regtek Consulting | Founder-Led Marketing Agency",
+      "status": 200,
+      "wordCount": 301
+    },
+    {
+      "url": "/blog/category/case-studies-results/",
+      "title": "Case Studies & Results - regtekconsulting.com",
+      "status": 200,
+      "wordCount": 50
+    },
+    {
+      "url": "/blog/category/general/",
+      "title": "General - regtekconsulting.com",
+      "status": 200,
+      "wordCount": 48
+    },
+    {
+      "url": "/blog/category/website-conversion-optimization/",
+      "title": "Website & Conversion Optimization - regtekconsulting.com",
+      "status": 200,
+      "wordCount": 47
+    },
+    {
+      "url": "/blog/cro-optimization-healthcare-practices/",
+      "title": "CRO Optimization: Why Your Healthcare Website Loses 97% of Visitors",
+      "status": 200,
+      "wordCount": 39
+    },
+    {
+      "url": "/blog/dermatology-lead-cost-case-study/",
+      "title": "Dermatology Lead Cost: $37/Lead Case Study | Regtek",
+      "status": 200,
+      "wordCount": 39
+    },
+    {
+      "url": "/blog/google-business-profile-optimization-medical-practices/",
+      "title": "Google Business Profile Optimization for Medical Practices",
+      "status": 200,
+      "wordCount": 39
+    },
+    {
+      "url": "/blog/marketing-leads-not-converting/",
+      "title": "Why Your Marketing Leads Aren't Converting (It's Not What You Think) - regtekconsulting.com",
+      "status": 200,
+      "wordCount": 39
+    },
+    {
+      "url": "/blog/medical-spa-marketing-roi-lifetime-value-case-study/",
+      "title": "Medical Spa Marketing ROI: How One MedSpa Hit 4x ROAS",
+      "status": 200,
+      "wordCount": 39
+    },
+    {
+      "url": "/blog/provider-intro-videos-medical-practices/",
+      "title": "Provider Videos: Simple Trust Builder Most Practices Skip",
+      "status": 200,
+      "wordCount": 39
+    },
+    {
+      "url": "/blog/why-i-started-regtek-consulting/",
+      "title": "Why I Started Regtek Consulting (And Why Your Marketing Agency Should Understand Your Business) - regtekconsulting.com",
+      "status": 200,
+      "wordCount": 39
+    },
+    {
+      "url": "/coming-soon/",
+      "title": "Coming Soon - regtekconsulting.com",
+      "status": 200,
+      "wordCount": 34
+    },
+    {
+      "url": "/contact/",
+      "title": "Contact Regtek Consulting | Book a Free Consultation",
+      "status": 200,
+      "wordCount": 162
+    },
+    {
+      "url": "/google-ads/",
+      "title": "Google Ads Management | Regtek Consulting",
+      "status": 200,
+      "wordCount": 200
+    },
+    {
+      "url": "/meta-ads/",
+      "title": "Meta Ads Management | Regtek Consulting",
+      "status": 200,
+      "wordCount": 630
+    },
+    {
+      "url": "/sample-page/",
+      "title": "Sample Page - regtekconsulting.com",
+      "status": 200,
+      "wordCount": 206
+    },
+    {
+      "url": "/services/",
+      "title": "Digital Marketing Services | Regtek Consulting",
+      "status": 200,
+      "wordCount": 238
+    },
+    {
+      "url": "/tips-tricks/",
+      "title": "Marketing Tips & Tricks | Regtek Consulting",
+      "status": 200,
+      "wordCount": 37
+    },
+    {
+      "url": "/website-design/",
+      "title": "Website Design & Development | Regtek Consulting",
+      "status": 200,
+      "wordCount": 300
+    },
+    {
+      "url": "/home",
+      "title": "Regtek Consulting | Data-Driven PPC, Web Design & CRO",
+      "status": 200,
+      "wordCount": 291
+    },
+    {
+      "url": "/services",
+      "title": "Digital Marketing Services | Regtek Consulting",
+      "status": 200,
+      "wordCount": 238
+    },
+    {
+      "url": "/website-design",
+      "title": "Website Design & Development | Regtek Consulting",
+      "status": 200,
+      "wordCount": 300
+    },
+    {
+      "url": "/google-ads",
+      "title": "Google Ads Management | Regtek Consulting",
+      "status": 200,
+      "wordCount": 200
+    },
+    {
+      "url": "/meta-ads",
+      "title": "Meta Ads Management | Regtek Consulting",
+      "status": 200,
+      "wordCount": 630
+    },
+    {
+      "url": "/about",
+      "title": "About Regtek Consulting | Founder-Led Marketing Agency",
+      "status": 200,
+      "wordCount": 301
+    },
+    {
+      "url": "/tips-tricks",
+      "title": "Marketing Tips & Tricks | Regtek Consulting",
+      "status": 200,
+      "wordCount": 37
+    },
+    {
+      "url": "/contact",
+      "title": "Contact Regtek Consulting | Book a Free Consultation",
+      "status": 200,
+      "wordCount": 162
+    },
+    {
+      "url": "/blog/dermatology-lead-cost-case-study",
+      "title": "Dermatology Lead Cost: $37/Lead Case Study | Regtek",
+      "status": 200,
+      "wordCount": 39
+    },
+    {
+      "url": "/blog/medical-spa-marketing-roi-lifetime-value-case-study",
+      "title": "Medical Spa Marketing ROI: How One MedSpa Hit 4x ROAS",
+      "status": 200,
+      "wordCount": 39
+    },
+    {
+      "url": "/blog/google-business-profile-optimization-medical-practices",
+      "title": "Google Business Profile Optimization for Medical Practices",
+      "status": 200,
+      "wordCount": 39
+    },
+    {
+      "url": "/blog/marketing-leads-not-converting",
+      "title": "Why Your Marketing Leads Aren't Converting (It's Not What You Think) - regtekconsulting.com",
+      "status": 200,
+      "wordCount": 39
+    },
+    {
+      "url": "/blog/why-i-started-regtek-consulting",
+      "title": "Why I Started Regtek Consulting (And Why Your Marketing Agency Should Understand Your Business) - regtekconsulting.com",
+      "status": 200,
+      "wordCount": 39
+    },
+    {
+      "url": "/blog/cro-optimization-healthcare-practices",
+      "title": "CRO Optimization: Why Your Healthcare Website Loses 97% of Visitors",
+      "status": 200,
+      "wordCount": 39
+    },
+    {
+      "url": "/blog/provider-intro-videos-medical-practices",
+      "title": "Provider Videos: Simple Trust Builder Most Practices Skip",
+      "status": 200,
+      "wordCount": 39
+    },
+    {
+      "url": "/blog/healthcare-website-conversion-killers",
+      "title": "7 Conversion Killers on Healthcare Websites - regtekconsulting.com",
+      "status": 200,
+      "wordCount": 39
+    },
+    {
+      "url": "/blog/seo-strategy-basics-h1-meta-titles-descriptions-healthcare-6",
+      "title": "SEO Strategy Basics: How H1 Tags, Meta Titles, and Meta Descriptions Actually Drive Patient Traffic - regtekconsulting.com",
+      "status": 200,
+      "wordCount": 39
+    },
+    {
+      "url": "/?p=906",
+      "title": "Page Not Found - regtekconsulting.com",
+      "status": 404,
+      "wordCount": 54
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+---
+export const prerender = true;
+
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getSiteSettings } from "../../lib/content";
+
+export async function getStaticPaths() {
+  const services = await getCollection("services");
+  return services.map((service) => ({
+    params: { slug: service.id },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+const { Content } = await render(service);
+const site = getSiteSettings();
+
+// Related blog posts — pick 2 posts from case-studies-results and 1 from general
+const allPosts = await getCollection("posts");
+const relatedPosts = allPosts
+  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
+  .slice(0, 3);
+
+const title = service.data.metaTitle ?? `${service.data.title} | Regtek Consulting`;
+const description = service.data.metaDescription ?? service.data.description;
+---
+
+<BaseLayout {title} {description}>
+  <!-- HERO -->
+  <section class="bg-gray-50 pt-20 pb-20 md:pt-24 md:pb-24">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <p class="text-sm font-semibold uppercase tracking-wider text-[color:var(--color-brand)] mb-4">
+        {service.data.heroEyebrow ?? service.data.shortTitle}
+      </p>
+      <h1 class="text-4xl md:text-6xl font-bold leading-[1.05] text-[color:var(--color-ink)] mb-6 tracking-tight">
+        {service.data.heroHeadline ?? service.data.title}
+      </h1>
+      {service.data.heroSubtitle && (
+        <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-10 leading-relaxed">
+          {service.data.heroSubtitle}
+        </p>
+      )}
+      <a
+        href="/contact"
+        class="inline-flex items-center px-8 py-4 bg-[color:var(--color-brand-dark)] text-white font-semibold rounded-md hover:bg-[color:var(--color-brand-darker)] transition-colors shadow-md"
+      >
+        Book a Free Consultation
+      </a>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <section class="bg-[color:var(--color-brand-dark)] py-12">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        {site.proofStats.map((stat) => (
+          <div>
+            <div class="text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
+            <div class="mt-1 text-xs text-gray-200">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <section class="bg-white py-20 md:py-24">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="prose prose-lg max-w-none">
+        <Content />
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED POSTS -->
+  {relatedPosts.length > 0 && (
+    <section class="bg-gray-100 py-16">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-[color:var(--color-ink)] mb-8 text-center">
+          Related Reading
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {relatedPosts.map((post) => (
+            <a
+              href={`/blog/${post.id}`}
+              class="bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow p-6 block"
+            >
+              <p class="text-xs font-semibold uppercase text-[color:var(--color-brand)] mb-2">
+                {post.data.category.replace(/-/g, " ")}
+              </p>
+              <h3 class="text-lg font-bold text-[color:var(--color-ink)] mb-2 leading-snug">
+                {post.data.title}
+              </h3>
+              <p class="text-sm text-gray-600 line-clamp-3">{post.data.excerpt}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- FINAL CTA -->
+  <section class="bg-[color:var(--color-brand-dark)] py-20 md:py-24">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-5xl font-bold text-white leading-tight mb-6">
+        Ready to Grow Your Practice?
+      </h2>
+      <p class="text-lg text-gray-100 mb-10 max-w-2xl mx-auto">
+        Book a free consultation. Direct founder access — no account managers, no pitch-deck theater.
+      </p>
+      <a
+        href="/contact"
+        class="inline-flex items-center px-8 py-4 bg-white text-[color:var(--color-brand-dark)] font-semibold rounded-md hover:bg-gray-100 transition-colors shadow-lg"
+      >
+        Book a Free Consultation →
+      </a>
+    </div>
+  </section>
+</BaseLayout>

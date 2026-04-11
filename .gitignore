@@ -1,0 +1,9 @@
+.env
+.env.*
+node_modules/
+.wrangler/
+dist/
+.astro/
+01-discovery/wp-export/media-files/
+06-content/images/client-provided/
+*.log
