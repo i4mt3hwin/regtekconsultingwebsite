@@ -1,73 +1,246 @@
 ---
-export const prerender = true;
-
 import BaseLayout from "../layouts/BaseLayout.astro";
+import SocialProof from "../components/SocialProof.astro";
 import { SERVICES, PROOF_STATS } from "../lib/site";
 
-const title = "Healthcare Marketing Services | Google Ads, Meta Ads, Web Design | Regtek";
-const description =
-  "Google Ads management, Meta Ads management, and conversion-optimized web design for healthcare practices. Founder-led, results-first, small-practice friendly.";
+const title = "Digital Marketing Services | Regtek Consulting";
+const description = "From paid ads to website design and conversion optimization. See how our services work together to grow your business. Book a free consultation.";
 ---
 
 <BaseLayout {title} {description}>
-  <section class="bg-gray-50 pt-20 pb-16">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <p class="text-sm font-semibold uppercase tracking-wider text-[color:var(--color-brand)] mb-4">
-        How We Help You Grow
-      </p>
-      <h1 class="text-4xl md:text-5xl font-bold text-[color:var(--color-ink)] mb-5 tracking-tight">
-        Services Built Around Your Business Goals
-      </h1>
-      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-        Every healthcare practice is different. Your marketing strategy should be too. We don't do cookie-cutter marketing — every strategy is customized to drive real revenue.
-      </p>
+  <!-- ========== HERO ========== -->
+  <section class="bg-gray-50 pt-16 pb-20 md:pt-20 md:pb-24 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-8 items-center">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-wider text-[color:var(--color-ink)] mb-4">
+            How We Help You Grow
+          </p>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] text-[color:var(--color-ink)] mb-6 tracking-tight">
+            Services Built Around <span class="text-[color:var(--color-brand)]">Your Business Goals</span>
+          </h1>
+          <p class="font-bold text-[color:var(--color-ink)] mb-3">
+            Every business is different. Your marketing strategy should be too.
+          </p>
+          <p class="text-gray-600 mb-8 leading-relaxed">
+            We don't do cookie-cutter marketing. Every strategy is customized to drive real revenue for your business, whether that's more appointments, more customers, or more qualified leads.
+          </p>
+          <a
+            href="/contact"
+            class="inline-flex items-center px-8 py-4 bg-[color:var(--color-brand-dark)] text-white font-semibold rounded-md hover:bg-[color:var(--color-brand-darker)] transition-colors shadow-md text-base"
+          >
+            Schedule Your Free Consultation
+          </a>
+          <div class="mt-6 flex items-center gap-4">
+            <SocialProof />
+          </div>
+        </div>
+        <div>
+          <img
+            src="/images/hero/Services-Overview.webp"
+            alt="Services overview illustration"
+            width="640"
+            height="464"
+            class="w-full h-auto"
+            fetchpriority="high"
+          />
+        </div>
+      </div>
     </div>
   </section>
 
+  <!-- ========== TRUST STRIP ========== -->
   <section class="bg-[color:var(--color-brand-dark)] py-14">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-        {PROOF_STATS.map((stat) => (
-          <div class="text-center">
-            <div class="text-3xl md:text-4xl font-bold text-white">{stat.value}</div>
-            <div class="mt-1 text-sm text-gray-200">{stat.label}</div>
+      <h2 class="text-center text-white font-bold text-2xl md:text-3xl mb-10">
+        Trusted by growing businesses to generate:
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        {PROOF_STATS.map((stat, i) => (
+          <div class="bg-white rounded-xl p-6 text-center">
+            <div class="text-[color:var(--color-brand)] text-2xl mb-2">
+              {i === 0 && (
+                <svg class="w-7 h-7 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2 12l5 5L20 5" /><path stroke-linecap="round" stroke-linejoin="round" d="M7 17l5-5" /></svg>
+              )}
+              {i === 1 && (
+                <svg class="w-7 h-7 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+              )}
+              {i === 2 && (
+                <svg class="w-7 h-7 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" /></svg>
+              )}
+            </div>
+            <div class="text-3xl md:text-4xl font-bold text-[color:var(--color-brand)]" data-countup={stat.value}>{stat.value}</div>
+            <div class="mt-1 text-sm text-gray-600">{stat.label}</div>
           </div>
         ))}
       </div>
     </div>
   </section>
 
+  <!-- ========== OUR SERVICES ========== -->
   <section class="bg-gray-100 py-20 md:py-24">
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-5xl font-bold text-[color:var(--color-ink)] mb-4">Our Services</h2>
         <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-          Pick what you need, or let us build you a complete system. Every service is designed to generate real revenue.
+          Every service is designed to generate real revenue. Pick what you need, or let us build you a complete system.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {SERVICES.map((service) => (
-          <article class="bg-white rounded-xl border border-gray-100 shadow-md hover:shadow-xl transition-shadow p-8 flex flex-col">
-            <h3 class="text-2xl font-bold text-[color:var(--color-ink)] mb-2">{service.title}</h3>
-            <p class="text-sm font-semibold text-[color:var(--color-brand-dark)] mb-4">{service.tagline}</p>
-            <p class="text-gray-600 mb-6 flex-1 leading-relaxed">{service.description}</p>
-            <a href={service.href} class="inline-flex items-center font-semibold text-[color:var(--color-brand-dark)] hover:text-[color:var(--color-brand-darker)]">
-              Learn more →
-            </a>
+          <article class="bg-white rounded-xl border border-gray-100 shadow-md hover:shadow-xl transition-shadow overflow-hidden flex flex-col">
+            <div class="aspect-[16/10] bg-gray-50 flex items-center justify-center overflow-hidden">
+              <img
+                src={`/images/services/${service.slug}-illustration.png`}
+                alt={`${service.title} illustration`}
+                width="400"
+                height="250"
+                loading="lazy"
+                class="w-full h-full object-contain p-4"
+              />
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <h3 class="text-xl font-bold text-[color:var(--color-ink)] mb-2">{service.shortTitle}</h3>
+              <p class="text-gray-600 mb-6 flex-1 leading-relaxed text-sm">{service.description}</p>
+              <a
+                href={service.href}
+                class="inline-flex justify-center items-center px-5 py-2.5 bg-[color:var(--color-brand-dark)] text-white font-semibold text-sm rounded-md hover:bg-[color:var(--color-brand-darker)] transition-colors"
+              >
+                Read More About {service.shortTitle}
+              </a>
+            </div>
           </article>
         ))}
       </div>
     </div>
   </section>
 
+  <!-- ========== WHAT YOU GET ========== -->
+  <section class="bg-white py-20 md:py-24">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-6">
+        <p class="text-sm font-semibold uppercase tracking-wider text-[color:var(--color-brand)] mb-3">
+          No Black-Box Strategies. No Vanity Metrics.
+        </p>
+        <h2 class="text-3xl md:text-5xl font-bold text-[color:var(--color-ink)] mb-8">
+          What You Get When You Work With Regtek
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-gray-50 rounded-xl p-8">
+          <h3 class="text-xl font-bold text-[color:var(--color-ink)] mb-4">Marketing & Campaigns</h3>
+          <ul class="space-y-3 text-gray-700">
+            <li class="flex items-start gap-2"><span class="text-[color:var(--color-brand)] font-bold mt-0.5">&#10003;</span><span>Google Ads management and optimization</span></li>
+            <li class="flex items-start gap-2"><span class="text-[color:var(--color-brand)] font-bold mt-0.5">&#10003;</span><span>Meta Ads (Facebook & Instagram) strategy</span></li>
+            <li class="flex items-start gap-2"><span class="text-[color:var(--color-brand)] font-bold mt-0.5">&#10003;</span><span>Conversion-optimized landing pages</span></li>
+            <li class="flex items-start gap-2"><span class="text-[color:var(--color-brand)] font-bold mt-0.5">&#10003;</span><span>Advanced tracking and attribution modeling</span></li>
+            <li class="flex items-start gap-2"><span class="text-[color:var(--color-brand)] font-bold mt-0.5">&#10003;</span><span>Monthly performance reporting</span></li>
+          </ul>
+        </div>
+        <div class="bg-gray-50 rounded-xl p-8">
+          <h3 class="text-xl font-bold text-[color:var(--color-ink)] mb-4">Technical Foundation</h3>
+          <ul class="space-y-3 text-gray-700">
+            <li class="flex items-start gap-2"><span class="text-[color:var(--color-brand)] font-bold mt-0.5">&#10003;</span><span>Website design and CRO optimization</span></li>
+            <li class="flex items-start gap-2"><span class="text-[color:var(--color-brand)] font-bold mt-0.5">&#10003;</span><span>Google Business Profile optimization</span></li>
+            <li class="flex items-start gap-2"><span class="text-[color:var(--color-brand)] font-bold mt-0.5">&#10003;</span><span>Call tracking and analytics integration</span></li>
+            <li class="flex items-start gap-2"><span class="text-[color:var(--color-brand)] font-bold mt-0.5">&#10003;</span><span>HIPAA-compliant marketing infrastructure</span></li>
+            <li class="flex items-start gap-2"><span class="text-[color:var(--color-brand)] font-bold mt-0.5">&#10003;</span><span>Strategic consulting and business model review</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-center mt-10">
+        <a
+          href="/contact"
+          class="inline-flex items-center px-8 py-4 bg-[color:var(--color-brand-dark)] text-white font-semibold rounded-md hover:bg-[color:var(--color-brand-darker)] transition-colors shadow-md text-base"
+        >
+          Schedule Your Free Consultation
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WE DRIVE REAL GROWTH ========== -->
   <section class="bg-[color:var(--color-brand-dark)] py-20 md:py-24">
     <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Want to know which services fit your goals?</h2>
-      <p class="text-lg text-gray-100 mb-8">Book your free consultation today.</p>
-      <a href="/contact" class="inline-flex items-center px-8 py-4 bg-white text-[color:var(--color-brand-dark)] font-semibold rounded-md hover:bg-gray-100 transition-colors shadow-lg">
-        Book a Free Call →
-      </a>
+      <p class="text-sm font-semibold uppercase tracking-wider text-[color:var(--color-brand)] mb-3">
+        We Don't Chase Vanity Metrics
+      </p>
+      <h2 class="text-3xl md:text-5xl font-bold text-white leading-tight">
+        We Drive Real Business Growth
+      </h2>
+    </div>
+  </section>
+
+  <!-- ========== SYSTEM / PROCESS ========== -->
+  <section class="bg-white py-20 md:py-24">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl md:text-4xl font-bold text-[color:var(--color-ink)] mb-4">
+          Most Agencies Sell You Services.<br />We Build You A System.
+        </h2>
+        <p class="text-gray-600">Here's how each piece works together to maximize your ROI:</p>
+      </div>
+
+      <div class="space-y-12">
+        <div class="flex items-start gap-6">
+          <div class="flex-shrink-0 w-14 h-14 rounded-full bg-[color:var(--color-brand)]/10 flex items-center justify-center">
+            <svg class="w-7 h-7 text-[color:var(--color-brand)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-[color:var(--color-brand-dark)] mb-2">Foundation - SEO & Local Presence</h3>
+            <p class="text-gray-600 leading-relaxed">Build your online visibility with Google Business Profile optimization and local search strategy so patients can find you.</p>
+          </div>
+        </div>
+
+        <div class="ml-7 border-l-2 border-dashed border-gray-200 h-6"></div>
+
+        <div class="flex items-start gap-6">
+          <div class="flex-shrink-0 w-14 h-14 rounded-full bg-[color:var(--color-brand)]/10 flex items-center justify-center">
+            <svg class="w-7 h-7 text-[color:var(--color-brand)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h11M9 21V3m0 0l-4 4m4-4l4 4" /></svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-[color:var(--color-brand-dark)] mb-2">Convert Visitors - CRO Optimization</h3>
+            <p class="text-gray-600 leading-relaxed">Optimize your website to convert visitors into leads and booked appointments with conversion-focused design.</p>
+          </div>
+        </div>
+
+        <div class="ml-7 border-l-2 border-dashed border-gray-200 h-6"></div>
+
+        <div class="flex items-start gap-6">
+          <div class="flex-shrink-0 w-14 h-14 rounded-full bg-[color:var(--color-brand)]/10 flex items-center justify-center">
+            <svg class="w-7 h-7 text-[color:var(--color-brand)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-[color:var(--color-brand-dark)] mb-2">Scale With Paid Ads</h3>
+            <p class="text-gray-600 leading-relaxed">Once your foundation converts, scale with Google Ads and Meta Ads to drive consistent, qualified patient traffic.</p>
+          </div>
+        </div>
+
+        <div class="ml-7 border-l-2 border-dashed border-gray-200 h-6"></div>
+
+        <div class="flex items-start gap-6">
+          <div class="flex-shrink-0 w-14 h-14 rounded-full bg-[color:var(--color-brand)]/10 flex items-center justify-center">
+            <svg class="w-7 h-7 text-[color:var(--color-brand)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-[color:var(--color-brand-dark)] mb-2">Optimize & Repeat</h3>
+            <p class="text-gray-600 leading-relaxed">Each service amplifies the others. SEO brings more traffic. CRO converts more of that traffic. Paid ads scale what's working. Tracking makes everything smarter over time.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-14">
+        <p class="text-gray-700 mb-2">This is how you 10x results instead of just seeing incremental gains.</p>
+        <a
+          href="/contact"
+          class="inline-flex items-center mt-4 px-8 py-4 bg-[color:var(--color-brand-dark)] text-white font-semibold rounded-md hover:bg-[color:var(--color-brand-darker)] transition-colors shadow-md text-base"
+        >
+          Schedule Your Free Consultation
+        </a>
+      </div>
     </div>
   </section>
 </BaseLayout>

@@ -7,31 +7,31 @@ const isActive = (href: string) =>
 ---
 
 <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-gray-100">
-  <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
     <a href="/" class="flex items-center group" aria-label={SITE.name}>
       <img
         src="/images/brand/regtek-logo.png"
         alt="Regtek Consulting"
-        width="180"
-        height="56"
-        class="h-14 w-auto"
+        width="326"
+        height="326"
+        class="h-28 w-auto"
       />
     </a>
 
-    <nav class="hidden md:flex items-center gap-8" aria-label="Main navigation">
+    <nav class="hidden md:flex items-center gap-7" aria-label="Main navigation">
       {NAV.map((item) => (
         <div class="relative group">
           <a
             href={item.href}
             class:list={[
-              "font-medium text-sm transition-colors",
+              "font-medium text-base transition-colors",
               isActive(item.href)
                 ? "text-[color:var(--color-brand)]"
                 : "text-[color:var(--color-ink)] hover:text-[color:var(--color-brand)]",
             ]}
           >
             {item.label}
-            {item.children && <span class="ml-1 text-xs">▾</span>}
+            {item.children && <span class="ml-1 text-xs">&#9662;</span>}
           </a>
           {item.children && (
             <div class="absolute top-full left-0 pt-3 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity">
@@ -53,9 +53,9 @@ const isActive = (href: string) =>
 
     <a
       href="/contact"
-      class="hidden md:inline-flex items-center px-5 py-2.5 bg-[color:var(--color-brand-dark)] text-white font-semibold text-sm rounded-md hover:bg-[color:var(--color-brand-darker)] transition-colors shadow-sm"
+      class="hidden md:inline-flex items-center px-7 py-3 bg-[color:var(--color-brand-dark)] text-white font-semibold text-base rounded-md hover:bg-[color:var(--color-brand-darker)] transition-colors shadow-sm"
     >
-      Book a Free Call
+      Book Free Consultation
     </a>
 
     <button
@@ -66,7 +66,7 @@ const isActive = (href: string) =>
       aria-expanded="false"
       aria-controls="mobile-menu"
     >
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </button>
@@ -100,7 +100,7 @@ const isActive = (href: string) =>
         href="/contact"
         class="mt-3 inline-flex justify-center px-5 py-3 bg-[color:var(--color-brand-dark)] text-white font-semibold rounded-md"
       >
-        Book a Free Call
+        Book Free Consultation
       </a>
     </nav>
   </div>

@@ -1,5 +1,5 @@
 {
-  "name": "05-build",
+  "name": "regtek-consulting",
   "type": "module",
   "version": "0.0.1",
   "engines": {
@@ -12,17 +12,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^12.6.13",
-    "@astrojs/markdoc": "^0.14.1",
-    "@astrojs/react": "^5.0.3",
+    "@astrojs/markdoc": "^1.0.3",
     "@astrojs/sitemap": "^3.7.2",
-    "@keystatic/astro": "^5.0.6",
-    "@keystatic/core": "^0.5.50",
     "@tailwindcss/vite": "^4.2.2",
-    "astro": "^5.18.1",
-    "react": "^19.2.5",
-    "react-dom": "^19.2.5",
-    "tailwindcss": "^4.2.2",
-    "yaml": "^2.8.3"
+    "astro": "^6.1.7",
+    "tailwindcss": "^4.2.2"
   }
 }

@@ -1,9 +1,8 @@
 ---
-export const prerender = true;
-
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getSiteSettings } from "../../lib/content";
+import SocialProof from "../../components/SocialProof.astro";
+import { PROOF_STATS } from "../../lib/site";
 
 export async function getStaticPaths() {
   const services = await getCollection("services");
@@ -15,9 +14,8 @@ export async function getStaticPaths() {
 
 const { service } = Astro.props;
 const { Content } = await render(service);
-const site = getSiteSettings();
 
-// Related blog posts — pick 2 posts from case-studies-results and 1 from general
+// Related blog posts
 const allPosts = await getCollection("posts");
 const relatedPosts = allPosts
   .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
@@ -25,56 +23,664 @@ const relatedPosts = allPosts
 
 const title = service.data.metaTitle ?? `${service.data.title} | Regtek Consulting`;
 const description = service.data.metaDescription ?? service.data.description;
+
+// Split heroHeadline into two lines if it contains "Into" or "Where They" or "Should Be"
+const headline = service.data.heroHeadline ?? service.data.title;
+const headlineParts = headline.includes("Into")
+  ? [headline.split("Into")[0].trim(), "Into " + headline.split("Into")[1].trim()]
+  : headline.includes("Where They")
+    ? [headline.split("Where They")[0].trim(), "Where They " + headline.split("Where They")[1].trim()]
+    : headline.includes("Should Be")
+      ? [headline.split("Should Be")[0].trim(), "Should Be " + headline.split("Should Be")[1].trim()]
+      : [headline, ""];
 ---
 
 <BaseLayout {title} {description}>
-  <!-- HERO -->
-  <section class="bg-gray-50 pt-20 pb-20 md:pt-24 md:pb-24">
-    <div class="max-w-5xl mx-auto px-6 text-center">
-      <p class="text-sm font-semibold uppercase tracking-wider text-[color:var(--color-brand)] mb-4">
-        {service.data.heroEyebrow ?? service.data.shortTitle}
-      </p>
-      <h1 class="text-4xl md:text-6xl font-bold leading-[1.05] text-[color:var(--color-ink)] mb-6 tracking-tight">
-        {service.data.heroHeadline ?? service.data.title}
-      </h1>
-      {service.data.heroSubtitle && (
-        <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-10 leading-relaxed">
-          {service.data.heroSubtitle}
-        </p>
-      )}
-      <a
-        href="/contact"
-        class="inline-flex items-center px-8 py-4 bg-[color:var(--color-brand-dark)] text-white font-semibold rounded-md hover:bg-[color:var(--color-brand-darker)] transition-colors shadow-md"
-      >
-        Book a Free Consultation
-      </a>
+  <!-- ========== HERO ========== -->
+  <section class="bg-gray-50 pt-16 pb-20 md:pt-20 md:pb-24 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-8 items-center">
+        <div class="lg:order-2">
+          <img
+            src={service.id === "google-ads" ? "/images/services/google-ads-hero.webp" : service.id === "website-design" ? "/images/services/website-design-hero.webp" : `/images/services/${service.id}-illustration.png`}
+            alt={`${service.data.title} illustration`}
+            width="640"
+            height="420"
+            class="w-full h-auto"
+            fetchpriority="high"
+          />
+        </div>
+        <div class="lg:order-1">
+          <p class="text-sm font-semibold uppercase tracking-wider text-[color:var(--color-ink)] mb-4">
+            {service.data.heroEyebrow ?? service.data.title}
+          </p>
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] text-[color:var(--color-ink)] mb-5 tracking-tight">
+            {headlineParts[0]}<br />
+            <span class="text-[color:var(--color-brand)]">{headlineParts[1]}</span>
+          </h1>
+          {service.data.heroSubtitle && (
+            <div class="mb-8">
+              <p class="font-bold text-[color:var(--color-ink)] mb-3">
+                {service.data.heroSubtitle.split('.')[0]}.
+              </p>
+              <p class="text-gray-600 leading-relaxed">
+                {service.data.heroSubtitle.split('.').slice(1).join('.').trim()}
+              </p>
+            </div>
+          )}
+          <a
+            href="/contact"
+            class="inline-flex items-center px-8 py-4 bg-[color:var(--color-brand-dark)] text-white font-semibold rounded-md hover:bg-[color:var(--color-brand-darker)] transition-colors shadow-md text-base"
+          >
+            Book Your Free Consultation Today
+          </a>
+          <div class="mt-6 flex items-center gap-4">
+            <SocialProof />
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- TRUST STRIP -->
-  <section class="bg-[color:var(--color-brand-dark)] py-12">
+  <!-- ========== TRUST STRIP ========== -->
+  <section class="bg-[color:var(--color-brand-dark)] py-14">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-        {site.proofStats.map((stat) => (
-          <div>
-            <div class="text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
-            <div class="mt-1 text-xs text-gray-200">{stat.label}</div>
+      <h2 class="text-center text-white font-bold text-2xl md:text-3xl mb-10">
+        Trusted by growing businesses to generate:
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        {PROOF_STATS.map((stat, i) => (
+          <div class="bg-white rounded-xl p-6 text-center">
+            <div class="text-[color:var(--color-brand)] text-2xl mb-2">
+              {i === 0 && (
+                <svg class="w-7 h-7 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2 12l5 5L20 5" /><path stroke-linecap="round" stroke-linejoin="round" d="M7 17l5-5" /></svg>
+              )}
+              {i === 1 && (
+                <svg class="w-7 h-7 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+              )}
+              {i === 2 && (
+                <svg class="w-7 h-7 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" /></svg>
+              )}
+            </div>
+            <div class="text-3xl md:text-4xl font-bold text-[color:var(--color-brand)]" data-countup={stat.value}>{stat.value}</div>
+            <div class="mt-1 text-sm text-gray-600">{stat.label}</div>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- MAIN CONTENT -->
-  <section class="bg-white py-20 md:py-24">
+  <!-- ========== MAIN CONTENT ========== -->
+  <section class="bg-gray-100 py-20 md:py-24">
     <div class="max-w-3xl mx-auto px-6">
-      <div class="prose prose-lg max-w-none">
+      <div class="prose prose-lg max-w-none text-center service-prose">
         <Content />
       </div>
     </div>
   </section>
 
-  <!-- RELATED POSTS -->
+  <!-- ========== PORTFOLIO (Website Design) ========== -->
+  {service.id === "website-design" && (
+    <section class="bg-[color:var(--color-brand-dark)] py-20 md:py-24 overflow-hidden">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-4">See Our Projects</h2>
+        <div class="flex justify-center mb-14">
+          <div class="flex gap-1.5">
+            {Array.from({length: 12}).map(() => (
+              <div class="w-2.5 h-2.5 rounded-full bg-yellow-300"></div>
+            ))}
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <a href="https://www.menonmedispa.com" target="_blank" rel="noopener" class="group block">
+            <div class="relative overflow-hidden rounded-xl shadow-2xl transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-1">
+              <img src="/images/portfolio/menon-medispa.png" alt="Menon MedSpa website" width="400" height="600" loading="lazy" class="w-full h-80 object-cover portfolio-img" />
+              <div class="absolute bottom-0 left-0 right-0 bg-black/80 py-3 text-center">
+                <span class="text-white font-bold uppercase tracking-wider text-sm">Menon MedSpa</span>
+              </div>
+            </div>
+          </a>
+          <a href="https://www.psmedgroup.com" target="_blank" rel="noopener" class="group block">
+            <div class="relative overflow-hidden rounded-xl shadow-2xl transition-transform duration-500 group-hover:scale-105 group-hover:rotate-1">
+              <img src="/images/portfolio/ps-dermatology.png" alt="PS Dermatology website" width="400" height="600" loading="lazy" class="w-full h-80 object-cover portfolio-img" />
+              <div class="absolute bottom-0 left-0 right-0 bg-black/80 py-3 text-center">
+                <span class="text-white font-bold uppercase tracking-wider text-sm">PS Dermatology</span>
+              </div>
+            </div>
+          </a>
+          <a href="https://www.limitlessjointcare.com" target="_blank" rel="noopener" class="group block">
+            <div class="relative overflow-hidden rounded-xl shadow-2xl transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-1">
+              <img src="/images/portfolio/limitless-spine.png" alt="Limitless Spine & Joint Care website" width="400" height="600" loading="lazy" class="w-full h-80 object-cover portfolio-img" />
+              <div class="absolute bottom-0 left-0 right-0 bg-black/80 py-3 text-center">
+                <span class="text-white font-bold uppercase tracking-wider text-sm">Limitless Spine & Joint Care</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ========== WE BUILD WEBSITES (Website Design) ========== -->
+  {service.id === "website-design" && (
+    <section class="bg-gray-100 py-20 md:py-24">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-[color:var(--color-ink)] mb-4">
+            We Build Websites That Actually Work For Your Business
+          </h2>
+          <p class="text-gray-500 max-w-2xl mx-auto">Most agencies focus on making things look pretty. We focus on making your phone ring and your calendar fill up.</p>
+        </div>
+
+        <div class="mb-14">
+          <img
+            src="/images/services/website-before-after.jpg"
+            alt="Medical website conversion optimization: from clutter to conversion - before and after comparison"
+            width="768"
+            height="419"
+            loading="lazy"
+            class="w-full h-auto rounded-xl shadow-lg mx-auto"
+          />
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white rounded-xl p-8">
+            <div class="w-12 h-12 rounded-lg border-2 border-[color:var(--color-brand)] flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-[color:var(--color-brand)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+            </div>
+            <h3 class="text-xl font-bold text-[color:var(--color-brand-dark)] mb-3">Conversion-First Design</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Every pixel has a purpose. We don't just make beautiful websites — we create strategic experiences that guide visitors toward booking, calling, or buying. Form placement, button colors, headline copy — it's all intentional.</p>
+          </div>
+          <div class="bg-white rounded-xl p-8">
+            <div class="w-12 h-12 rounded-lg border-2 border-[color:var(--color-brand)] flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-[color:var(--color-brand)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
+            </div>
+            <h3 class="text-xl font-bold text-[color:var(--color-brand-dark)] mb-3">Built on Real Data</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">We don't guess what works. We use heatmaps, A/B testing, and analytics to see exactly how visitors behave on your site. Then we optimize based on what the data tells us, not what looks trendy.</p>
+          </div>
+          <div class="bg-white rounded-xl p-8">
+            <div class="w-12 h-12 rounded-lg border-2 border-[color:var(--color-brand)] flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-[color:var(--color-brand)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+            </div>
+            <h3 class="text-xl font-bold text-[color:var(--color-brand-dark)] mb-3">Continuous Optimization</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Your website isn't a "set it and forget it" project. We monitor performance, test improvements, and make data-driven tweaks to keep your conversion rate climbing month after month.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ========== META ADS: CASE STUDY + FEATURES ========== -->
+  {service.id === "meta-ads" && (
+    <section class="bg-[color:var(--color-brand-dark)] py-20 md:py-24">
+      <div class="max-w-5xl mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-12">Understanding The Business Model</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <img src="/images/case-studies/medispa-roas-increase.webp" alt="MedSpa lifetime value chart showing 4x ROAS" width="600" height="350" loading="lazy" class="w-full h-auto rounded-xl shadow-xl" />
+          </div>
+          <div class="text-center lg:text-left">
+            <h3 class="text-2xl font-bold text-white mb-4">Local MedSpa Achieves 4x Return On Ad Spend</h3>
+            <p class="text-gray-200 leading-relaxed">Their Botox ads cost $200 to land a $189 sale. On paper, they were losing money on the first visit and wanted to quit. We dug deeper. We proved that swallowing a small initial loss unlocked the highest retention patients in their database. We stopped chasing cheap leads and started buying high-LTV customers.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  {service.id === "meta-ads" && (
+    <section class="bg-gray-100 py-20 md:py-24">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="text-center mb-14">
+          <h2 class="text-3xl md:text-4xl font-bold text-[color:var(--color-ink)] mb-4">Meta Ads That Actually Drive Business Growth</h2>
+          <p class="text-gray-500">We don't run ads to get likes and comments. We build campaigns that generate qualified leads, booked appointments, and paying customers.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white rounded-xl p-8">
+            <div class="w-12 h-12 rounded-lg border-2 border-[color:var(--color-brand)] flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-[color:var(--color-brand)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+            </div>
+            <h3 class="text-xl font-bold text-[color:var(--color-brand-dark)] mb-3">Precision Audience Targeting</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">We build custom audiences based on your ideal customer profile - demographics, interests, behaviors, location, and more. Then we use lookalike audiences to find thousands of people just like your best existing customers. No wasted spend on people who'll never buy.</p>
+          </div>
+          <div class="bg-white rounded-xl p-8">
+            <div class="w-12 h-12 rounded-lg border-2 border-[color:var(--color-brand)] flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-[color:var(--color-brand)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
+            </div>
+            <h3 class="text-xl font-bold text-[color:var(--color-brand-dark)] mb-3">Scroll-Stopping Creative</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Boring ads get ignored. We create attention-grabbing visuals and copy that stop the scroll and speak directly to your audience's pain points and desires. Every ad is designed to get clicks from qualified prospects, not just passive scrollers.</p>
+          </div>
+          <div class="bg-white rounded-xl p-8">
+            <div class="w-12 h-12 rounded-lg border-2 border-[color:var(--color-brand)] flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-[color:var(--color-brand)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+            </div>
+            <h3 class="text-xl font-bold text-[color:var(--color-brand-dark)] mb-3">Conversion-Focused Optimization</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">We optimize every campaign for what matters most to your business - booked appointments, form submissions, phone calls, or purchases. Not likes, shares, or comments. We track real conversions and constantly adjust targeting and creative to improve your cost-per-lead.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ========== META ADS: FAQ ========== -->
+  {service.id === "meta-ads" && (
+    <section class="bg-gray-200 py-20 md:py-24">
+      <div class="max-w-3xl mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-[color:var(--color-ink)] mb-10 text-center">
+          Common Questions About Our Meta Ads Management
+        </h2>
+        <div class="space-y-1" data-faq>
+          <details class="bg-white rounded-lg group">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-[color:var(--color-ink)] hover:text-[color:var(--color-brand-dark)]">
+              What's the difference between Meta Ads and Facebook Ads?
+              <span class="text-[color:var(--color-brand)] text-xl transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">
+              Meta Ads is the umbrella term for advertising across Meta's platforms (primarily Facebook and Instagram). When we manage Meta Ads for you, we're running campaigns across both platforms, and sometimes Messenger and Audience Network, to reach your audience wherever they spend time. Most people still call it "Facebook Ads," but it's all under Meta now.
+            </div>
+          </details>
+          <details class="bg-white rounded-lg group">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-[color:var(--color-ink)] hover:text-[color:var(--color-brand-dark)]">
+              How is Meta Ads different from Google Ads?
+              <span class="text-[color:var(--color-brand)] text-xl transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">
+              Google Ads captures people who are actively searching for your services. Meta Ads reaches people who match your ideal customer profile but may not be actively searching yet. Both are valuable — Google captures demand, Meta creates it. Many businesses benefit from running both.
+            </div>
+          </details>
+          <details class="bg-white rounded-lg group">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-[color:var(--color-ink)] hover:text-[color:var(--color-brand-dark)]">
+              How much should I budget for Meta Ads?
+              <span class="text-[color:var(--color-brand)] text-xl transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">
+              It depends on your market, your goals, and your customer lifetime value. We'll help you determine the right budget during our consultation based on your specific business economics.
+            </div>
+          </details>
+          <details class="bg-white rounded-lg group">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-[color:var(--color-ink)] hover:text-[color:var(--color-brand-dark)]">
+              Do you only work with healthcare businesses?
+              <span class="text-[color:var(--color-brand)] text-xl transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">
+              Healthcare is our deepest expertise, but we work with service-based businesses across industries. The principles of precision targeting, conversion optimization, and lifetime value measurement apply universally.
+            </div>
+          </details>
+          <details class="bg-white rounded-lg group">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-[color:var(--color-ink)] hover:text-[color:var(--color-brand-dark)]">
+              How quickly will I see results?
+              <span class="text-[color:var(--color-brand)] text-xl transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">
+              Meta Ads can start generating leads within the first 1-2 weeks. The learning phase typically takes 7-14 days as the algorithm optimizes delivery. Meaningful performance data comes at 30-60 days, and campaigns continue improving over time as we refine targeting and creative.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ========== META ADS: FINAL CTA ========== -->
+  {service.id === "meta-ads" && (
+    <section class="bg-[color:var(--color-brand-dark)] py-20 md:py-24">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <p class="text-sm font-semibold uppercase tracking-wider text-[color:var(--color-brand)] mb-3">Let's Talk Meta Ads</p>
+        <h2 class="text-3xl md:text-5xl font-bold text-[color:var(--color-brand)] leading-tight mb-6">
+          Ready To Reach Thousands Of Your Ideal Customers?
+        </h2>
+        <p class="text-lg text-gray-100 mb-10 max-w-2xl mx-auto">
+          Book a free consultation. No pressure, no obligation. Just an honest conversation about whether Meta Ads is right for your business.
+        </p>
+        <a href="/contact" class="inline-flex items-center px-8 py-4 bg-white text-[color:var(--color-brand-dark)] font-semibold rounded-md hover:bg-gray-100 transition-colors shadow-lg text-base">
+          Book A Free Consultation
+        </a>
+      </div>
+    </section>
+  )}
+
+  <!-- ========== CASE STUDY HIGHLIGHT (Google Ads) ========== -->
+  {service.id === "google-ads" && (
+    <section class="bg-[color:var(--color-brand-dark)] py-20 md:py-24">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <h3 class="text-3xl md:text-5xl font-bold text-white leading-tight mb-8 whitespace-nowrap">
+          The Results Speak <span class="cs-underline-animate">Louder Than We Do</span>
+        </h3>
+        <h4 class="text-2xl font-bold text-white mb-4">Local Practice Achieves 63% Booking Growth</h4>
+        <p class="text-lg text-gray-200 leading-relaxed max-w-2xl mx-auto">
+          This podiatry clinic wanted to move beyond referrals. With a strategic paid search campaign, they grew bookings 63% — with Google Ads now driving 169 new patients.
+        </p>
+      </div>
+    </section>
+  )}
+
+  <!-- ========== PROCESS FLOW (Google Ads) ========== -->
+  {service.id === "google-ads" && (
+    <section class="bg-gray-100 py-20 md:py-24">
+      <div class="max-w-4xl mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-[color:var(--color-ink)] mb-4 text-center">
+          What Google Ads Management With Regtek Looks Like
+        </h2>
+        <p class="text-center text-gray-500 mb-16">No black-box strategies. No confusing reports. Just clear steps to get you more patients.</p>
+
+        <div class="relative">
+          <!-- Vertical line -- positioned behind the icon column -->
+          <div class="hidden lg:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gray-300" style="transform: translateX(-50%);"></div>
+
+          <!-- Step 1 - right -->
+          <div class="lg:grid lg:grid-cols-[1fr_auto_1fr] gap-0 mb-16 relative">
+            <div class="text-right hidden lg:block pr-10">
+              <h3 class="text-xl font-bold text-[color:var(--color-brand-dark)] mb-3">Discovery & Audit</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">We start by auditing your current setup (if you have one) and understanding your customer demographics and services, current marketing performance, competition in your area, and business goals and constraints.</p>
+            </div>
+            <div class="hidden lg:flex w-12 h-12 rounded-full bg-white border-2 border-gray-300 items-center justify-center z-10 flex-shrink-0">
+              <svg class="w-5 h-5 text-[color:var(--color-brand)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+            </div>
+            <div class="lg:hidden mb-4">
+              <h3 class="text-xl font-bold text-[color:var(--color-brand-dark)] mb-3">Discovery & Audit</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">We start by auditing your current setup (if you have one) and understanding your customer demographics and services, current marketing performance, competition in your area, and business goals and constraints.</p>
+            </div>
+            <div class="hidden lg:block pl-10"></div>
+          </div>
+
+          <!-- Step 2 - left -->
+          <div class="lg:grid lg:grid-cols-[1fr_auto_1fr] gap-0 mb-16 relative">
+            <div class="hidden lg:block pr-10"></div>
+            <div class="hidden lg:flex w-12 h-12 rounded-full bg-white border-2 border-gray-300 items-center justify-center z-10 flex-shrink-0">
+              <svg class="w-5 h-5 text-[color:var(--color-brand)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+            </div>
+            <div class="pl-10">
+              <h3 class="text-xl font-bold text-[color:var(--color-brand-dark)] mb-3">Campaign Setup & Structure</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">We build campaigns optimized for how customers search, including service-specific ad groups, location-based targeting, device and time-of-day optimization, conversion tracking setup, and HIPAA-compliant remarketing where applicable.</p>
+            </div>
+          </div>
+
+          <!-- Step 3 - right -->
+          <div class="lg:grid lg:grid-cols-[1fr_auto_1fr] gap-0 mb-16 relative">
+            <div class="text-right hidden lg:block pr-10">
+              <h3 class="text-xl font-bold text-[color:var(--color-brand-dark)] mb-3">Ongoing Optimization</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">We don't "set it and forget it". We provide weekly performance monitoring, bid adjustments based on conversion data, A/B testing ad copy and landing pages, keyword expansion and refinement, and budget reallocation to top performers.</p>
+            </div>
+            <div class="hidden lg:flex w-12 h-12 rounded-full bg-white border-2 border-gray-300 items-center justify-center z-10 flex-shrink-0">
+              <svg class="w-5 h-5 text-[color:var(--color-brand)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+            </div>
+            <div class="lg:hidden mb-4">
+              <h3 class="text-xl font-bold text-[color:var(--color-brand-dark)] mb-3">Ongoing Optimization</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">We don't "set it and forget it". We provide weekly performance monitoring, bid adjustments based on conversion data, A/B testing ad copy and landing pages, keyword expansion and refinement, and budget reallocation to top performers.</p>
+            </div>
+            <div class="hidden lg:block pl-10"></div>
+          </div>
+
+          <!-- Step 4 - left -->
+          <div class="lg:grid lg:grid-cols-[1fr_auto_1fr] gap-0 relative">
+            <div class="hidden lg:block pr-10"></div>
+            <div class="hidden lg:flex w-12 h-12 rounded-full bg-white border-2 border-gray-300 items-center justify-center z-10 flex-shrink-0">
+              <svg class="w-5 h-5 text-[color:var(--color-brand)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+            </div>
+            <div class="pl-10">
+              <h3 class="text-xl font-bold text-[color:var(--color-brand-dark)] mb-3">Strategic Consulting</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">You get more than just ad management. We provide website conversion rate optimization advice, landing page recommendations, patient booking flow improvements, and insights on which services to promote when.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-14">
+          <a href="/contact" class="inline-flex items-center px-8 py-4 bg-[color:var(--color-brand-dark)] text-white font-semibold rounded-md hover:bg-[color:var(--color-brand-darker)] transition-colors shadow-md text-base">
+            Book A Free Consultation
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ========== WE DRIVE REAL GROWTH ========== -->
+  <section class="relative py-24 md:py-32 overflow-hidden" data-parallax-bg>
+    <div class="absolute inset-0">
+      <img
+        src="/images/hero/growth-bg.webp"
+        alt=""
+        class="w-full h-full object-cover parallax-bg-img"
+        loading="lazy"
+      />
+      <div class="absolute inset-0 bg-black/70"></div>
+    </div>
+    <div class="relative max-w-4xl mx-auto px-6 text-center z-10">
+      <p class="text-sm font-semibold uppercase tracking-wider text-yellow-400 mb-3">
+        We Don't Chase Vanity Metrics
+      </p>
+      <h2 class="text-3xl md:text-5xl font-bold text-white leading-tight">
+        We Drive Real Business Growth
+      </h2>
+    </div>
+  </section>
+
+  <!-- ========== META ADS: WHAT'S INCLUDED ========== -->
+  {service.id === "meta-ads" && (
+    <section class="bg-white py-20 md:py-24">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+          <div class="text-center lg:text-left">
+            <h2 class="text-2xl font-bold text-[color:var(--color-ink)] uppercase tracking-wide mb-3">What's Included: Meta Ads Management</h2>
+            <p class="text-gray-500">Reach your ideal customers where they scroll and turn attention into appointments</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-8 border border-gray-200">
+            <h3 class="text-lg font-bold text-[color:var(--color-brand)] uppercase mb-4">Foundation & Setup</h3>
+            <ul class="space-y-3 text-gray-600 text-sm">
+              <li class="flex items-start gap-2"><span class="text-gray-400 mt-1">&#8226;</span><span>Custom audience research and targeting strategy based on your ideal patient demographics, behaviors, and interests.</span></li>
+              <li class="flex items-start gap-2"><span class="text-gray-400 mt-1">&#8226;</span><span>Complete campaign setup, ad copy, creatives, optimized for conversions</span></li>
+              <li class="flex items-start gap-2"><span class="text-gray-400 mt-1">&#8226;</span><span>Full Meta Pixel setup, conversion API integration, call tracking, and custom reporting dashboards.</span></li>
+              <li class="flex items-start gap-2"><span class="text-gray-400 mt-1">&#8226;</span><span>High-converting landing pages designed specifically for Meta traffic with mobile-first optimization.</span></li>
+            </ul>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-8 border border-gray-200">
+            <h3 class="text-lg font-bold text-[color:var(--color-brand)] uppercase mb-4">Ongoing Management</h3>
+            <ul class="space-y-3 text-gray-600 text-sm">
+              <li class="flex items-start gap-2"><span class="text-gray-400 mt-1">&#8226;</span><span>Creative testing, audience refinement, bid strategy management, and budget allocation across placements.</span></li>
+              <li class="flex items-start gap-2"><span class="text-gray-400 mt-1">&#8226;</span><span>Performance reviews with actionable insights, cost-per-acquisition analysis, and creative recommendations.</span></li>
+              <li class="flex items-start gap-2"><span class="text-gray-400 mt-1">&#8226;</span><span>No account managers. You work directly with someone who understands healthcare business operations and compliance.</span></li>
+              <li class="flex items-start gap-2"><span class="text-gray-400 mt-1">&#8226;</span><span>Detailed analysis of what content resonates with your audience, with specific recommendations for future assets.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ========== META ADS: PROCESS TIMELINE ========== -->
+  {service.id === "meta-ads" && (
+    <section class="bg-gray-100 py-20 md:py-24">
+      <div class="max-w-4xl mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-[color:var(--color-ink)] mb-4 text-center">
+          What Meta Ads Management With Regtek Looks Like
+        </h2>
+        <p class="text-center text-gray-500 mb-16">No black-box strategies. No confusing reports. Just clear steps to reach your ideal customers where they scroll.</p>
+        <div class="relative">
+          <div class="hidden lg:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gray-300" style="transform: translateX(-50%);"></div>
+          <div class="lg:grid lg:grid-cols-[1fr_auto_1fr] gap-0 mb-16 relative">
+            <div class="text-right hidden lg:block pr-10">
+              <h3 class="text-xl font-bold text-[color:var(--color-brand-dark)] mb-3">Discovery & Audience Research</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">We begin by understanding who your ideal customers are: their demographics, interests, behaviors, and pain points. We analyze your current presence on Meta platforms, study what your competitors are doing, and identify opportunities to reach the right people at the right time.</p>
+            </div>
+            <div class="hidden lg:flex w-12 h-12 rounded-full bg-white border-2 border-gray-300 items-center justify-center z-10 flex-shrink-0">
+              <svg class="w-5 h-5 text-[color:var(--color-brand)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+            </div>
+            <div class="lg:hidden mb-8"><h3 class="text-xl font-bold text-[color:var(--color-brand-dark)] mb-3">Discovery & Audience Research</h3><p class="text-gray-600 text-sm">We begin by understanding who your ideal customers are.</p></div>
+            <div class="hidden lg:block pl-10"></div>
+          </div>
+          <div class="lg:grid lg:grid-cols-[1fr_auto_1fr] gap-0 mb-16 relative">
+            <div class="hidden lg:block pr-10"></div>
+            <div class="hidden lg:flex w-12 h-12 rounded-full bg-white border-2 border-gray-300 items-center justify-center z-10 flex-shrink-0">
+              <svg class="w-5 h-5 text-[color:var(--color-brand)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+            </div>
+            <div class="pl-10 mb-8 lg:mb-0">
+              <h3 class="text-xl font-bold text-[color:var(--color-brand-dark)] mb-3">Creative & Campaign Development</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">We design scroll-stopping ad creative and write compelling copy. Then we build campaigns with custom audiences, lookalike targeting, retargeting sequences, proper pixel installation, and conversion tracking, optimized for both Facebook and Instagram.</p>
+            </div>
+          </div>
+          <div class="lg:grid lg:grid-cols-[1fr_auto_1fr] gap-0 mb-16 relative">
+            <div class="text-right hidden lg:block pr-10">
+              <h3 class="text-xl font-bold text-[color:var(--color-brand-dark)] mb-3">Continuous Testing & Refinement</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">We monitor performance daily, test new audience segments and creative variations, refresh ads before they fatigue, shift budget to winning combinations, and refine targeting based on real conversion data.</p>
+            </div>
+            <div class="hidden lg:flex w-12 h-12 rounded-full bg-white border-2 border-gray-300 items-center justify-center z-10 flex-shrink-0">
+              <svg class="w-5 h-5 text-[color:var(--color-brand)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+            </div>
+            <div class="lg:hidden mb-8"><h3 class="text-xl font-bold text-[color:var(--color-brand-dark)] mb-3">Continuous Testing & Refinement</h3><p class="text-gray-600 text-sm">We refine targeting based on real conversion data, not vanity metrics.</p></div>
+            <div class="hidden lg:block pl-10"></div>
+          </div>
+          <div class="lg:grid lg:grid-cols-[1fr_auto_1fr] gap-0 relative">
+            <div class="hidden lg:block pr-10"></div>
+            <div class="hidden lg:flex w-12 h-12 rounded-full bg-white border-2 border-gray-300 items-center justify-center z-10 flex-shrink-0">
+              <svg class="w-5 h-5 text-[color:var(--color-brand)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+            </div>
+            <div class="pl-10">
+              <h3 class="text-xl font-bold text-[color:var(--color-brand-dark)] mb-3">Holistic Growth Partnership</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">You're getting a strategic partner who cares about your entire business. We'll recommend landing page improvements, suggest which services to promote based on seasonality, and help you think through customer acquisition economics and lifetime value.</p>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-14">
+          <a href="/contact" class="inline-flex items-center px-8 py-4 bg-[color:var(--color-brand-dark)] text-white font-semibold rounded-md hover:bg-[color:var(--color-brand-darker)] transition-colors shadow-md">Book A Free Consultation</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ========== CASE STUDY CARDS (Google Ads) ========== -->
+  {service.id === "google-ads" && (
+    <section class="bg-gray-100 py-20 md:py-24">
+      <div class="max-w-5xl mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-[color:var(--color-ink)] mb-12 text-center">
+          Real Campaigns. Real Results.
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Podiatry -->
+          <div class="bg-white rounded-xl shadow-md p-8">
+            <div class="flex gap-2 mb-4">
+              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-[color:var(--color-brand-dark)] text-white">Podiatry Practice</span>
+              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-[color:var(--color-brand-dark)] text-white">This Year (2025)</span>
+            </div>
+            <h3 class="text-xl font-bold text-[color:var(--color-ink)] mb-4">Local Practice Achieves 63% Booking Growth</h3>
+            <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">The Challenge</p>
+            <p class="text-sm text-gray-600 mb-4">A podiatry practice relying entirely on referrals needed a predictable way to attract new patients, even during seasonal downturns.</p>
+            <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">The Solution</p>
+            <p class="text-sm text-gray-600 mb-4">Built a strategic paid search campaign focused on high-intent keywords, with conversion tracking tied to actual appointments.</p>
+            <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">The Results</p>
+            <div class="flex gap-6 mb-2">
+              <div>
+                <div class="text-2xl font-bold text-emerald-500" data-countup="+63%">+63%</div>
+                <div class="text-xs text-gray-500">Year-over-year booking growth</div>
+              </div>
+              <div>
+                <div class="text-2xl font-bold text-[color:var(--color-ink)]" data-countup="169">169</div>
+                <div class="text-xs text-gray-500">New patients from paid search</div>
+              </div>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-emerald-500" data-countup="27%">27%</div>
+              <div class="text-xs text-gray-500">Of all bookings now from Google Ads</div>
+            </div>
+          </div>
+
+          <!-- Dermatology -->
+          <div class="bg-white rounded-xl shadow-md p-8">
+            <div class="flex gap-2 mb-4">
+              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-[color:var(--color-brand-dark)] text-white">Dermatology Practice</span>
+              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-[color:var(--color-brand-dark)] text-white">3+ Years Running</span>
+            </div>
+            <h3 class="text-xl font-bold text-[color:var(--color-ink)] mb-4">Built a Scalable Patient Acquisition Engine</h3>
+            <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">The Challenge</p>
+            <p class="text-sm text-gray-600 mb-4">A Hawaii dermatology practice needed more than referrals to grow. They wanted predictable, scalable patient acquisition that could keep pace with their expansion.</p>
+            <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">The Solution</p>
+            <p class="text-sm text-gray-600 mb-4">Built a paid search system designed to scale delivering consistent new patient flow month after month while maintaining cost efficiency.</p>
+            <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">The Results</p>
+            <div class="flex gap-6 mb-2">
+              <div>
+                <div class="text-2xl font-bold text-emerald-500" data-countup="2,350+">2,350+</div>
+                <div class="text-xs text-gray-500">New patient leads</div>
+              </div>
+              <div>
+                <div class="text-2xl font-bold text-[color:var(--color-ink)]" data-countup="$22">$22</div>
+                <div class="text-xs text-gray-500">Cost per lead</div>
+              </div>
+            </div>
+            <div>
+              <div class="text-lg font-bold text-emerald-500">3+ Years of Steady Growth</div>
+              <div class="text-xs text-gray-500">Reliable patient flow that scales with the practice</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ========== FAQ (Google Ads) ========== -->
+  {service.id === "google-ads" && (
+    <section class="bg-gray-200 py-20 md:py-24">
+      <div class="max-w-3xl mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-[color:var(--color-ink)] mb-10 text-center">
+          Common Questions About Our Google Ads Management
+        </h2>
+        <div class="space-y-1" data-faq>
+          <details class="bg-white rounded-lg group">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-[color:var(--color-ink)] hover:text-[color:var(--color-brand-dark)]">
+              How is this different from hiring an agency?
+              <span class="text-[color:var(--color-brand)] text-xl transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">
+              You're working directly with me — the founder who's run healthcare operations at scale. No account managers, no junior staff learning on your budget. I bring business strategy consulting alongside campaign management.
+            </div>
+          </details>
+          <details class="bg-white rounded-lg group">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-[color:var(--color-ink)] hover:text-[color:var(--color-brand-dark)]">
+              Do you only work with healthcare practices?
+              <span class="text-[color:var(--color-brand)] text-xl transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">
+              Healthcare is where our deepest expertise lies, but we work with service-based businesses across industries. The operational principles that drive results are the same.
+            </div>
+          </details>
+          <details class="bg-white rounded-lg group">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-[color:var(--color-ink)] hover:text-[color:var(--color-brand-dark)]">
+              What if I've tried Google Ads before and it didn't work?
+              <span class="text-[color:var(--color-brand)] text-xl transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">
+              Most failed campaigns share the same problems: poor targeting, no conversion tracking, and nobody optimizing after launch. We audit what went wrong before building anything new.
+            </div>
+          </details>
+          <details class="bg-white rounded-lg group">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-[color:var(--color-ink)] hover:text-[color:var(--color-brand-dark)]">
+              How quickly will I see results?
+              <span class="text-[color:var(--color-brand)] text-xl transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">
+              Most campaigns start generating leads within the first 2-4 weeks. Meaningful optimization data comes at 60-90 days. We set realistic expectations upfront.
+            </div>
+          </details>
+          <details class="bg-white rounded-lg group">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-[color:var(--color-ink)] hover:text-[color:var(--color-brand-dark)]">
+              What happens if the campaigns don't perform?
+              <span class="text-[color:var(--color-brand)] text-xl transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">
+              We monitor weekly and adjust fast. If something isn't working, we diagnose why and fix it — not hide behind vanity metrics. Full transparency, always.
+            </div>
+          </details>
+          <details class="bg-white rounded-lg group">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-[color:var(--color-ink)] hover:text-[color:var(--color-brand-dark)]">
+              Do you handle the landing pages and website too?
+              <span class="text-[color:var(--color-brand)] text-xl transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">
+              Yes. Ads and landing pages are two halves of the same system. We review and optimize your landing experience as part of every engagement.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ========== RELATED POSTS ========== -->
   {relatedPosts.length > 0 && (
     <section class="bg-gray-100 py-16">
       <div class="max-w-6xl mx-auto px-6">
@@ -101,20 +707,20 @@ const description = service.data.metaDescription ?? service.data.description;
     </section>
   )}
 
-  <!-- FINAL CTA -->
+  <!-- ========== FINAL CTA ========== -->
   <section class="bg-[color:var(--color-brand-dark)] py-20 md:py-24">
     <div class="max-w-4xl mx-auto px-6 text-center">
       <h2 class="text-3xl md:text-5xl font-bold text-white leading-tight mb-6">
-        Ready to Grow Your Practice?
+        Ready to Stop Guessing and Start Growing?
       </h2>
       <p class="text-lg text-gray-100 mb-10 max-w-2xl mx-auto">
         Book a free consultation. Direct founder access — no account managers, no pitch-deck theater.
       </p>
       <a
         href="/contact"
-        class="inline-flex items-center px-8 py-4 bg-white text-[color:var(--color-brand-dark)] font-semibold rounded-md hover:bg-gray-100 transition-colors shadow-lg"
+        class="inline-flex items-center px-8 py-4 bg-white text-[color:var(--color-brand-dark)] font-semibold rounded-md hover:bg-gray-100 transition-colors shadow-lg text-base"
       >
-        Book a Free Consultation →
+        Book A Free Consultation
       </a>
     </div>
   </section>

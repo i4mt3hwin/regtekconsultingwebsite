@@ -34,5 +34,137 @@ const { title, description, canonical, ogImage, noindex, extraSchema } = Astro.p
       <slot />
     </main>
     <Footer />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const els = document.querySelectorAll("[data-countup]");
+        if (!els.length) return;
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              const el = entry.target as HTMLElement;
+              const raw = el.dataset.countup || "";
+              observer.unobserve(el);
+
+              // Parse: extract numeric part, prefix ($), suffix (+, %, K+)
+              const match = raw.match(/^(\$?)([0-9,]+)(.*)/);
+              if (!match) return;
+              const prefix = match[1];
+              const targetNum = parseInt(match[2].replace(/,/g, ""), 10);
+              const suffix = match[3];
+
+              let current = 0;
+              const duration = 1500;
+              const steps = 40;
+              const increment = targetNum / steps;
+              const stepTime = duration / steps;
+
+              el.textContent = prefix + "0" + suffix;
+
+              const timer = setInterval(() => {
+                current += increment;
+                if (current >= targetNum) {
+                  current = targetNum;
+                  clearInterval(timer);
+                }
+                const formatted = Math.round(current).toLocaleString("en-US");
+                el.textContent = prefix + formatted + suffix;
+              }, stepTime);
+            });
+          },
+          { threshold: 0.5 }
+        );
+
+        els.forEach((el) => observer.observe(el));
+
+        // Sticky scroll case study animations
+        const csContainers = document.querySelectorAll("[data-cs-scroll]");
+        if (csContainers.length && window.innerWidth >= 1024) {
+          function updateCaseStudies() {
+            csContainers.forEach((container) => {
+              const rect = container.getBoundingClientRect();
+              const scrollHeight = container.clientHeight - window.innerHeight;
+              // progress: 0 = section just entered, 1 = fully scrolled through
+              const progress = Math.min(Math.max(-rect.top / scrollHeight, 0), 1);
+
+              const heading = container.querySelector(".cs-heading") as HTMLElement;
+              const text = container.querySelector(".cs-text") as HTMLElement;
+              const image = container.querySelector(".cs-image") as HTMLElement;
+              if (!heading || !text || !image) return;
+
+              // Phase 1: heading always visible; scales 0.7 -> 1 over 0-0.25
+              const headingP = Math.min(progress / 0.25, 1);
+              const headingScale = 0.7 + 0.3 * headingP;
+              heading.style.opacity = "1";
+              heading.style.transform = `scale(${headingScale})`;
+
+              // Phase 2: 0.25-0.6 — text slides in from left
+              const textP = Math.min(Math.max((progress - 0.25) / 0.35, 0), 1);
+              const textX = 60 * (1 - textP);
+              text.style.opacity = String(textP);
+              text.style.transform = `translateX(-${textX}px)`;
+
+              // Phase 3: 0.35-0.7 — image slides in from right + unrotates
+              const imgP = Math.min(Math.max((progress - 0.35) / 0.35, 0), 1);
+              const imgX = 60 * (1 - imgP);
+              const imgRot = 3 * (1 - imgP);
+              image.style.opacity = String(imgP);
+              image.style.transform = `translateX(${imgX}px) rotate(${imgRot}deg)`;
+            });
+            requestAnimationFrame(updateCaseStudies);
+          }
+          requestAnimationFrame(updateCaseStudies);
+        }
+
+        // Scroll-linked reveal — adds/removes .revealed based on visibility
+        const revealEls = document.querySelectorAll("[data-reveal]");
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("revealed");
+              } else {
+                entry.target.classList.remove("revealed");
+              }
+            });
+          },
+          { threshold: 0.15 }
+        );
+        revealEls.forEach((el) => revealObserver.observe(el));
+
+        // Animated underline — play once, stay drawn
+        const underlineEls = document.querySelectorAll(".cs-underline-animate");
+        const underlineObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("active");
+                underlineObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.5 }
+        );
+        underlineEls.forEach((el) => underlineObserver.observe(el));
+
+        // Parallax background images
+        const parallaxSections = document.querySelectorAll("[data-parallax-bg]");
+        if (parallaxSections.length) {
+          function updateParallax() {
+            parallaxSections.forEach((section) => {
+              const rect = section.getBoundingClientRect();
+              const img = section.querySelector(".parallax-bg-img") as HTMLElement;
+              if (!img) return;
+              const speed = 0.3;
+              const offset = rect.top * speed;
+              img.style.transform = `translateY(${offset}px) scale(1.2)`;
+            });
+            requestAnimationFrame(updateParallax);
+          }
+          requestAnimationFrame(updateParallax);
+        }
+      });
+    </script>
   </body>
 </html>

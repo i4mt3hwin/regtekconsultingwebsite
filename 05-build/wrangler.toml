@@ -1,9 +1,0 @@
-name = "regtek-consulting-staging"
-compatibility_date = "2025-10-01"
-compatibility_flags = ["nodejs_compat"]
-
-main = "./dist/_worker.js"
-assets = { directory = "./dist", binding = "ASSETS" }
-
-[observability.logs]
-enabled = true

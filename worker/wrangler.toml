@@ -1,0 +1,16 @@
+name = "regtek-contact"
+main = "src/index.ts"
+compatibility_date = "2026-04-01"
+
+# Public-facing vars (safe to commit). Adjust to match the Resend-verified sender and your inbox.
+[vars]
+FROM_EMAIL = "contact@regtekconsulting.com"
+TO_EMAIL = "kcd1757@gmail.com"
+
+# Secret (set with: npx wrangler secret put RESEND_API_KEY)
+# RESEND_API_KEY — holds the Resend API key; never commit.
+
+# Optional: uncomment and set when you point a custom subdomain at the worker.
+# [[routes]]
+# pattern = "forms.regtekconsulting.com/*"
+# zone_name = "regtekconsulting.com"

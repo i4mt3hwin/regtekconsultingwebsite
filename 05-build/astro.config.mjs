@@ -1,20 +1,14 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
-import react from '@astrojs/react';
 import markdoc from '@astrojs/markdoc';
-import keystatic from '@keystatic/astro';
-import cloudflare from '@astrojs/cloudflare';
 import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.regtekconsulting.com',
-  output: 'server',
-  adapter: cloudflare({
-    platformProxy: { enabled: true },
-  }),
-  integrations: [react(), markdoc(), keystatic(), sitemap()],
+  output: 'static',
+  integrations: [markdoc(), sitemap()],
   // 301 redirects from the old WordPress URL structure
   redirects: {
     '/google-ads': '/services/google-ads',
