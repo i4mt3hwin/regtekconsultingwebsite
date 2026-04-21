@@ -12,9 +12,10 @@ interface Props {
   ogImage?: string;
   noindex?: boolean;
   extraSchema?: Record<string, unknown> | Record<string, unknown>[];
+  hideHeader?: boolean;
 }
 
-const { title, description, canonical, ogImage, noindex, extraSchema } = Astro.props;
+const { title, description, canonical, ogImage, noindex, extraSchema, hideHeader } = Astro.props;
 ---
 
 <!doctype html>
@@ -29,7 +30,7 @@ const { title, description, canonical, ogImage, noindex, extraSchema } = Astro.p
   </head>
   <body class="min-h-screen flex flex-col">
     <a href="#main" class="skip-link">Skip to main content</a>
-    <Header />
+    {!hideHeader && <Header />}
     <main id="main" class="flex-1">
       <slot />
     </main>

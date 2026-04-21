@@ -1,0 +1,197 @@
+---
+const currentPath = Astro.url.pathname;
+const links = [
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "About", href: "/about" },
+  { label: "Tips & Tricks", href: "/blog" },
+  { label: "Contact", href: "/contact" },
+];
+const isActive = (href: string) =>
+  href === "/" ? currentPath === "/" : currentPath.startsWith(href);
+---
+
+<header class="nav">
+  <div class="nav__inner">
+    <a class="nav__logo" href="/" aria-label="Regtek Consulting home">
+      <span class="logo-mark">
+        <svg viewBox="0 0 40 40" width="36" height="36" aria-hidden="true">
+          <rect x="2" y="2" width="36" height="36" rx="8" fill="#0E7C86" />
+          <path
+            d="M12 28 V12 H22 a5 5 0 0 1 0 10 H16 l8 6"
+            fill="none"
+            stroke="#fff"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </span>
+      <span class="logo-text">
+        <b>REGTEK</b>
+        <em>Consulting Group</em>
+      </span>
+    </a>
+
+    <nav class="nav__links" aria-label="Main navigation">
+      {links.map((l) => (
+        <a href={l.href} class:list={[{ "is-active": isActive(l.href) }]}>
+          {l.label}
+        </a>
+      ))}
+    </nav>
+
+    <a class="rk-btn rk-btn--teal nav__cta" href="/contact">
+      Book Free Consultation
+    </a>
+
+    <button
+      type="button"
+      id="nav-menu-toggle"
+      class="nav__toggle"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      aria-controls="nav-mobile"
+    >
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <div id="nav-mobile" class="nav__mobile" hidden>
+    {links.map((l) => (
+      <a href={l.href} class="nav__mobile-link">{l.label}</a>
+    ))}
+    <a href="/contact" class="rk-btn rk-btn--teal nav__mobile-cta">
+      Book Free Consultation
+    </a>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById("nav-menu-toggle");
+  const menu = document.getElementById("nav-mobile");
+  toggle?.addEventListener("click", () => {
+    const expanded = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", (!expanded).toString());
+    if (menu) menu.hidden = expanded;
+  });
+</script>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--ink-100);
+  }
+  .nav__inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 16px var(--pad);
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 40px;
+    align-items: center;
+  }
+  .nav__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: inherit;
+  }
+  .logo-mark svg { display: block; }
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+  .logo-text b {
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 0.04em;
+    color: var(--ink-900);
+  }
+  .logo-text em {
+    font-style: normal;
+    font-size: 10px;
+    color: var(--ink-500);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+
+  .nav__links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--ink-700);
+  }
+  .nav__links a {
+    position: relative;
+    padding: 6px 0;
+    text-decoration: none;
+    color: inherit;
+  }
+  .nav__links a:hover,
+  .nav__links a.is-active { color: var(--teal); }
+  .nav__links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: var(--teal);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.2s ease;
+  }
+  .nav__links a:hover::after,
+  .nav__links a.is-active::after { transform: scaleX(1); }
+
+  .nav__toggle {
+    display: none;
+    background: transparent;
+    border: 0;
+    padding: 6px;
+    color: var(--ink-800);
+    cursor: pointer;
+  }
+
+  .nav__mobile {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px var(--pad) 20px;
+    border-top: 1px solid var(--ink-100);
+    background: #fff;
+  }
+  .nav__mobile-link {
+    padding: 10px 4px;
+    color: var(--ink-800);
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .nav__mobile-link:hover { color: var(--teal); }
+  .nav__mobile-cta {
+    margin-top: 10px;
+    justify-content: center;
+  }
+
+  @media (max-width: 900px) {
+    .nav__inner {
+      grid-template-columns: auto 1fr auto;
+    }
+    .nav__links,
+    .nav__cta { display: none; }
+    .nav__toggle { display: inline-flex; }
+    .nav__mobile:not([hidden]) { display: flex; }
+  }
+</style>
