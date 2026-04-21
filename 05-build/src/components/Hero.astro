@@ -50,18 +50,14 @@
 
     <div class="hero__visual">
       <div class="hv__photo">
-        <div class="hv__ph-bg" aria-hidden="true"></div>
-        <div class="hv__ph-label">
-          <span class="ph-tag">PHOTO</span>
-          <span class="ph-sub">Kevin &amp; Reggie</span>
-        </div>
-        <svg class="hv__reggie" viewBox="0 0 80 80" aria-hidden="true">
-          <path
-            d="M20 70 Q20 50 28 42 Q24 38 26 30 Q30 32 32 36 Q42 30 52 38 Q58 34 62 36 Q60 42 56 44 Q62 50 62 60 L62 70 Z"
-            fill="#0E7C86"
-            opacity="0.15"
-          />
-        </svg>
+        <img
+          class="hv__img"
+          src="/images/hero/kevin-reggie-selfie.jpg"
+          alt="Kevin Dillon with his dog Reggie"
+          width="768"
+          height="1024"
+          fetchpriority="high"
+        />
       </div>
 
       <div class="hv__card hv__card--schedule" aria-hidden="true">
@@ -208,52 +204,18 @@
     margin-left: auto;
     border-radius: 24px;
     overflow: hidden;
-    background:
-      radial-gradient(ellipse 100% 80% at 50% 100%, var(--teal-100) 0%, transparent 70%),
-      linear-gradient(165deg, var(--teal-50) 0%, #fff 100%);
     border: 1px solid var(--ink-100);
     box-shadow: var(--shadow-lg);
+    background: var(--paper);
   }
-  .hv__ph-bg {
+  .hv__img {
     position: absolute;
     inset: 0;
-    background-image: repeating-linear-gradient(
-      45deg,
-      transparent 0 14px,
-      color-mix(in oklab, var(--teal) 6%, transparent) 14px 28px
-    );
-  }
-  .hv__ph-label {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    color: var(--teal);
-  }
-  .ph-tag {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    padding: 4px 10px;
-    border-radius: 999px;
-    background: #fff;
-    border: 1px solid var(--teal-200);
-  }
-  .ph-sub {
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--ink-900);
-    letter-spacing: -0.01em;
-  }
-  .hv__reggie {
-    position: absolute;
-    right: 6%;
-    bottom: 0;
-    width: 36%;
-    height: auto;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
   }
 
   .hv__card {
