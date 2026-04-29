@@ -209,7 +209,7 @@ body {
 }
 .service-prose h3 {
   text-align: center;
-  color: var(--color-brand);
+  color: var(--color-brand-darker);
   font-size: 2rem;
   margin-top: 3rem;
   margin-bottom: 1rem;
