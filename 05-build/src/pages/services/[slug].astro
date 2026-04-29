@@ -340,17 +340,33 @@ const headlineParts = headline.includes("Into")
 
   <!-- ========== CASE STUDY HIGHLIGHT (Google Ads) ========== -->
   {service.id === "google-ads" && (
-    <section class="bg-[color:var(--color-brand-dark)] py-20 md:py-24">
-      <div class="max-w-4xl mx-auto px-6 text-center">
-        <h3 class="text-3xl md:text-5xl font-bold text-white leading-tight mb-12 text-center">
-          The Results Speak <br /><span class="cs-underline-animate">Louder Than We Do</span>
-        </h3>
-        <h4 class="text-2xl font-bold text-white mb-4">Local Practice Achieves 63% Booking Growth</h4>
-        <p class="text-lg text-gray-200 leading-relaxed max-w-2xl mx-auto">
-          This podiatry clinic wanted to move beyond referrals. With a strategic paid search campaign, they grew bookings 63% — with Google Ads now driving 169 new patients.
-        </p>
-      </div>
-    </section>
+    <div class="cs-scroll-container" data-cs-scroll>
+      <section class="cs-sticky bg-[color:var(--color-brand-dark)] min-h-screen flex items-center overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 w-full">
+          <h3 class="cs-heading text-3xl md:text-5xl font-bold text-white leading-tight mb-12 text-center">
+            The Results Speak <br /><span class="cs-underline-animate">Louder Than We Do</span>
+          </h3>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="cs-text">
+              <h4 class="text-2xl font-bold text-white mb-4">Local Practice Achieves 63% Booking Growth</h4>
+              <p class="text-lg text-gray-100 leading-relaxed">
+                This podiatry clinic wanted to move beyond referrals. With a strategic paid search campaign, they grew bookings 63% — with Google Ads now driving 169 new patients.
+              </p>
+            </div>
+            <div class="cs-image">
+              <img
+                src="/images/case-studies/New-Patients.webp"
+                alt="Dashboard showing 63% booking growth for a podiatry practice"
+                width="768"
+                height="419"
+                loading="lazy"
+                class="w-full h-auto rounded-xl shadow-2xl border border-white/10"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   )}
 
   <!-- ========== PROCESS FLOW (Google Ads) ========== -->
