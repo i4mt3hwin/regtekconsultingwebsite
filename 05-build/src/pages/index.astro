@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SocialProof from "../components/SocialProof.astro";
-import Hero from "../components/Hero.astro";
 import { getCollection } from "astro:content";
 import { PROOF_STATS, SITE } from "../lib/site";
 
@@ -16,7 +15,43 @@ const description = "Skip the big agency runaround. Work directly with the found
 
 <BaseLayout {title} {description}>
   <!-- ========== HERO ========== -->
-  <Hero />
+  <section class="bg-gray-50 pt-16 pb-20 md:pt-24 md:pb-28 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-8 items-center">
+        <div class="text-center lg:text-left">
+          <p class="text-sm font-semibold uppercase tracking-wider text-[color:var(--color-brand)] mb-5">
+            Small Business Digital Marketing
+          </p>
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] text-[color:var(--color-ink)] mb-5 tracking-tight">
+            Turn Your Marketing Into<br />
+            <span class="text-[color:var(--color-brand)]">Predictable Revenue</span>
+          </h1>
+          <p class="text-base md:text-lg text-gray-600 mb-8 leading-relaxed">
+            Work directly with a founder who's scaled a healthcare business to Inc 5000 status. Get strategic guidance that goes beyond marketing - backed by proven results.
+          </p>
+          <a
+            href="/contact"
+            class="inline-flex items-center px-8 py-4 bg-[color:var(--color-brand-dark)] text-white font-semibold rounded-md hover:bg-[color:var(--color-brand-darker)] transition-colors shadow-md text-base"
+          >
+            Book Your Free Consultation Today
+          </a>
+          <div class="mt-8 flex items-center justify-center lg:justify-start gap-4">
+            <SocialProof />
+          </div>
+        </div>
+        <div class="order-first lg:order-last">
+          <img
+            src="/images/hero/homepage-hero.webp"
+            alt="Marketing funnel diagram showing search, social media, and leads flowing into a revenue engine with consistent bookings"
+            width="640"
+            height="420"
+            class="w-full h-auto"
+            fetchpriority="high"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ========== TRUST STRIP ========== -->
   <section class="bg-[color:var(--color-brand-dark)] py-14">
