@@ -132,6 +132,11 @@ body {
   transform: translateX(60px) rotate(3deg);
   transition: none;
 }
+.cs-card {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: none; /* driven by JS */
+}
 
 /* Mobile: disable sticky scroll, show everything normally */
 @media (max-width: 1023px) {
@@ -146,7 +151,8 @@ body {
   }
   .cs-heading,
   .cs-text,
-  .cs-image {
+  .cs-image,
+  .cs-card {
     opacity: 1;
     transform: none;
   }

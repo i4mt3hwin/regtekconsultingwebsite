@@ -87,29 +87,39 @@ const { title, description, canonical, ogImage, noindex, extraSchema } = Astro.p
               // progress: 0 = section just entered, 1 = fully scrolled through
               const progress = Math.min(Math.max(-rect.top / scrollHeight, 0), 1);
 
-              const heading = container.querySelector(".cs-heading") as HTMLElement;
-              const text = container.querySelector(".cs-text") as HTMLElement;
-              const image = container.querySelector(".cs-image") as HTMLElement;
-              if (!heading || !text || !image) return;
+              const heading = container.querySelector(".cs-heading") as HTMLElement | null;
+              const text = container.querySelector(".cs-text") as HTMLElement | null;
+              const image = container.querySelector(".cs-image") as HTMLElement | null;
+              const cards = container.querySelectorAll<HTMLElement>(".cs-card");
+              if (!heading) return;
 
-              // Phase 1: heading always visible; scales 0.7 -> 1 over 0-0.25
-              const headingP = Math.min(progress / 0.25, 1);
-              const headingScale = 0.7 + 0.3 * headingP;
+              // Heading: scales 0.7 -> 1 over 0-0.20
+              const headingP = Math.min(progress / 0.2, 1);
               heading.style.opacity = "1";
-              heading.style.transform = `scale(${headingScale})`;
+              heading.style.transform = `scale(${0.7 + 0.3 * headingP})`;
 
-              // Phase 2: 0.25-0.6 — text slides in from left
-              const textP = Math.min(Math.max((progress - 0.25) / 0.35, 0), 1);
-              const textX = 60 * (1 - textP);
-              text.style.opacity = String(textP);
-              text.style.transform = `translateX(-${textX}px)`;
+              // Text: slides in from left over 0.05-0.40 (overlaps heading)
+              if (text) {
+                const textP = Math.min(Math.max((progress - 0.05) / 0.35, 0), 1);
+                text.style.opacity = String(textP);
+                text.style.transform = `translateX(-${60 * (1 - textP)}px)`;
+              }
 
-              // Phase 3: 0.35-0.7 — image slides in from right + unrotates
-              const imgP = Math.min(Math.max((progress - 0.35) / 0.35, 0), 1);
-              const imgX = 60 * (1 - imgP);
-              const imgRot = 3 * (1 - imgP);
-              image.style.opacity = String(imgP);
-              image.style.transform = `translateX(${imgX}px) rotate(${imgRot}deg)`;
+              // Image: slides in from right + unrotates over 0.10-0.45
+              if (image) {
+                const imgP = Math.min(Math.max((progress - 0.1) / 0.35, 0), 1);
+                image.style.opacity = String(imgP);
+                image.style.transform = `translateX(${60 * (1 - imgP)}px) rotate(${3 * (1 - imgP)}deg)`;
+              }
+
+              // Cards: staggered fade-up; each card animates over 0.30 progress,
+              // staggered by 0.07 per index
+              cards.forEach((card, i) => {
+                const start = 0.05 + i * 0.07;
+                const cardP = Math.min(Math.max((progress - start) / 0.3, 0), 1);
+                card.style.opacity = String(cardP);
+                card.style.transform = `translateY(${40 * (1 - cardP)}px)`;
+              });
             });
             requestAnimationFrame(updateCaseStudies);
           }
