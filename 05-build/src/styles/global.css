@@ -138,13 +138,16 @@ body {
 }
 .cs-image {
   opacity: 0;
-  clip-path: inset(0 100% 0 0);
+  clip-path: inset(0 100% 0 0); /* default: wipe left-to-right */
   transform: translateY(8px);
   transition:
     opacity 0.4s ease-out 0.25s,
     clip-path 1.1s cubic-bezier(0.65, 0, 0.35, 1) 0.25s,
     transform 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
 }
+.cs-image--rtl { clip-path: inset(0 0 0 100%); } /* wipe right-to-left */
+.cs-image--down { clip-path: inset(0 0 100% 0); } /* wipe top-down */
+.cs-image--up { clip-path: inset(100% 0 0 0); } /* wipe bottom-up */
 .cs-card {
   opacity: 0;
   transform: translateY(28px) scale(0.97);
