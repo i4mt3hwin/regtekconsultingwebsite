@@ -34,6 +34,10 @@ const relatedPosts = [...sameCategory, ...otherPosts].slice(0, 3);
 const title = post.data.metaTitle ?? `${post.data.title} | Regtek Consulting`;
 const description = post.data.metaDescription ?? post.data.excerpt;
 
+// Estimated read time from the raw markdoc body
+const wordCount = ((post.body ?? "").match(/\S+/g) ?? []).length;
+const readMinutes = Math.max(1, Math.round(wordCount / 200));
+
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
@@ -67,19 +71,25 @@ function formatDate(d: Date): string {
 ---
 
 <BaseLayout {title} {description} extraSchema={articleSchema}>
+  <!-- Reading progress bar -->
+  <div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+
   <article>
-    <!-- ========== HERO — magazine split ========== -->
-    <section class="relative overflow-hidden bg-gradient-to-b from-blue-50 via-white to-white pt-10 pb-16 md:pt-14 md:pb-20">
-      <!-- Soft brand-tinted accent in the corner -->
-      <div aria-hidden="true" class="pointer-events-none absolute -top-40 -right-40 w-[680px] h-[680px] rounded-full bg-[radial-gradient(closest-side,rgba(6,182,212,0.20),transparent)] blur-2xl"></div>
+    <!-- ========== HERO — magazine split with branded gradient + dot grid ========== -->
+    <section class="blog-hero relative overflow-hidden pt-12 pb-20 md:pt-16 md:pb-28">
+      <!-- Layered backdrop -->
+      <div aria-hidden="true" class="blog-hero-bg"></div>
+      <div aria-hidden="true" class="blog-hero-grid"></div>
+      <div aria-hidden="true" class="blog-hero-glow blog-hero-glow--right"></div>
+      <div aria-hidden="true" class="blog-hero-glow blog-hero-glow--left"></div>
 
       <div class="relative max-w-[88rem] mx-auto px-6 md:px-10">
         <!-- Breadcrumb -->
-        <nav class="text-sm text-gray-700 mb-8" aria-label="Breadcrumb">
+        <nav class="text-sm text-gray-700 mb-10" aria-label="Breadcrumb">
           <a href="/" class="hover:text-[color:var(--color-brand-dark)]">Home</a>
-          <span class="mx-2">&rsaquo;</span>
+          <span class="mx-2 text-gray-400">&rsaquo;</span>
           <a href="/blog" class="hover:text-[color:var(--color-brand-dark)]">Tips & Tricks</a>
-          <span class="mx-2">&rsaquo;</span>
+          <span class="mx-2 text-gray-400">&rsaquo;</span>
           <a href={`/blog/category/${post.data.category}`} class="hover:text-[color:var(--color-brand-dark)]">
             {CATEGORY_LABELS[post.data.category] ?? post.data.category}
           </a>
@@ -89,36 +99,42 @@ function formatDate(d: Date): string {
           <!-- Text column -->
           <div>
             <!-- Category badge -->
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-[color:var(--color-brand)]/15 text-[color:var(--color-brand-darker)] mb-6">
-              <span class="w-1.5 h-1.5 rounded-full bg-[color:var(--color-brand-dark)]"></span>
+            <span data-reveal="up" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-[0.14em] bg-white/80 backdrop-blur-sm text-[color:var(--color-brand-darker)] mb-7 ring-1 ring-[color:var(--color-brand)]/30 shadow-sm">
+              <span class="relative flex h-2 w-2">
+                <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-[color:var(--color-brand)] opacity-60"></span>
+                <span class="relative inline-flex h-2 w-2 rounded-full bg-[color:var(--color-brand-dark)]"></span>
+              </span>
               {CATEGORY_LABELS[post.data.category] ?? post.data.category}
             </span>
 
             <!-- Title -->
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[color:var(--color-ink)] mb-6 leading-[1.05] tracking-tight">
+            <h1 data-reveal="up" data-reveal-delay="1" class="blog-hero-title text-4xl md:text-5xl lg:text-[3.75rem] font-extrabold text-[color:var(--color-ink)] mb-7 leading-[1.05] tracking-tight">
               {post.data.title}
             </h1>
 
             <!-- Deck / excerpt -->
             {post.data.excerpt && (
-              <p class="text-lg md:text-xl text-gray-800 mb-8 leading-relaxed max-w-2xl">
+              <p data-reveal="up" data-reveal-delay="2" class="text-lg md:text-xl text-gray-700 mb-9 leading-relaxed max-w-2xl">
                 {post.data.excerpt}
               </p>
             )}
 
             <!-- Author meta row -->
-            <div class="flex items-center gap-4 pt-2">
-              <div class="w-11 h-11 rounded-full bg-[color:var(--color-brand-dark)] flex items-center justify-center text-white font-bold text-sm shadow-md">
-                KD
+            <div data-reveal="up" data-reveal-delay="3" class="flex items-center gap-4 pt-2">
+              <div class="blog-author-avatar">
+                <div class="blog-author-avatar-inner">KD</div>
               </div>
               <div>
-                <div class="text-sm font-semibold text-[color:var(--color-ink)]">Kevin Dillon</div>
-                <div class="flex items-center gap-2 text-xs text-gray-700">
+                <div class="text-sm font-semibold text-[color:var(--color-ink)]">Kevin Dillon <span class="text-gray-500 font-normal">— Founder</span></div>
+                <div class="flex items-center gap-2 text-xs text-gray-700 mt-0.5">
                   <time datetime={post.data.publishDate.toISOString()}>
                     {formatDate(post.data.publishDate)}
                   </time>
-                  <span>&bull;</span>
-                  <span>5 min read</span>
+                  <span class="text-gray-400">&bull;</span>
+                  <span class="inline-flex items-center gap-1">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    {readMinutes} min read
+                  </span>
                 </div>
               </div>
             </div>
@@ -126,10 +142,12 @@ function formatDate(d: Date): string {
 
           <!-- Image column -->
           {post.data.heroImage && (
-            <div class="relative">
+            <div data-reveal="right" class="relative blog-hero-figure">
+              <!-- Decorative offset accent -->
+              <div aria-hidden="true" class="blog-hero-figure-accent"></div>
               <!-- Soft cyan glow behind the image -->
-              <div aria-hidden="true" class="absolute -inset-6 bg-gradient-to-br from-[color:var(--color-brand)]/25 via-[color:var(--color-brand-dark)]/10 to-transparent rounded-[2rem] blur-2xl -z-10"></div>
-              <div class="relative rounded-2xl overflow-hidden shadow-2xl ring-1 ring-black/5">
+              <div aria-hidden="true" class="absolute -inset-8 bg-gradient-to-br from-[color:var(--color-brand)]/30 via-[color:var(--color-brand-dark)]/15 to-transparent rounded-[2rem] blur-3xl -z-10"></div>
+              <div class="relative rounded-2xl overflow-hidden shadow-2xl ring-1 ring-black/10">
                 <img
                   src={post.data.heroImage}
                   alt={post.data.title}
@@ -162,7 +180,7 @@ function formatDate(d: Date): string {
                 <ul data-toc-list-mobile></ul>
               </details>
 
-              <div class="prose prose-lg max-w-none">
+              <div class="prose prose-lg max-w-none blog-prose">
                 <Content />
               </div>
             </div>
@@ -177,21 +195,24 @@ function formatDate(d: Date): string {
                 <ul data-toc-list class="space-y-1.5 text-sm"></ul>
               </nav>
 
-              <!-- CTA card -->
-              <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
-                <div class="w-11 h-11 rounded-full bg-[color:var(--color-brand-dark)] flex items-center justify-center text-white font-bold text-sm mb-4">
-                  KD
+              <!-- CTA card — brand gradient, premium feel -->
+              <div class="blog-cta-card relative overflow-hidden rounded-2xl p-6 text-white shadow-lg">
+                <div aria-hidden="true" class="blog-cta-card-glow"></div>
+                <div class="relative">
+                  <div class="w-12 h-12 rounded-full bg-white/15 ring-2 ring-white/40 flex items-center justify-center text-white font-bold text-sm mb-4 backdrop-blur-sm">
+                    KD
+                  </div>
+                  <h3 class="font-bold text-white mb-2 leading-snug text-base">Ready to see results for your practice?</h3>
+                  <p class="text-sm text-white/90 mb-5 leading-relaxed">
+                    30-minute strategy call. Straight to Kevin, no account managers.
+                  </p>
+                  <a
+                    href="/contact"
+                    class="inline-flex justify-center items-center w-full px-4 py-2.5 bg-white text-[color:var(--color-brand-darker)] font-semibold text-sm rounded-md hover:bg-gray-50 transition-all hover:-translate-y-0.5 hover:shadow-md"
+                  >
+                    Book a Free Consultation
+                  </a>
                 </div>
-                <h3 class="font-bold text-[color:var(--color-ink)] mb-2 leading-snug">Ready to see results for your practice?</h3>
-                <p class="text-sm text-gray-800 mb-5 leading-relaxed">
-                  30-minute strategy call. Straight to Kevin, no account managers.
-                </p>
-                <a
-                  href="/contact"
-                  class="inline-flex justify-center items-center w-full px-4 py-2.5 bg-[color:var(--color-brand-dark)] text-white font-semibold text-sm rounded-md hover:bg-[color:var(--color-brand-darker)] transition-colors"
-                >
-                  Book a Free Consultation
-                </a>
               </div>
 
               <!-- Related posts list -->
@@ -224,20 +245,21 @@ function formatDate(d: Date): string {
     <!-- ========== MOBILE-ONLY AUTHOR CTA (shown below content on mobile, sidebar handles desktop) ========== -->
     <section class="lg:hidden bg-white py-10">
       <div class="max-w-[88rem] mx-auto px-6 md:px-10">
-        <div class="bg-gray-50 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-6 items-start border border-gray-200">
-          <div class="flex-shrink-0 w-16 h-16 rounded-full bg-[color:var(--color-brand-dark)] flex items-center justify-center text-white font-bold text-xl">
+        <div class="blog-cta-card-lg relative overflow-hidden rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-6 items-start text-white shadow-xl">
+          <div aria-hidden="true" class="blog-cta-card-glow"></div>
+          <div class="relative flex-shrink-0 w-16 h-16 rounded-full bg-white/15 ring-2 ring-white/40 flex items-center justify-center text-white font-bold text-xl backdrop-blur-sm">
             KD
           </div>
-          <div>
-            <h2 class="text-2xl font-bold text-[color:var(--color-ink)] mb-2">
+          <div class="relative">
+            <h2 class="text-2xl font-bold text-white mb-2">
               Ready to see results for your practice?
             </h2>
-            <p class="text-gray-800 mb-5 leading-relaxed">
+            <p class="text-white/90 mb-5 leading-relaxed">
               30-minute strategy call. Direct access to Kevin Dillon, the founder who's scaled healthcare businesses to Inc 5000. No account managers, no pitch deck, just answers.
             </p>
             <a
               href="/contact"
-              class="inline-flex items-center px-7 py-3 bg-[color:var(--color-brand-dark)] text-white font-semibold rounded-md hover:bg-[color:var(--color-brand-darker)] transition-colors shadow-sm"
+              class="inline-flex items-center px-7 py-3 bg-white text-[color:var(--color-brand-darker)] font-semibold rounded-md hover:bg-gray-50 transition-all hover:-translate-y-0.5 shadow-sm hover:shadow-md"
             >
               Book a Free Consultation
             </a>
@@ -247,20 +269,26 @@ function formatDate(d: Date): string {
     </section>
 
     <!-- ========== PREV / NEXT NAV ========== -->
-    <section class="bg-gray-50 py-8">
+    <section class="bg-gradient-to-b from-white to-gray-50 py-12">
       <div class="max-w-[88rem] mx-auto px-6 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-4">
         {prevPost ? (
-          <a href={`/blog/${prevPost.id}`} class="group bg-white rounded-xl border border-gray-200 p-5 hover:border-[color:var(--color-brand)] hover:shadow-md transition-all">
-            <span class="text-xs text-gray-400 uppercase tracking-wider">&larr; Previous</span>
-            <p class="text-sm font-semibold text-[color:var(--color-ink)] mt-1 group-hover:text-[color:var(--color-brand-dark)] leading-snug line-clamp-2">
+          <a href={`/blog/${prevPost.id}`} class="prev-next-card group bg-white rounded-xl border border-gray-200 p-6 transition-all">
+            <span class="prev-next-label inline-flex items-center gap-1.5 text-xs text-gray-500 uppercase tracking-[0.14em] font-semibold">
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="none" aria-hidden="true" class="prev-next-arrow"><path d="M12.5 5L7.5 10L12.5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Previous
+            </span>
+            <p class="text-base font-bold text-[color:var(--color-ink)] mt-2 group-hover:text-[color:var(--color-brand-dark)] leading-snug line-clamp-2 transition-colors">
               {prevPost.data.title}
             </p>
           </a>
         ) : <div />}
         {nextPost ? (
-          <a href={`/blog/${nextPost.id}`} class="group bg-white rounded-xl border border-gray-200 p-5 hover:border-[color:var(--color-brand)] hover:shadow-md transition-all text-right">
-            <span class="text-xs text-gray-400 uppercase tracking-wider">Next &rarr;</span>
-            <p class="text-sm font-semibold text-[color:var(--color-ink)] mt-1 group-hover:text-[color:var(--color-brand-dark)] leading-snug line-clamp-2">
+          <a href={`/blog/${nextPost.id}`} class="prev-next-card prev-next-card--right group bg-white rounded-xl border border-gray-200 p-6 transition-all text-right">
+            <span class="prev-next-label inline-flex items-center gap-1.5 text-xs text-gray-500 uppercase tracking-[0.14em] font-semibold">
+              Next
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="none" aria-hidden="true" class="prev-next-arrow"><path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <p class="text-base font-bold text-[color:var(--color-ink)] mt-2 group-hover:text-[color:var(--color-brand-dark)] leading-snug line-clamp-2 transition-colors">
               {nextPost.data.title}
             </p>
           </a>
@@ -392,5 +420,33 @@ function formatDate(d: Date): string {
       },
     );
     headings.forEach((h) => observer.observe(h));
+  })();
+
+  // Reading progress bar — tracks scroll through the article body
+  (() => {
+    const bar = document.querySelector<HTMLElement>("[data-reading-progress]");
+    const article = document.querySelector<HTMLElement>("[data-blog-article]");
+    if (!bar || !article) return;
+
+    let ticking = false;
+    const update = () => {
+      const rect = article.getBoundingClientRect();
+      const viewport = window.innerHeight;
+      // Total scrollable distance over the article
+      const total = rect.height - viewport;
+      const scrolled = -rect.top;
+      const progress = total > 0 ? Math.min(100, Math.max(0, (scrolled / total) * 100)) : 0;
+      bar.style.width = `${progress}%`;
+      ticking = false;
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    update();
   })();
 </script>
