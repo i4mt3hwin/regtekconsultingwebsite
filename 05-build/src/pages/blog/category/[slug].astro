@@ -1,5 +1,4 @@
 ---
-
 import { getCollection } from "astro:content";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 
@@ -32,16 +31,24 @@ export async function getStaticPaths() {
     (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
   );
 
+  const counts: Record<string, number> = { __all: allPosts.length };
+  for (const p of allPosts) {
+    counts[p.data.category] = (counts[p.data.category] ?? 0) + 1;
+  }
+
   return Object.entries(CATEGORY_META).map(([slug, meta]) => ({
     params: { slug },
     props: {
+      slug,
       meta,
       posts: allPosts.filter((p) => p.data.category === slug),
+      counts,
+      allCategories: CATEGORY_META,
     },
   }));
 }
 
-const { meta, posts } = Astro.props;
+const { slug, meta, posts, counts, allCategories } = Astro.props;
 
 function formatDate(d: Date): string {
   return d.toLocaleDateString("en-US", {
@@ -50,46 +57,129 @@ function formatDate(d: Date): string {
     day: "numeric",
   });
 }
+
+function readMinutes(body: string | undefined): number {
+  const wc = ((body ?? "").match(/\S+/g) ?? []).length;
+  return Math.max(1, Math.round(wc / 200));
+}
 ---
 
 <BaseLayout title={meta.metaTitle} description={meta.metaDescription}>
-  <section class="bg-gray-50 pt-20 pb-16">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <nav class="text-sm text-gray-700 mb-6" aria-label="Breadcrumb">
+  <!-- ========== HERO — branded gradient + dot grid ========== -->
+  <section class="blog-hero relative overflow-hidden pt-12 pb-20 md:pt-16 md:pb-24">
+    <div aria-hidden="true" class="blog-hero-bg"></div>
+    <div aria-hidden="true" class="blog-hero-grid"></div>
+    <div aria-hidden="true" class="blog-hero-glow blog-hero-glow--right"></div>
+    <div aria-hidden="true" class="blog-hero-glow blog-hero-glow--left"></div>
+
+    <div class="relative max-w-[88rem] mx-auto px-6 md:px-10 text-center">
+      <!-- Breadcrumb -->
+      <nav class="text-sm text-gray-700 mb-8" aria-label="Breadcrumb">
         <a href="/" class="hover:text-[color:var(--color-brand-dark)]">Home</a>
-        <span class="mx-2">›</span>
-        <a href="/blog" class="hover:text-[color:var(--color-brand-dark)]">Blog</a>
+        <span class="mx-2 text-gray-400">&rsaquo;</span>
+        <a href="/blog" class="hover:text-[color:var(--color-brand-dark)]">Tips & Tricks</a>
+        <span class="mx-2 text-gray-400">&rsaquo;</span>
+        <span class="text-gray-500">{meta.label}</span>
       </nav>
-      <p class="text-sm font-semibold uppercase tracking-wider text-[color:var(--color-brand)] mb-4">
+
+      <span data-reveal="up" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-[0.14em] bg-white/80 backdrop-blur-sm text-[color:var(--color-brand-darker)] mb-7 ring-1 ring-[color:var(--color-brand)]/30 shadow-sm">
+        <span class="relative flex h-2 w-2">
+          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-[color:var(--color-brand)] opacity-60"></span>
+          <span class="relative inline-flex h-2 w-2 rounded-full bg-[color:var(--color-brand-dark)]"></span>
+        </span>
         Category
-      </p>
-      <h1 class="blog-hero-title text-4xl md:text-5xl lg:text-[3.75rem] font-extrabold leading-[1.05] mb-7 tracking-tight">
+      </span>
+
+      <h1 data-reveal="up" data-reveal-delay="1" class="blog-hero-title text-4xl md:text-5xl lg:text-[3.75rem] font-extrabold leading-[1.05] mb-6 tracking-tight">
         {meta.label}
       </h1>
-      <p class="text-lg text-gray-800 max-w-2xl mx-auto">{meta.description}</p>
+
+      <p data-reveal="up" data-reveal-delay="2" class="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+        {meta.description}
+      </p>
+
+      <div data-reveal="up" data-reveal-delay="3" class="mt-8 inline-flex items-center gap-2 text-sm text-gray-700">
+        <span class="font-bold text-[color:var(--color-brand-darker)] text-base">{posts.length}</span>
+        <span>{posts.length === 1 ? "article" : "articles"} in this category</span>
+      </div>
     </div>
   </section>
 
-  <section class="bg-white py-16">
-    <div class="max-w-6xl mx-auto px-6">
+  <!-- ========== CATEGORY FILTER PILLS (sticky) ========== -->
+  <section class="bg-white border-y border-gray-100 py-5 sticky top-0 z-30 backdrop-blur supports-[backdrop-filter]:bg-white/85">
+    <div class="max-w-[88rem] mx-auto px-6 md:px-10">
+      <div class="flex items-center gap-3 overflow-x-auto blog-filter-row" role="tablist" aria-label="Blog category filters">
+        <span class="text-xs font-bold uppercase tracking-[0.14em] text-gray-500 whitespace-nowrap mr-2">Browse</span>
+        <a href="/blog" class="blog-filter-pill">
+          All
+          <span class="blog-filter-count">{counts.__all}</span>
+        </a>
+        {Object.entries(allCategories).map(([catSlug, catMeta]) => (
+          <a
+            href={`/blog/category/${catSlug}`}
+            class={`blog-filter-pill ${catSlug === slug ? "blog-filter-pill--active" : ""}`}
+            aria-current={catSlug === slug ? "page" : undefined}
+          >
+            {catMeta.label}
+            <span class="blog-filter-count">{counts[catSlug] ?? 0}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== POSTS GRID ========== -->
+  <section class="bg-gradient-to-b from-white to-[#f7fdfe] py-16 md:py-20">
+    <div class="max-w-[88rem] mx-auto px-6 md:px-10">
       {posts.length === 0 ? (
-        <p class="text-center text-gray-700">No posts in this category yet.</p>
+        <div class="text-center py-12">
+          <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[color:var(--color-brand)]/10 mb-5">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="text-[color:var(--color-brand-darker)]"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h2 class="text-2xl font-bold text-[color:var(--color-ink)] mb-2">No posts yet in this category</h2>
+          <p class="text-gray-700 mb-6">Check back soon, or browse all our latest insights.</p>
+          <a href="/blog" class="inline-flex items-center px-6 py-2.5 bg-[color:var(--color-brand-darker)] text-white font-semibold text-sm rounded-md hover:bg-[color:var(--color-brand-dark)] transition-colors">
+            Browse all posts
+          </a>
+        </div>
       ) : (
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {posts.map((post) => (
-            <article class="bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg hover:border-[color:var(--color-brand)] transition-all overflow-hidden flex flex-col">
-              <a href={`/blog/${post.id}`} class="flex-1 flex flex-col p-6">
-                <h2 class="text-xl font-bold text-[color:var(--color-ink)] mb-3 leading-snug">
-                  {post.data.title}
-                </h2>
-                <p class="text-sm text-gray-800 mb-4 flex-1 leading-relaxed line-clamp-4">
-                  {post.data.excerpt}
-                </p>
-                <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-                  <time datetime={post.data.publishDate.toISOString()} class="text-xs text-gray-700">
-                    {formatDate(post.data.publishDate)}
-                  </time>
-                  <span class="text-sm font-semibold text-[color:var(--color-brand-dark)]">Read →</span>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+          {posts.map((post, i) => (
+            <article data-reveal="up" data-reveal-delay={(i % 3) + 1} class="post-card group">
+              <a href={`/blog/${post.id}`} class="block h-full flex flex-col">
+                {post.data.heroImage && (
+                  <div class="post-card-image-wrap">
+                    <img
+                      src={post.data.heroImage}
+                      alt={post.data.title}
+                      width="600"
+                      height="360"
+                      loading="lazy"
+                      class="post-card-image"
+                    />
+                    <span class="post-card-category">
+                      {meta.label}
+                    </span>
+                  </div>
+                )}
+                <div class="p-6 flex-1 flex flex-col">
+                  <h3 class="text-lg md:text-xl font-bold text-[color:var(--color-ink)] mb-3 leading-snug line-clamp-2 transition-colors group-hover:text-[color:var(--color-brand-darker)]">
+                    {post.data.title}
+                  </h3>
+                  <p class="text-sm text-gray-700 mb-5 flex-1 leading-relaxed line-clamp-3">
+                    {post.data.excerpt}
+                  </p>
+                  <div class="flex items-center justify-between text-xs text-gray-600 pt-4 border-t border-gray-100 mt-auto">
+                    <div class="flex items-center gap-2">
+                      <time datetime={post.data.publishDate.toISOString()}>{formatDate(post.data.publishDate)}</time>
+                      <span class="text-gray-400">&bull;</span>
+                      <span>{readMinutes(post.body)} min</span>
+                    </div>
+                    <span class="post-card-arrow inline-flex items-center gap-1 text-[color:var(--color-brand-darker)] font-semibold">
+                      Read
+                      <svg width="12" height="12" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                  </div>
                 </div>
               </a>
             </article>
@@ -97,13 +187,41 @@ function formatDate(d: Date): string {
         </div>
       )}
 
-      <div class="text-center mt-12">
-        <a
-          href="/blog"
-          class="inline-flex items-center text-[color:var(--color-brand-dark)] font-semibold hover:text-[color:var(--color-brand-darker)]"
-        >
-          ← Back to all posts
+      <div class="text-center mt-14">
+        <a href="/blog" class="inline-flex items-center gap-2 text-[color:var(--color-brand-darker)] font-semibold hover:text-[color:var(--color-brand-dark)] group">
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none" aria-hidden="true" class="transition-transform group-hover:-translate-x-1"><path d="M12.5 5L7.5 10L12.5 15" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Back to all posts
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BOTTOM CTA — branded gradient ========== -->
+  <section class="bg-white pb-20">
+    <div class="max-w-[88rem] mx-auto px-6 md:px-10">
+      <div class="blog-cta-card-lg relative overflow-hidden rounded-3xl p-10 md:p-14 text-white shadow-xl">
+        <div aria-hidden="true" class="blog-cta-card-glow"></div>
+        <div class="relative grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 items-center">
+          <div>
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-[0.14em] bg-white/15 ring-1 ring-white/30 mb-4">
+              Ready to grow?
+            </span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-3 leading-tight">
+              Let's talk about your practice.
+            </h2>
+            <p class="text-white/85 text-base md:text-lg leading-relaxed max-w-2xl">
+              Free 30-minute strategy call straight with Kevin. No account managers, no pitch deck — just a real conversation about what's working and what's not.
+            </p>
+          </div>
+          <div class="flex flex-col sm:flex-row md:flex-col gap-3">
+            <a href="/contact" class="inline-flex justify-center items-center px-7 py-3 bg-white text-[color:var(--color-brand-darker)] font-semibold rounded-md hover:bg-gray-50 transition-all hover:-translate-y-0.5 shadow-sm hover:shadow-md whitespace-nowrap">
+              Book a Free Call
+            </a>
+            <a href="/services" class="inline-flex justify-center items-center px-7 py-3 bg-transparent text-white font-semibold rounded-md ring-1 ring-white/40 hover:ring-white/70 hover:bg-white/10 transition-all whitespace-nowrap">
+              View Services
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
