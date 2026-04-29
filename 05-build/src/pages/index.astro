@@ -11,9 +11,49 @@ const services = (await getCollection("services")).sort(
 
 const title = `${SITE.name} | Data-Driven PPC, Web Design & CRO`;
 const description = "Skip the big agency runaround. Work directly with the founder on Google Ads, Meta Ads, and websites built to convert. Free strategy call available.";
+
+const homepageSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE.name,
+    url: SITE.domain,
+    description: SITE.description,
+    publisher: {
+      "@type": "Organization",
+      name: SITE.name,
+      url: SITE.domain,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: SITE.name,
+    url: SITE.domain,
+    description: SITE.description,
+    image: `${SITE.domain}/og-default.png`,
+    telephone: SITE.phone,
+    email: SITE.email,
+    priceRange: "$$$",
+    areaServed: {
+      "@type": "Country",
+      name: "United States",
+    },
+    serviceType: [
+      "Google Ads Management",
+      "Meta Ads Management",
+      "Website Design",
+      "Conversion Rate Optimization",
+    ],
+    audience: {
+      "@type": "Audience",
+      audienceType: "Healthcare Practices",
+    },
+  },
+];
 ---
 
-<BaseLayout {title} {description}>
+<BaseLayout {title} {description} extraSchema={homepageSchema}>
   <!-- ========== HERO ========== -->
   <section class="bg-gray-50 pt-16 pb-20 md:pt-24 md:pb-28 overflow-hidden">
     <div class="max-w-7xl mx-auto px-6">

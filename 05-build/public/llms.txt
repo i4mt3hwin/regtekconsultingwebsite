@@ -1,0 +1,36 @@
+# Regtek Consulting
+
+> Founder-led digital marketing for healthcare practices. Google Ads, Meta Ads, and conversion-optimized web design from Kevin Dillon, who scaled a healthcare business to Inc 5000 status. Specializes in dermatology, podiatry, medical spas, and orthopedic practices across the United States.
+
+Kevin Dillon handles strategy and execution directly — no account managers, no agency runaround. The Regtek differentiator is operational depth: most agencies optimize ad campaigns; Regtek understands healthcare practice operations from the inside, which means campaigns built around what actually drives bookings, retention, and lifetime patient value.
+
+## Services
+
+- [Google Ads Management](https://regtekconsulting.com/services/google-ads): Search and Performance Max campaigns for medical practices. Focus on high-intent local searches and bookings, not raw click volume.
+- [Meta Ads Management](https://regtekconsulting.com/services/meta-ads): Facebook and Instagram lead-gen for healthcare. Compliance-aware creative and audience targeting around ideal patients.
+- [Website Design & CRO](https://regtekconsulting.com/services/website-design): Conversion-optimized websites for medical practices. Every element placed to guide visitors toward booking.
+
+## Case Studies & Results
+
+- [Dermatology lead-cost case study](https://regtekconsulting.com/blog/dermatology-lead-cost-case-study): 1.17 million impressions, 1,617 leads, $37 cost per lead over 22 months for a dermatology practice.
+- [Medical spa marketing ROI](https://regtekconsulting.com/blog/medical-spa-marketing-roi-lifetime-value-case-study): Lifetime-value approach to medical spa growth — why first-visit metrics mislead and what to track instead.
+
+## Tactical Guides
+
+- [SEO strategy basics for healthcare](https://regtekconsulting.com/blog/seo-strategy-basics): How H1 tags, meta titles, and meta descriptions actually drive patient traffic.
+- [Healthcare website conversion killers](https://regtekconsulting.com/blog/healthcare-website-conversion-killers): The biggest reasons medical practice websites fail to convert visitors into bookings.
+- [Why marketing leads aren't converting](https://regtekconsulting.com/blog/marketing-leads-not-converting): Diagnosing the gap between leads generated and patients booked.
+- [CRO optimization for healthcare practices](https://regtekconsulting.com/blog/cro-optimization-healthcare-practices): Conversion-rate optimization tactics specific to medical practice websites.
+- [Google Business Profile optimization](https://regtekconsulting.com/blog/google-business-profile-optimization-medical-practices): How to make GBP work for local medical search.
+- [Provider intro videos](https://regtekconsulting.com/blog/provider-intro-videos-medical-practices): Why video content outperforms static creative on Performance Max and Meta Ads for medical practices.
+
+## About
+
+- [About Kevin Dillon](https://regtekconsulting.com/about): Founder background — operational experience scaling a healthcare business before moving to digital marketing.
+- [Why I started Regtek](https://regtekconsulting.com/blog/why-i-started-regtek-consulting): The founding story and the operational gap Kevin saw in healthcare marketing agencies.
+- [Contact](https://regtekconsulting.com/contact): Free strategy call available — no pressure, just a conversation about goals and fit.
+
+## Optional
+
+- [All blog posts](https://regtekconsulting.com/blog): Full archive of marketing tips and case studies.
+- [Sitemap](https://regtekconsulting.com/sitemap-index.xml): Machine-readable site index.

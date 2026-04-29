@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { SERVICES } from "../lib/site";
+import { SERVICES, SITE } from "../lib/site";
 
 const allPosts = (await getCollection("posts")).sort(
   (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
@@ -25,6 +25,30 @@ for (const p of allPosts) {
 const title = "Marketing Tips & Tricks | Regtek Consulting";
 const description = "No jargon, no filler. Just actionable marketing tips to help you get better results from your ads and website. Browse our latest posts.";
 
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  name: title,
+  description,
+  url: `${SITE.domain}/blog`,
+  publisher: {
+    "@type": "Organization",
+    name: SITE.name,
+    url: SITE.domain,
+  },
+  blogPost: allPosts.map((p) => ({
+    "@type": "BlogPosting",
+    headline: p.data.title,
+    url: `${SITE.domain}/blog/${p.id}`,
+    datePublished: p.data.publishDate.toISOString(),
+    description: p.data.excerpt,
+    author: {
+      "@type": "Person",
+      name: "Kevin Dillon",
+    },
+  })),
+};
+
 function formatDate(d: Date): string {
   return d.toLocaleDateString("en-US", {
     year: "numeric",
@@ -39,7 +63,7 @@ function readMinutes(body: string | undefined): number {
 }
 ---
 
-<BaseLayout {title} {description}>
+<BaseLayout {title} {description} extraSchema={blogSchema}>
   <!-- ========== HERO — branded gradient + dot grid ========== -->
   <section class="blog-hero relative overflow-hidden pt-14 pb-20 md:pt-20 md:pb-24">
     <div aria-hidden="true" class="blog-hero-bg"></div>

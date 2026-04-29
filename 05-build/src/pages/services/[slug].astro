@@ -2,7 +2,7 @@
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SocialProof from "../../components/SocialProof.astro";
-import { PROOF_STATS } from "../../lib/site";
+import { PROOF_STATS, SITE } from "../../lib/site";
 
 export async function getStaticPaths() {
   const services = await getCollection("services");
@@ -26,6 +26,28 @@ const description = service.data.metaDescription ?? service.data.description;
 
 // Split heroHeadline into two balanced halves so it always renders as 2 lines.
 // Try each keyword in order; the second half starts with the matched keyword.
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: service.data.title,
+  description: service.data.description,
+  url: `${SITE.domain}/services/${service.id}`,
+  serviceType: service.data.title,
+  provider: {
+    "@type": "Organization",
+    name: SITE.name,
+    url: SITE.domain,
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "United States",
+  },
+  audience: {
+    "@type": "Audience",
+    audienceType: "Healthcare Practices",
+  },
+};
+
 const headline = service.data.heroHeadline ?? service.data.title;
 const splitKeywords = ["Your Best", "Where They", "Into"];
 const headlineParts: [string, string] = (() => {
@@ -42,7 +64,7 @@ const headlineParts: [string, string] = (() => {
 })();
 ---
 
-<BaseLayout {title} {description}>
+<BaseLayout {title} {description} extraSchema={serviceSchema}>
   <!-- ========== HERO ========== -->
   <section class="bg-gray-50 pt-16 pb-20 md:pt-20 md:pb-24 overflow-hidden">
     <div class="max-w-[88rem] mx-auto px-6">
