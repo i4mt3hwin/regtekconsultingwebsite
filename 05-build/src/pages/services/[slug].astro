@@ -38,8 +38,8 @@ const headlineParts = headline.includes("Into")
 <BaseLayout {title} {description}>
   <!-- ========== HERO ========== -->
   <section class="bg-gray-50 pt-16 pb-20 md:pt-20 md:pb-24 overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-8 items-center">
+    <div class="max-w-[88rem] mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-[5fr_8fr] gap-10 items-center">
         <div class="lg:order-2">
           <img
             src={service.id === "google-ads" ? "/images/services/google-ads-hero.webp" : service.id === "website-design" ? "/images/services/website-design-hero.webp" : `/images/services/${service.id}-illustration.png`}
