@@ -1,6 +1,6 @@
 export const SITE = {
   name: "Regtek Consulting",
-  domain: "https://www.regtekconsulting.com",
+  domain: "https://regtekconsulting.com",
   email: "kdillon@regtekconsulting.com",
   phone: "(908) 900-4799",
   founder: "Kevin Dillon",

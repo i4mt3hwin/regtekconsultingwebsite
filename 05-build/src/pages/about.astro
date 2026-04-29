@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { TESTIMONIAL } from "../lib/site";
+import { SITE, TESTIMONIAL } from "../lib/site";
 
 const title = "About Regtek Consulting | Founder-Led Marketing Agency";
 const description = "No account managers or hand-offs. Work directly with a founder who's scaled businesses to Inc 5000. Learn the story behind Regtek Consulting.";
@@ -16,7 +16,7 @@ const aboutSchema = {
     worksFor: {
       "@type": "Organization",
       name: "Regtek Consulting",
-      url: "https://www.regtekconsulting.com",
+      url: SITE.domain,
     },
     knowsAbout: ["Healthcare Marketing", "Google Ads", "Meta Ads", "Conversion Rate Optimization"],
   },

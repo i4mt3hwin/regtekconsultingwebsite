@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { SITE } from "../../lib/site";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -47,18 +48,18 @@ const articleSchema = {
   author: {
     "@type": "Person",
     name: "Kevin Dillon",
-    url: "https://www.regtekconsulting.com/about",
+    url: `${SITE.domain}/about`,
   },
   publisher: {
     "@type": "Organization",
     name: "Regtek Consulting",
     logo: {
       "@type": "ImageObject",
-      url: "https://www.regtekconsulting.com/images/brand/regtek-logo.png",
+      url: `${SITE.domain}/images/brand/regtek-logo.png`,
     },
   },
   description: post.data.excerpt,
-  mainEntityOfPage: `https://www.regtekconsulting.com/blog/${post.id}`,
+  mainEntityOfPage: `${SITE.domain}/blog/${post.id}`,
 };
 
 function formatDate(d: Date): string {

@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# AI search crawlers — explicitly allow (this is a marketing consultancy,
+# being cited in ChatGPT/Perplexity/Claude answers is a feature, not a bug)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://regtekconsulting.com/sitemap-index.xml

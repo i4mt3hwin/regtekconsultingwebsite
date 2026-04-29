@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.regtekconsulting.com',
+  site: 'https://regtekconsulting.com',
   output: 'static',
   integrations: [markdoc(), sitemap()],
   // 301 redirects from the old WordPress URL structure

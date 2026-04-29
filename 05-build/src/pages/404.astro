@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Page Not Found | Regtek Consulting"
+  description="The page you're looking for doesn't exist. Browse our services or get in touch directly."
+  noindex={true}
+>
+  <section class="bg-gray-50 py-24 md:py-32">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <p class="text-sm font-semibold tracking-widest text-cyan-700 uppercase mb-4">
+        404 Error
+      </p>
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+        We couldn't find that page
+      </h1>
+      <p class="text-lg text-gray-600 mb-10 max-w-xl mx-auto">
+        The page you're looking for might have been moved, renamed, or never existed.
+        Try one of these instead:
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl mx-auto mb-12">
+        <a href="/" class="block bg-white border border-gray-200 rounded-xl px-6 py-4 hover:border-cyan-600 hover:shadow-md transition text-left">
+          <div class="font-semibold text-gray-900">Home</div>
+          <div class="text-sm text-gray-500">Back to the start</div>
+        </a>
+        <a href="/services" class="block bg-white border border-gray-200 rounded-xl px-6 py-4 hover:border-cyan-600 hover:shadow-md transition text-left">
+          <div class="font-semibold text-gray-900">Services</div>
+          <div class="text-sm text-gray-500">What we do</div>
+        </a>
+        <a href="/about" class="block bg-white border border-gray-200 rounded-xl px-6 py-4 hover:border-cyan-600 hover:shadow-md transition text-left">
+          <div class="font-semibold text-gray-900">About</div>
+          <div class="text-sm text-gray-500">Founder-led, no agency runaround</div>
+        </a>
+        <a href="/blog" class="block bg-white border border-gray-200 rounded-xl px-6 py-4 hover:border-cyan-600 hover:shadow-md transition text-left">
+          <div class="font-semibold text-gray-900">Tips & Tricks</div>
+          <div class="text-sm text-gray-500">Articles and case studies</div>
+        </a>
+      </div>
+
+      <a
+        href="/contact"
+        class="inline-block bg-cyan-700 hover:bg-cyan-800 text-white font-semibold rounded-full px-8 py-4 transition"
+      >
+        Or get in touch directly
+      </a>
+    </div>
+  </section>
+</BaseLayout>
