@@ -75,7 +75,7 @@ function formatDate(d: Date): string {
 
       <div class="relative max-w-[88rem] mx-auto px-6 md:px-10">
         <!-- Breadcrumb -->
-        <nav class="text-sm text-gray-500 mb-8" aria-label="Breadcrumb">
+        <nav class="text-sm text-gray-700 mb-8" aria-label="Breadcrumb">
           <a href="/" class="hover:text-[color:var(--color-brand-dark)]">Home</a>
           <span class="mx-2">&rsaquo;</span>
           <a href="/blog" class="hover:text-[color:var(--color-brand-dark)]">Tips & Tricks</a>
@@ -101,7 +101,7 @@ function formatDate(d: Date): string {
 
             <!-- Deck / excerpt -->
             {post.data.excerpt && (
-              <p class="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl">
+              <p class="text-lg md:text-xl text-gray-800 mb-8 leading-relaxed max-w-2xl">
                 {post.data.excerpt}
               </p>
             )}
@@ -113,7 +113,7 @@ function formatDate(d: Date): string {
               </div>
               <div>
                 <div class="text-sm font-semibold text-[color:var(--color-ink)]">Kevin Dillon</div>
-                <div class="flex items-center gap-2 text-xs text-gray-500">
+                <div class="flex items-center gap-2 text-xs text-gray-700">
                   <time datetime={post.data.publishDate.toISOString()}>
                     {formatDate(post.data.publishDate)}
                   </time>
@@ -173,7 +173,7 @@ function formatDate(d: Date): string {
             <div class="sticky top-40 space-y-8">
               <!-- Table of contents -->
               <nav class="blog-toc" aria-label="Table of contents" data-toc-root>
-                <div class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-4">On This Page</div>
+                <div class="text-xs font-semibold uppercase tracking-wider text-gray-700 mb-4">On This Page</div>
                 <ul data-toc-list class="space-y-1.5 text-sm"></ul>
               </nav>
 
@@ -183,7 +183,7 @@ function formatDate(d: Date): string {
                   KD
                 </div>
                 <h3 class="font-bold text-[color:var(--color-ink)] mb-2 leading-snug">Ready to see results for your practice?</h3>
-                <p class="text-sm text-gray-600 mb-5 leading-relaxed">
+                <p class="text-sm text-gray-800 mb-5 leading-relaxed">
                   30-minute strategy call. Straight to Kevin, no account managers.
                 </p>
                 <a
@@ -197,7 +197,7 @@ function formatDate(d: Date): string {
               <!-- Related posts list -->
               {relatedPosts.length > 0 && (
                 <div class="pt-2 border-t border-gray-200">
-                  <div class="text-xs font-semibold uppercase tracking-wider text-gray-500 mt-6 mb-4">More Tips & Tricks</div>
+                  <div class="text-xs font-semibold uppercase tracking-wider text-gray-700 mt-6 mb-4">More Tips & Tricks</div>
                   <ul class="space-y-4">
                     {relatedPosts.map((r) => (
                       <li>
@@ -205,7 +205,7 @@ function formatDate(d: Date): string {
                           <h4 class="text-sm font-semibold text-[color:var(--color-ink)] group-hover:text-[color:var(--color-brand-dark)] leading-snug line-clamp-3 transition-colors">
                             {r.data.title}
                           </h4>
-                          <time datetime={r.data.publishDate.toISOString()} class="block mt-1 text-xs text-gray-500">
+                          <time datetime={r.data.publishDate.toISOString()} class="block mt-1 text-xs text-gray-700">
                             {formatDate(r.data.publishDate)}
                           </time>
                         </a>
@@ -232,7 +232,7 @@ function formatDate(d: Date): string {
             <h2 class="text-2xl font-bold text-[color:var(--color-ink)] mb-2">
               Ready to see results for your practice?
             </h2>
-            <p class="text-gray-600 mb-5 leading-relaxed">
+            <p class="text-gray-800 mb-5 leading-relaxed">
               30-minute strategy call. Direct access to Kevin Dillon, the founder who's scaled healthcare businesses to Inc 5000. No account managers, no pitch deck, just answers.
             </p>
             <a
@@ -294,7 +294,7 @@ function formatDate(d: Date): string {
                       {r.data.title}
                     </a>
                   </h3>
-                  <p class="text-sm text-gray-600 leading-relaxed line-clamp-3">
+                  <p class="text-sm text-gray-800 leading-relaxed line-clamp-3">
                     {r.data.excerpt}
                   </p>
                 </div>
