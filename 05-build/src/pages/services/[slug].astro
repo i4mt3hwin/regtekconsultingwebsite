@@ -24,22 +24,29 @@ const relatedPosts = allPosts
 const title = service.data.metaTitle ?? `${service.data.title} | Regtek Consulting`;
 const description = service.data.metaDescription ?? service.data.description;
 
-// Split heroHeadline into two lines if it contains "Into" or "Where They" or "Should Be"
+// Split heroHeadline into two balanced halves so it always renders as 2 lines.
+// Try each keyword in order; the second half starts with the matched keyword.
 const headline = service.data.heroHeadline ?? service.data.title;
-const headlineParts = headline.includes("Into")
-  ? [headline.split("Into")[0].trim(), "Into " + headline.split("Into")[1].trim()]
-  : headline.includes("Where They")
-    ? [headline.split("Where They")[0].trim(), "Where They " + headline.split("Where They")[1].trim()]
-    : headline.includes("Should Be")
-      ? [headline.split("Should Be")[0].trim(), "Should Be " + headline.split("Should Be")[1].trim()]
-      : [headline, ""];
+const splitKeywords = ["Your Best", "Where They", "Into"];
+const headlineParts: [string, string] = (() => {
+  for (const kw of splitKeywords) {
+    const idx = headline.indexOf(kw);
+    if (idx >= 0) {
+      return [
+        headline.slice(0, idx).trim(),
+        headline.slice(idx).trim(),
+      ];
+    }
+  }
+  return [headline, ""];
+})();
 ---
 
 <BaseLayout {title} {description}>
   <!-- ========== HERO ========== -->
   <section class="bg-gray-50 pt-16 pb-20 md:pt-20 md:pb-24 overflow-hidden">
     <div class="max-w-[88rem] mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-[5fr_8fr] gap-10 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-[6fr_7fr] gap-10 items-center">
         <div class="lg:order-2">
           <img
             src={service.id === "google-ads" ? "/images/services/google-ads-hero.webp" : service.id === "website-design" ? "/images/services/website-design-hero.webp" : `/images/services/${service.id}-illustration.png`}
