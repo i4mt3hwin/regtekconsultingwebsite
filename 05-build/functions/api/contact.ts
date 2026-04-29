@@ -1,16 +1,15 @@
 // Cloudflare Pages Function — handles contact form submissions.
 // Invoked at POST /api/contact. Calls Resend to deliver the lead email.
 //
-// Required env vars (set in Pages project → Settings → Environment variables):
+// Required env var (set in Pages project → Settings → Environment variables):
 //   RESEND_API_KEY   (secret)
-//   FROM_EMAIL       (plain var, e.g. contact@regtekconsulting.com)
-//   TO_EMAIL         (plain var, e.g. kcd1757@gmail.com)
 
 interface Env {
   RESEND_API_KEY: string;
-  FROM_EMAIL: string;
-  TO_EMAIL: string;
 }
+
+const FROM_EMAIL = "contact@regtekconsulting.com";
+const TO_EMAIL = "kdillon@regtekconsulting.com";
 
 interface FormPayload {
   firstName?: string;
@@ -91,8 +90,8 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: env.FROM_EMAIL,
-      to: env.TO_EMAIL,
+      from: FROM_EMAIL,
+      to: TO_EMAIL,
       reply_to: email,
       subject: `[Regtek] New lead: ${firstName} ${(data.lastName ?? "").trim()}`.trim(),
       html,
