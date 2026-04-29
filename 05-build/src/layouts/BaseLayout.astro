@@ -141,6 +141,29 @@ const { title, description, canonical, ogImage, noindex, extraSchema } = Astro.p
           }
           requestAnimationFrame(updateParallax);
         }
+
+        // Multi-strip horizontal parallax (each strip moves at its own speed/direction)
+        const stripSections = document.querySelectorAll("[data-parallax-strips]");
+        if (stripSections.length) {
+          const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          function updateStrips() {
+            stripSections.forEach((section) => {
+              const rect = section.getBoundingClientRect();
+              const vh = window.innerHeight;
+              const progress = (rect.top + rect.height / 2 - vh / 2) / vh;
+              const strips = section.querySelectorAll<HTMLElement>(".parallax-strip");
+              strips.forEach((strip) => {
+                const speed = parseFloat(strip.dataset.stripSpeed || "0.5");
+                const direction = parseFloat(strip.dataset.stripDirection || "1");
+                const range = parseFloat(strip.dataset.stripRange || "240");
+                const offset = reducedMotion ? 0 : direction * speed * progress * range;
+                strip.style.transform = `translate3d(${offset.toFixed(1)}px, 0, 0)`;
+              });
+            });
+            requestAnimationFrame(updateStrips);
+          }
+          requestAnimationFrame(updateStrips);
+        }
       });
     </script>
   </body>
