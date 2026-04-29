@@ -1,4 +1,4 @@
-import { defineMarkdocConfig, component } from "@astrojs/markdoc/config";
+import { defineMarkdocConfig, component, nodes } from "@astrojs/markdoc/config";
 
 export default defineMarkdocConfig({
   tags: {
@@ -7,6 +7,12 @@ export default defineMarkdocConfig({
       attributes: {
         question: { type: String, required: true },
       },
+    },
+  },
+  nodes: {
+    link: {
+      attributes: nodes.link.attributes,
+      render: component("./src/components/MarkdocLink.astro"),
     },
   },
 });

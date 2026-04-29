@@ -37,7 +37,6 @@ const { title, description, canonical, ogImage, noindex, extraSchema } = Astro.p
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const els = document.querySelectorAll("[data-countup]");
-        if (!els.length) return;
 
         const observer = new IntersectionObserver(
           (entries) => {

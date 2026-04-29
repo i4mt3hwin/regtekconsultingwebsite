@@ -1,0 +1,30 @@
+---
+// Markdoc link override:
+// - Rewrites absolute https://regtekconsulting.com URLs to relative paths
+// - Strips trailing slashes from internal links (site is configured trailingSlash: 'never')
+// - Leaves external links untouched
+const { href: rawHref, title } = Astro.props as { href?: string; title?: string };
+
+let href = rawHref ?? "#";
+const internalHostRe = /^https?:\/\/(www\.)?regtekconsulting\.com/i;
+
+if (internalHostRe.test(href)) {
+  href = href.replace(internalHostRe, "");
+  if (!href) href = "/";
+}
+
+if (href.startsWith("/") && href.length > 1) {
+  const queryIdx = href.search(/[?#]/);
+  if (queryIdx === -1) {
+    href = href.replace(/\/+$/, "") || "/";
+  } else {
+    const path = href.slice(0, queryIdx).replace(/\/+$/, "") || "/";
+    href = path + href.slice(queryIdx);
+  }
+}
+
+const isExternal = /^https?:\/\//i.test(href);
+const rel = isExternal ? "noopener noreferrer" : undefined;
+const target = isExternal ? "_blank" : undefined;
+---
+<a href={href} title={title} rel={rel} target={target}><slot /></a>
