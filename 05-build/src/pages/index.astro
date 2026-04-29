@@ -211,7 +211,13 @@ const description = "Skip the big agency runaround. Work directly with the found
           <article class="bg-white rounded-xl border border-gray-100 shadow-md hover:shadow-xl transition-shadow overflow-hidden flex flex-col">
             <div class="aspect-[16/10] bg-gray-50 flex items-center justify-center overflow-hidden">
               <img
-                src={`/images/services/${service.id}-illustration.png`}
+                src={
+                  service.id === "google-ads"
+                    ? "/images/services/google-ads-hero.webp"
+                    : service.id === "website-design"
+                      ? "/images/services/website-design-hero.webp"
+                      : `/images/services/${service.id}-illustration.png`
+                }
                 alt={`${service.data.title} illustration`}
                 width="400"
                 height="250"
