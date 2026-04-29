@@ -17,6 +17,11 @@ const CATEGORY_LABELS: Record<string, string> = {
   general: "General",
 };
 
+const categoryCounts: Record<string, number> = {};
+for (const p of allPosts) {
+  categoryCounts[p.data.category] = (categoryCounts[p.data.category] ?? 0) + 1;
+}
+
 const title = "Marketing Tips & Tricks | Regtek Consulting";
 const description = "No jargon, no filler. Just actionable marketing tips to help you get better results from your ads and website. Browse our latest posts.";
 
@@ -27,115 +32,131 @@ function formatDate(d: Date): string {
     day: "numeric",
   });
 }
+
+function readMinutes(body: string | undefined): number {
+  const wc = ((body ?? "").match(/\S+/g) ?? []).length;
+  return Math.max(1, Math.round(wc / 200));
+}
 ---
 
 <BaseLayout {title} {description}>
-  <!-- ========== HERO ========== -->
-  <section class="bg-blue-50 py-14 md:py-20">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[color:var(--color-ink)] mb-5 tracking-tight">
+  <!-- ========== HERO — branded gradient + dot grid ========== -->
+  <section class="blog-hero relative overflow-hidden pt-14 pb-20 md:pt-20 md:pb-24">
+    <div aria-hidden="true" class="blog-hero-bg"></div>
+    <div aria-hidden="true" class="blog-hero-grid"></div>
+    <div aria-hidden="true" class="blog-hero-glow blog-hero-glow--right"></div>
+    <div aria-hidden="true" class="blog-hero-glow blog-hero-glow--left"></div>
+
+    <div class="relative max-w-[88rem] mx-auto px-6 md:px-10 text-center">
+      <span data-reveal="up" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-[0.14em] bg-white/80 backdrop-blur-sm text-[color:var(--color-brand-darker)] mb-7 ring-1 ring-[color:var(--color-brand)]/30 shadow-sm">
+        <span class="relative flex h-2 w-2">
+          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-[color:var(--color-brand)] opacity-60"></span>
+          <span class="relative inline-flex h-2 w-2 rounded-full bg-[color:var(--color-brand-dark)]"></span>
+        </span>
+        Marketing Tips & Tricks
+      </span>
+
+      <h1 data-reveal="up" data-reveal-delay="1" class="blog-hero-title text-4xl md:text-5xl lg:text-[3.75rem] font-extrabold mb-6 tracking-tight leading-[1.05]">
         Tips & Tricks That Actually Work
       </h1>
-      <p class="text-lg text-gray-800 max-w-3xl mx-auto">
-        Data-driven marketing insights, PPC strategies, and business growth tactics from the field. No fluff, no jargon. Just proven strategies you can use today.
+
+      <p data-reveal="up" data-reveal-delay="2" class="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+        Data-driven marketing insights, PPC strategies, and business growth tactics from the field. No fluff, no jargon.
       </p>
-    </div>
-  </section>
 
-  <!-- ========== FEATURED + SIDEBAR ========== -->
-  <section class="bg-white py-12 md:py-16">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
-        <!-- Featured Post -->
-        <div class="lg:col-span-2">
-          <article class="bg-gray-50 rounded-xl overflow-hidden border border-gray-100">
-            {featuredPost.data.heroImage && (
-              <img
-                src={featuredPost.data.heroImage}
-                alt={featuredPost.data.title}
-                width="800"
-                height="400"
-                class="w-full h-auto"
-                loading="lazy"
-              />
-            )}
-            <div class="p-8">
-              <h3 class="text-2xl font-bold text-[color:var(--color-ink)] mb-3 leading-snug">
-                {featuredPost.data.title}
-              </h3>
-              <p class="text-gray-800 mb-4 leading-relaxed">
-                {featuredPost.data.excerpt}
-              </p>
-              <div class="flex items-center gap-3 text-sm text-gray-700 mb-6">
-                <span>Kevin</span>
-                <span>&bull;</span>
-                <time datetime={featuredPost.data.publishDate.toISOString()}>
-                  {formatDate(featuredPost.data.publishDate)}
-                </time>
-              </div>
-              <a
-                href={`/blog/${featuredPost.id}`}
-                class="inline-flex items-center px-6 py-2.5 bg-[color:var(--color-brand-dark)] text-white font-semibold text-sm rounded-md hover:bg-[color:var(--color-brand-darker)] transition-colors"
-              >
-                Read More
-              </a>
-            </div>
-          </article>
+      <!-- Quick stats row -->
+      <div data-reveal="up" data-reveal-delay="3" class="mt-10 flex flex-wrap justify-center gap-6 md:gap-10 text-sm">
+        <div class="flex items-center gap-2 text-gray-700">
+          <span class="font-bold text-[color:var(--color-brand-darker)] text-lg">{allPosts.length}</span>
+          <span>articles</span>
         </div>
-
-        <!-- Sidebar -->
-        <div class="space-y-8">
-          <!-- Get Tips Delivered -->
-          <div class="bg-white rounded-xl border border-gray-200 p-6">
-            <h3 class="text-xl font-bold text-[color:var(--color-brand)] mb-3">Get Tips Delivered</h3>
-            <p class="text-sm text-gray-800 mb-4">
-              Join 2,500+ healthcare marketers getting weekly insights that actually move the needle.
-            </p>
-            <form class="flex gap-2">
-              <div class="flex-1">
-                <label for="sidebar-email" class="block text-sm font-semibold text-[color:var(--color-brand-dark)] mb-1">Email *</label>
-                <input type="email" id="sidebar-email" name="email" required class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-[color:var(--color-brand)] focus:ring-2 focus:ring-[color:var(--color-brand)] focus:outline-none" />
-              </div>
-              <button type="submit" class="self-end px-4 py-2 bg-[color:var(--color-brand-dark)] text-white font-semibold text-sm rounded-md hover:bg-[color:var(--color-brand-darker)] transition-colors">
-                Submit
-              </button>
-            </form>
-          </div>
-
-          <!-- Services We Offer -->
-          <div class="bg-white rounded-xl border border-gray-200 p-6">
-            <h3 class="text-xl font-bold text-[color:var(--color-brand)] mb-4">Services We Offer</h3>
-            <ul class="space-y-3">
-              {SERVICES.map((s) => (
-                <li>
-                  <a href={s.href} class="text-[color:var(--color-brand-dark)] hover:underline font-medium">
-                    {s.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div class="hidden md:flex items-center gap-2 text-gray-700">
+          <span class="font-bold text-[color:var(--color-brand-darker)] text-lg">{Object.keys(CATEGORY_LABELS).length}</span>
+          <span>topics</span>
+        </div>
+        <div class="flex items-center gap-2 text-gray-700">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="text-[color:var(--color-brand-dark)]"><path d="M12 2 L14.5 9 L22 9 L16 13.5 L18.5 21 L12 16.5 L5.5 21 L8 13.5 L2 9 L9.5 9 Z" fill="currentColor"/></svg>
+          <span>By Kevin Dillon, Founder</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== CATEGORY FILTERS ========== -->
-  <section class="bg-white border-y border-gray-100 py-4">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="flex flex-wrap gap-3 overflow-x-auto" role="tablist" aria-label="Blog category filters">
-        <a
-          href="/blog"
-          class="px-4 py-2 text-sm font-semibold whitespace-nowrap bg-gray-100 text-gray-700 hover:bg-gray-200 rounded transition-colors"
-        >
-          All Posts
+  <!-- ========== FEATURED POST — editorial split ========== -->
+  <section class="bg-white py-14 md:py-20">
+    <div class="max-w-[88rem] mx-auto px-6 md:px-10">
+      <div class="flex items-center gap-4 mb-8">
+        <span class="text-xs font-bold uppercase tracking-[0.18em] text-[color:var(--color-brand-darker)]">Latest</span>
+        <span class="flex-1 h-px bg-gradient-to-r from-[color:var(--color-brand)]/40 via-gray-200 to-transparent"></span>
+      </div>
+
+      <article data-reveal="up" class="featured-card group relative">
+        <a href={`/blog/${featuredPost.id}`} class="grid grid-cols-1 lg:grid-cols-[7fr_5fr] gap-8 lg:gap-12 items-center">
+          <!-- Text -->
+          <div class="order-2 lg:order-1">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-[0.14em] bg-[color:var(--color-brand)]/12 text-[color:var(--color-brand-darker)] ring-1 ring-[color:var(--color-brand)]/25 mb-5">
+              {CATEGORY_LABELS[featuredPost.data.category] ?? featuredPost.data.category}
+            </span>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[color:var(--color-ink)] mb-5 leading-[1.1] tracking-tight transition-colors group-hover:text-[color:var(--color-brand-darker)]">
+              {featuredPost.data.title}
+            </h2>
+            <p class="text-lg text-gray-700 mb-6 leading-relaxed max-w-2xl">
+              {featuredPost.data.excerpt}
+            </p>
+            <div class="flex items-center gap-4 mb-7">
+              <div class="blog-author-avatar" style="width:40px;height:40px">
+                <div class="blog-author-avatar-inner" style="font-size:0.75rem">KD</div>
+              </div>
+              <div class="text-sm">
+                <div class="font-semibold text-[color:var(--color-ink)]">Kevin Dillon</div>
+                <div class="flex items-center gap-2 text-xs text-gray-700 mt-0.5">
+                  <time datetime={featuredPost.data.publishDate.toISOString()}>{formatDate(featuredPost.data.publishDate)}</time>
+                  <span class="text-gray-400">&bull;</span>
+                  <span>{readMinutes(featuredPost.body)} min read</span>
+                </div>
+              </div>
+            </div>
+            <span class="inline-flex items-center gap-2 px-6 py-3 bg-[color:var(--color-brand-darker)] text-white font-semibold text-sm rounded-md shadow-sm transition-all group-hover:bg-[color:var(--color-brand-dark)] group-hover:shadow-md group-hover:-translate-y-0.5">
+              Read article
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="none" aria-hidden="true" class="featured-arrow"><path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
+
+          <!-- Image -->
+          {featuredPost.data.heroImage && (
+            <div class="order-1 lg:order-2 relative blog-hero-figure">
+              <div aria-hidden="true" class="blog-hero-figure-accent"></div>
+              <div aria-hidden="true" class="absolute -inset-6 bg-gradient-to-br from-[color:var(--color-brand)]/25 via-[color:var(--color-brand-dark)]/10 to-transparent rounded-[2rem] blur-2xl -z-10"></div>
+              <div class="relative rounded-2xl overflow-hidden shadow-2xl ring-1 ring-black/10">
+                <img
+                  src={featuredPost.data.heroImage}
+                  alt={featuredPost.data.title}
+                  width="800"
+                  height="500"
+                  class="w-full h-auto transition-transform duration-700 group-hover:scale-[1.02]"
+                  loading="eager"
+                />
+              </div>
+            </div>
+          )}
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <!-- ========== CATEGORY FILTER PILLS ========== -->
+  <section class="bg-white border-y border-gray-100 py-5 sticky top-0 z-30 backdrop-blur supports-[backdrop-filter]:bg-white/85">
+    <div class="max-w-[88rem] mx-auto px-6 md:px-10">
+      <div class="flex items-center gap-3 overflow-x-auto blog-filter-row" role="tablist" aria-label="Blog category filters">
+        <span class="text-xs font-bold uppercase tracking-[0.14em] text-gray-500 whitespace-nowrap mr-2">Browse</span>
+        <a href="/blog" class="blog-filter-pill blog-filter-pill--active">
+          All
+          <span class="blog-filter-count">{allPosts.length}</span>
         </a>
         {Object.entries(CATEGORY_LABELS).map(([slug, label]) => (
-          <a
-            href={`/blog/category/${slug}`}
-            class="px-4 py-2 text-sm font-semibold whitespace-nowrap bg-gray-100 text-gray-700 hover:bg-gray-200 rounded transition-colors"
-          >
+          <a href={`/blog/category/${slug}`} class="blog-filter-pill">
             {label}
+            <span class="blog-filter-count">{categoryCounts[slug] ?? 0}</span>
           </a>
         ))}
       </div>
@@ -143,45 +164,88 @@ function formatDate(d: Date): string {
   </section>
 
   <!-- ========== POSTS GRID ========== -->
-  <section class="bg-white py-16">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {remainingPosts.map((post) => (
-          <article class="bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-shadow overflow-hidden flex flex-col">
-            {post.data.heroImage && (
-              <img
-                src={post.data.heroImage}
-                alt={post.data.title}
-                width="400"
-                height="200"
-                loading="lazy"
-                class="w-full h-48 object-cover"
-              />
-            )}
-            <div class="p-6 flex-1 flex flex-col">
-              <h3 class="text-lg font-bold text-[color:var(--color-ink)] mb-2 leading-snug">
-                <a href={`/blog/${post.id}`} class="hover:text-[color:var(--color-brand-dark)]">
+  <section class="bg-gradient-to-b from-white to-[#f7fdfe] py-16 md:py-20">
+    <div class="max-w-[88rem] mx-auto px-6 md:px-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        {remainingPosts.map((post, i) => (
+          <article data-reveal="up" data-reveal-delay={(i % 3) + 1} class="post-card group">
+            <a href={`/blog/${post.id}`} class="block h-full flex flex-col">
+              {post.data.heroImage && (
+                <div class="post-card-image-wrap">
+                  <img
+                    src={post.data.heroImage}
+                    alt={post.data.title}
+                    width="600"
+                    height="360"
+                    loading="lazy"
+                    class="post-card-image"
+                  />
+                  <span class="post-card-category">
+                    {CATEGORY_LABELS[post.data.category] ?? post.data.category}
+                  </span>
+                </div>
+              )}
+              <div class="p-6 flex-1 flex flex-col">
+                <h3 class="text-lg md:text-xl font-bold text-[color:var(--color-ink)] mb-3 leading-snug line-clamp-2 transition-colors group-hover:text-[color:var(--color-brand-darker)]">
                   {post.data.title}
-                </a>
-              </h3>
-              <p class="text-sm text-gray-800 mb-4 flex-1 leading-relaxed line-clamp-3">
-                {post.data.excerpt}
-              </p>
-              <div class="flex items-center gap-2 text-xs text-gray-700 mb-4">
-                <span>Kevin</span>
-                <span>&bull;</span>
-                <time datetime={post.data.publishDate.toISOString()}>
-                  {formatDate(post.data.publishDate)}
-                </time>
+                </h3>
+                <p class="text-sm text-gray-700 mb-5 flex-1 leading-relaxed line-clamp-3">
+                  {post.data.excerpt}
+                </p>
+                <div class="flex items-center justify-between text-xs text-gray-600 pt-4 border-t border-gray-100 mt-auto">
+                  <div class="flex items-center gap-2">
+                    <time datetime={post.data.publishDate.toISOString()}>{formatDate(post.data.publishDate)}</time>
+                    <span class="text-gray-400">&bull;</span>
+                    <span>{readMinutes(post.body)} min</span>
+                  </div>
+                  <span class="post-card-arrow inline-flex items-center gap-1 text-[color:var(--color-brand-darker)] font-semibold">
+                    Read
+                    <svg width="12" height="12" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </div>
               </div>
-              <a
-                href={`/blog/${post.id}`}
-                class="inline-flex items-center px-5 py-2 bg-[color:var(--color-brand-dark)] text-white font-semibold text-sm rounded-md hover:bg-[color:var(--color-brand-darker)] transition-colors self-start"
-              >
-                Read more
-              </a>
-            </div>
+            </a>
           </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BOTTOM CTA — branded gradient ========== -->
+  <section class="bg-white pb-20">
+    <div class="max-w-[88rem] mx-auto px-6 md:px-10">
+      <div class="blog-cta-card-lg relative overflow-hidden rounded-3xl p-10 md:p-14 text-white shadow-xl">
+        <div aria-hidden="true" class="blog-cta-card-glow"></div>
+        <div class="relative grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 items-center">
+          <div>
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-[0.14em] bg-white/15 ring-1 ring-white/30 mb-4">
+              Ready to grow?
+            </span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-3 leading-tight">
+              Let's talk about your practice.
+            </h2>
+            <p class="text-white/85 text-base md:text-lg leading-relaxed max-w-2xl">
+              Free 30-minute strategy call straight with Kevin. No account managers, no pitch deck — just a real conversation about what's working and what's not.
+            </p>
+          </div>
+          <div class="flex flex-col sm:flex-row md:flex-col gap-3">
+            <a href="/contact" class="inline-flex justify-center items-center px-7 py-3 bg-white text-[color:var(--color-brand-darker)] font-semibold rounded-md hover:bg-gray-50 transition-all hover:-translate-y-0.5 shadow-sm hover:shadow-md whitespace-nowrap">
+              Book a Free Call
+            </a>
+            <a href="/services" class="inline-flex justify-center items-center px-7 py-3 bg-transparent text-white font-semibold rounded-md ring-1 ring-white/40 hover:ring-white/70 hover:bg-white/10 transition-all whitespace-nowrap">
+              View Services
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Services quick links — keep internal linking strong -->
+      <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {SERVICES.map((s) => (
+          <a href={s.href} class="services-link-card group flex items-center justify-between p-5 rounded-xl border border-gray-200 bg-white hover:border-[color:var(--color-brand)] transition-all">
+            <span class="font-semibold text-[color:var(--color-ink)] group-hover:text-[color:var(--color-brand-darker)] transition-colors">{s.title}</span>
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true" class="text-[color:var(--color-brand-dark)] transition-transform group-hover:translate-x-1"><path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
         ))}
       </div>
     </div>
