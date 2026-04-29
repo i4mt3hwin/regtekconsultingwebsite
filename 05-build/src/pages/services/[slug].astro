@@ -212,20 +212,33 @@ const headlineParts = headline.includes("Into")
 
   <!-- ========== META ADS: CASE STUDY + FEATURES ========== -->
   {service.id === "meta-ads" && (
-    <section class="bg-[color:var(--color-brand-dark)] py-20 md:py-24">
-      <div class="max-w-5xl mx-auto px-6">
-        <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-12">Understanding The Business Model</h2>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          <div>
-            <img src="/images/case-studies/medispa-roas-increase.webp" alt="MedSpa lifetime value chart showing 4x ROAS" width="600" height="350" loading="lazy" class="w-full h-auto rounded-xl shadow-xl" />
-          </div>
-          <div class="text-center lg:text-left">
-            <h3 class="text-2xl font-bold text-white mb-4">Local MedSpa Achieves 4x Return On Ad Spend</h3>
-            <p class="text-gray-200 leading-relaxed">Their Botox ads cost $200 to land a $189 sale. On paper, they were losing money on the first visit and wanted to quit. We dug deeper. We proved that swallowing a small initial loss unlocked the highest retention patients in their database. We stopped chasing cheap leads and started buying high-LTV customers.</p>
+    <div class="cs-scroll-container" data-cs-scroll>
+      <section class="cs-sticky bg-[color:var(--color-brand-dark)] min-h-screen flex items-center overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 w-full">
+          <h3 class="cs-heading text-3xl md:text-5xl font-bold text-white leading-tight mb-12 text-center">
+            Understanding The <br /><span class="cs-underline-animate">Business Model</span>
+          </h3>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="cs-text">
+              <h4 class="text-2xl font-bold text-white mb-4">Local MedSpa Achieves 4x Return On Ad Spend</h4>
+              <p class="text-lg text-gray-100 leading-relaxed">
+                Their Botox ads cost $200 to land a $189 sale. On paper, they were losing money on the first visit and wanted to quit. We dug deeper. We proved that swallowing a small initial loss unlocked the highest retention patients in their database. We stopped chasing cheap leads and started buying high-LTV customers.
+              </p>
+            </div>
+            <div class="cs-image">
+              <img
+                src="/images/case-studies/medispa-roas-increase.webp"
+                alt="MedSpa lifetime value chart showing 4x ROAS"
+                width="600"
+                height="350"
+                loading="lazy"
+                class="w-full h-auto rounded-xl shadow-2xl border border-white/10"
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   )}
 
   {service.id === "meta-ads" && (
