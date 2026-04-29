@@ -111,7 +111,7 @@ body {
 
 /* ===== Sticky scroll case study animation ===== */
 .cs-scroll-container {
-  height: 150vh; /* scroll runway — shorter = faster animation */
+  height: 115vh; /* scroll runway — shorter = faster animation */
 }
 .cs-sticky {
   position: sticky;
