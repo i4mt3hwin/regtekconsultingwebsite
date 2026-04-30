@@ -6,8 +6,8 @@ const isActive = (href: string) =>
   href === "/" ? currentPath === "/" : currentPath.startsWith(href);
 ---
 
-<header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-gray-100">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+<header id="site-header" class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-gray-100 transition-transform duration-300 will-change-transform">
+  <div class="max-w-6xl mx-auto pl-6 pr-4 md:px-6 py-4 flex items-center justify-between">
     <a href="/" class="flex items-center group" aria-label={SITE.name}>
       <img
         src="/images/brand/regtek-logo.png"
@@ -61,12 +61,12 @@ const isActive = (href: string) =>
     <button
       type="button"
       id="mobile-menu-toggle"
-      class="md:hidden p-2 -mr-2"
+      class="md:hidden p-2.5 mr-1 rounded-md text-[color:var(--color-ink)] hover:text-[color:var(--color-brand-dark)] transition-colors"
       aria-label="Toggle menu"
       aria-expanded="false"
       aria-controls="mobile-menu"
     >
-      <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <svg class="w-9 h-9" fill="none" stroke="currentColor" stroke-width="2.25" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </button>
@@ -109,9 +109,61 @@ const isActive = (href: string) =>
 <script>
   const toggle = document.getElementById("mobile-menu-toggle");
   const menu = document.getElementById("mobile-menu");
+  const header = document.getElementById("site-header");
+
   toggle?.addEventListener("click", () => {
     const expanded = toggle.getAttribute("aria-expanded") === "true";
     toggle.setAttribute("aria-expanded", (!expanded).toString());
     menu?.classList.toggle("hidden");
+    // Always show the header when the menu opens
+    header?.classList.remove("header-hidden");
   });
+
+  // Auto-hide header on mobile when scrolling down, show on scroll up
+  if (header) {
+    const mobileMQ = window.matchMedia("(max-width: 767px)");
+    const SHOW_AT = 80; // px from top — always show header above this
+    const DELTA = 6;    // ignore tiny scroll jitter
+    let lastY = window.scrollY;
+    let ticking = false;
+
+    const updateHeader = () => {
+      const y = window.scrollY;
+      const isMobile = mobileMQ.matches;
+      const menuOpen = toggle?.getAttribute("aria-expanded") === "true";
+
+      if (!isMobile || menuOpen || y < SHOW_AT) {
+        header.classList.remove("header-hidden");
+      } else if (y > lastY + DELTA) {
+        header.classList.add("header-hidden");
+      } else if (y < lastY - DELTA) {
+        header.classList.remove("header-hidden");
+      }
+
+      lastY = y;
+      ticking = false;
+    };
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          requestAnimationFrame(updateHeader);
+          ticking = true;
+        }
+      },
+      { passive: true },
+    );
+
+    // Reset to visible when crossing the breakpoint
+    mobileMQ.addEventListener("change", () => {
+      header.classList.remove("header-hidden");
+    });
+  }
 </script>
+
+<style>
+  #site-header.header-hidden {
+    transform: translateY(-100%);
+  }
+</style>
