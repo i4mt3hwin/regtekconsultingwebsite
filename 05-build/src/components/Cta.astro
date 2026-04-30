@@ -1,0 +1,107 @@
+---
+interface Props {
+  href: string;
+  style?: "primary" | "secondary" | "phone";
+}
+const { href, style = "primary" } = Astro.props;
+
+const isExternal = /^https?:\/\//i.test(href);
+const target = isExternal ? "_blank" : undefined;
+const rel = isExternal ? "noopener noreferrer" : undefined;
+---
+
+<a
+  href={href}
+  target={target}
+  rel={rel}
+  class:list={["cta-btn", `cta-btn--${style}`]}
+>
+  {style === "phone" && (
+    <svg
+      class="cta-btn-icon"
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+    </svg>
+  )}
+  <slot />
+</a>
+
+<style>
+  /*
+    :where() wraps parent prose contexts at 0 specificity so the .cta-btn
+    rules below win over `.blog-prose a` / `.service-prose a` link styling
+    (gradient underline, color, padding) without needing !important.
+  */
+  :where(.blog-prose, .service-prose, article, .prose) a.cta-btn,
+  a.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.25;
+    text-decoration: none;
+    background-image: none;
+    margin: 0.75rem 0;
+    transition: background 0.2s ease, color 0.2s ease,
+      box-shadow 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+  }
+
+  :where(.blog-prose, .service-prose, article, .prose) a.cta-btn--primary,
+  a.cta-btn--primary {
+    background: var(--color-brand-dark);
+    color: #fff;
+    box-shadow: 0 4px 14px -4px rgba(14, 116, 144, 0.4);
+  }
+  :where(.blog-prose, .service-prose, article, .prose) a.cta-btn--primary:hover,
+  a.cta-btn--primary:hover {
+    background: var(--color-brand-darker);
+    color: #fff;
+    box-shadow: 0 6px 20px -4px rgba(14, 116, 144, 0.55);
+    transform: translateY(-1px);
+  }
+
+  :where(.blog-prose, .service-prose, article, .prose) a.cta-btn--secondary,
+  a.cta-btn--secondary {
+    background: transparent;
+    color: var(--color-brand-darker);
+    border: 2px solid var(--color-brand-dark);
+    padding: calc(0.75rem - 2px) calc(1.75rem - 2px);
+  }
+  :where(.blog-prose, .service-prose, article, .prose) a.cta-btn--secondary:hover,
+  a.cta-btn--secondary:hover {
+    background: var(--color-brand-dark);
+    color: #fff;
+    transform: translateY(-1px);
+  }
+
+  :where(.blog-prose, .service-prose, article, .prose) a.cta-btn--phone,
+  a.cta-btn--phone {
+    background: var(--color-brand-darker);
+    color: #fff;
+    box-shadow: 0 4px 14px -4px rgba(21, 94, 117, 0.45);
+  }
+  :where(.blog-prose, .service-prose, article, .prose) a.cta-btn--phone:hover,
+  a.cta-btn--phone:hover {
+    background: var(--color-ink);
+    color: #fff;
+    transform: translateY(-1px);
+  }
+
+  .cta-btn-icon {
+    flex-shrink: 0;
+  }
+</style>

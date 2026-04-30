@@ -428,6 +428,25 @@ html {
   text-decoration: underline;
 }
 
+/* Markdown tables inside articles (blog posts, service pages) */
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+}
+article th,
+article td {
+  padding: 0.625rem 0.875rem;
+  border: 1px solid var(--color-border, #e5e7eb);
+  text-align: left;
+  vertical-align: top;
+}
+article th {
+  background: #f9fafb;
+  font-weight: 600;
+}
+
 /* Portfolio hover scroll */
 .portfolio-img {
   object-position: top;
