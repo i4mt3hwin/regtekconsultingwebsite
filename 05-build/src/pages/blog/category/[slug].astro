@@ -66,7 +66,7 @@ function readMinutes(body: string | undefined): number {
 
 <BaseLayout title={meta.metaTitle} description={meta.metaDescription}>
   <!-- ========== HERO — branded gradient + dot grid ========== -->
-  <section class="blog-hero relative overflow-hidden pt-8 pb-12 md:pt-16 md:pb-24">
+  <section class="blog-hero relative overflow-hidden pt-5 pb-8 md:pt-16 md:pb-24">
     <div aria-hidden="true" class="blog-hero-bg"></div>
     <div aria-hidden="true" class="blog-hero-grid"></div>
     <div aria-hidden="true" class="blog-hero-glow blog-hero-glow--right"></div>
@@ -74,7 +74,7 @@ function readMinutes(body: string | undefined): number {
 
     <div class="relative max-w-[88rem] mx-auto px-6 md:px-10 text-center">
       <!-- Breadcrumb -->
-      <nav class="text-sm text-gray-700 mb-8" aria-label="Breadcrumb">
+      <nav class="text-sm text-gray-700 mb-4 md:mb-8" aria-label="Breadcrumb">
         <a href="/" class="hover:text-[color:var(--color-brand-dark)]">Home</a>
         <span class="mx-2 text-gray-400">&rsaquo;</span>
         <a href="/blog" class="hover:text-[color:var(--color-brand-dark)]">Tips & Tricks</a>
@@ -82,7 +82,7 @@ function readMinutes(body: string | undefined): number {
         <span class="text-gray-500">{meta.label}</span>
       </nav>
 
-      <span data-reveal="up" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-[0.14em] bg-white/80 backdrop-blur-sm text-[color:var(--color-brand-darker)] mb-7 ring-1 ring-[color:var(--color-brand)]/30 shadow-sm">
+      <span data-reveal="up" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-[0.14em] bg-white/80 backdrop-blur-sm text-[color:var(--color-brand-darker)] mb-4 md:mb-7 ring-1 ring-[color:var(--color-brand)]/30 shadow-sm">
         <span class="relative flex h-2 w-2">
           <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-[color:var(--color-brand)] opacity-60"></span>
           <span class="relative inline-flex h-2 w-2 rounded-full bg-[color:var(--color-brand-dark)]"></span>
@@ -98,7 +98,7 @@ function readMinutes(body: string | undefined): number {
         {meta.description}
       </p>
 
-      <div data-reveal="up" data-reveal-delay="3" class="mt-8 inline-flex items-center gap-2 text-sm text-gray-700">
+      <div data-reveal="up" data-reveal-delay="3" class="mt-5 md:mt-8 inline-flex items-center gap-2 text-sm text-gray-700">
         <span class="font-bold text-[color:var(--color-brand-darker)] text-base">{posts.length}</span>
         <span>{posts.length === 1 ? "article" : "articles"} in this category</span>
       </div>

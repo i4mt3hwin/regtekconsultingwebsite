@@ -66,7 +66,7 @@ const headlineParts: [string, string] = (() => {
 
 <BaseLayout {title} {description} extraSchema={serviceSchema}>
   <!-- ========== HERO ========== -->
-  <section class="bg-gray-50 pt-10 pb-12 md:pt-20 md:pb-24 overflow-hidden">
+  <section class="bg-gray-50 pt-5 pb-8 md:pt-20 md:pb-24 overflow-hidden">
     <div class="max-w-[88rem] mx-auto px-6">
       <div class="grid grid-cols-1 lg:grid-cols-[6fr_7fr] gap-10 items-center">
         <div class="lg:order-2">
@@ -83,13 +83,13 @@ const headlineParts: [string, string] = (() => {
           <p class="text-sm font-semibold uppercase tracking-wider text-[color:var(--color-brand)] mb-4">
             {service.data.heroEyebrow ?? service.data.title}
           </p>
-          <h1 class="text-2xl md:text-4xl lg:text-5xl font-bold leading-[1.15] md:leading-[1.1] text-[color:var(--color-ink)] mb-6 tracking-tight">
+          <h1 class="text-2xl md:text-4xl lg:text-5xl font-bold leading-[1.15] md:leading-[1.1] text-[color:var(--color-ink)] mb-4 md:mb-6 tracking-tight">
             {headlineParts[0]}<br />
             <span class="text-[color:var(--color-brand)]">{headlineParts[1]}</span>
           </h1>
           {service.data.heroSubtitle && (
-            <div class="mb-8">
-              <p class="font-bold text-[color:var(--color-ink)] mb-3">
+            <div class="mb-5 md:mb-8">
+              <p class="font-bold text-[color:var(--color-ink)] mb-2 md:mb-3">
                 {service.data.heroSubtitle.split('.')[0]}.
               </p>
               <p class="text-gray-800 leading-relaxed">
@@ -103,7 +103,7 @@ const headlineParts: [string, string] = (() => {
           >
             Book Your Free Consultation Today
           </a>
-          <div class="mt-6 flex items-center justify-center lg:justify-start gap-4">
+          <div class="mt-4 md:mt-6 flex items-center justify-center lg:justify-start gap-4">
             <SocialProof />
           </div>
         </div>
