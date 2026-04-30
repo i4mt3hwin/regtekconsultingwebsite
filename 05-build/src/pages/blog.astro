@@ -65,7 +65,7 @@ function readMinutes(body: string | undefined): number {
 
 <BaseLayout {title} {description} extraSchema={blogSchema}>
   <!-- ========== HERO — branded gradient + dot grid ========== -->
-  <section class="blog-hero relative overflow-hidden pt-14 pb-20 md:pt-20 md:pb-24">
+  <section class="blog-hero relative overflow-hidden pt-10 pb-12 md:pt-20 md:pb-24">
     <div aria-hidden="true" class="blog-hero-bg"></div>
     <div aria-hidden="true" class="blog-hero-grid"></div>
     <div aria-hidden="true" class="blog-hero-glow blog-hero-glow--right"></div>
@@ -117,17 +117,17 @@ function readMinutes(body: string | undefined): number {
       <article data-reveal="up" class="featured-card group relative">
         <a href={`/blog/${featuredPost.id}`} class="grid grid-cols-1 lg:grid-cols-[7fr_5fr] gap-8 lg:gap-12 items-center">
           <!-- Text -->
-          <div class="order-2 lg:order-1">
+          <div class="order-2 lg:order-1 text-center lg:text-left">
             <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-[0.14em] bg-[color:var(--color-brand)]/12 text-[color:var(--color-brand-darker)] ring-1 ring-[color:var(--color-brand)]/25 mb-5">
               {CATEGORY_LABELS[featuredPost.data.category] ?? featuredPost.data.category}
             </span>
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[color:var(--color-ink)] mb-5 leading-[1.1] tracking-tight transition-colors group-hover:text-[color:var(--color-brand-darker)]">
               {featuredPost.data.title}
             </h2>
-            <p class="text-lg text-gray-700 mb-6 leading-relaxed max-w-2xl">
+            <p class="text-lg text-gray-700 mb-6 leading-relaxed max-w-2xl mx-auto lg:mx-0">
               {featuredPost.data.excerpt}
             </p>
-            <div class="flex items-center gap-4 mb-7">
+            <div class="flex items-center justify-center lg:justify-start gap-4 mb-7">
               <div class="blog-author-avatar" style="width:40px;height:40px">
                 <div class="blog-author-avatar-inner" style="font-size:0.75rem">KD</div>
               </div>

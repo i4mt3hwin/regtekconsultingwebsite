@@ -7,14 +7,14 @@ const isActive = (href: string) =>
 ---
 
 <header id="site-header" class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-gray-100 transition-transform duration-300 will-change-transform">
-  <div class="max-w-6xl mx-auto pl-6 pr-4 md:px-6 py-4 flex items-center justify-between">
+  <div class="max-w-6xl mx-auto pl-6 pr-4 md:px-6 py-2 md:py-4 flex items-center justify-between">
     <a href="/" class="flex items-center group" aria-label={SITE.name}>
       <img
         src="/images/brand/regtek-logo.png"
         alt="Regtek Consulting"
         width="326"
         height="326"
-        class="h-[129px] w-auto"
+        class="h-11 md:h-[129px] w-auto"
       />
     </a>
 
@@ -61,7 +61,7 @@ const isActive = (href: string) =>
     <button
       type="button"
       id="mobile-menu-toggle"
-      class="md:hidden p-2.5 mr-1 rounded-md text-[color:var(--color-ink)] hover:text-[color:var(--color-brand-dark)] transition-colors"
+      class="md:hidden p-2 mr-1 rounded-md text-[color:var(--color-ink)] hover:text-[color:var(--color-brand-dark)] transition-colors"
       aria-label="Toggle menu"
       aria-expanded="false"
       aria-controls="mobile-menu"
