@@ -19,6 +19,7 @@ export const NAV = [
       { label: "Google Ads", href: "/services/google-ads" },
       { label: "Meta Ads", href: "/services/meta-ads" },
       { label: "Website Design", href: "/services/website-design" },
+      { label: "Software Development", href: "/services/software-development" },
     ],
   },
   { label: "About", href: "/about" },
@@ -53,6 +54,15 @@ export const SERVICES = [
     description:
       "Conversion-optimized websites for healthcare practices. Every element placed to guide visitors toward booking, not just look pretty.",
     href: "/services/website-design",
+  },
+  {
+    slug: "software-development",
+    title: "Custom Apps & Automations",
+    shortTitle: "Software Development",
+    tagline: "Custom software built around how your business actually works",
+    description:
+      "Internal dashboards, admin tools, and workflow automations that eliminate manual work. Built by someone who's run operations, not just a developer.",
+    href: "/services/software-development",
   },
 ];
 

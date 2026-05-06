@@ -49,7 +49,7 @@ const serviceSchema = {
 };
 
 const headline = service.data.heroHeadline ?? service.data.title;
-const splitKeywords = ["Your Best", "Where They", "Into"];
+const splitKeywords = ["Your Best", "Where They", "Into", "Built Around", "Built For"];
 const headlineParts: [string, string] = (() => {
   for (const kw of splitKeywords) {
     const idx = headline.indexOf(kw);
@@ -66,7 +66,7 @@ const headlineParts: [string, string] = (() => {
 
 <BaseLayout {title} {description} extraSchema={serviceSchema}>
   <!-- ========== HERO ========== -->
-  <section class="bg-gray-50 pt-5 pb-8 md:pt-20 md:pb-24 overflow-hidden">
+  <section class="bg-gray-50 pt-5 pb-8 md:pt-14 md:pb-16 overflow-hidden">
     <div class="max-w-[88rem] mx-auto px-6">
       <div class="grid grid-cols-1 lg:grid-cols-[6fr_7fr] gap-10 items-center">
         <div class="lg:order-2">
@@ -75,7 +75,7 @@ const headlineParts: [string, string] = (() => {
             alt={`${service.data.title} illustration`}
             width="640"
             height="420"
-            class="w-full h-auto mx-auto max-w-md lg:max-w-none"
+            class="w-full h-auto mx-auto max-w-md lg:max-w-[560px]"
             fetchpriority="high"
           />
         </div>
@@ -83,7 +83,7 @@ const headlineParts: [string, string] = (() => {
           <p class="text-sm font-semibold uppercase tracking-wider text-[color:var(--color-brand)] mb-4">
             {service.data.heroEyebrow ?? service.data.title}
           </p>
-          <h1 class="text-2xl md:text-4xl lg:text-5xl font-bold leading-[1.15] md:leading-[1.1] text-[color:var(--color-ink)] mb-4 md:mb-6 tracking-tight">
+          <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold leading-[1.15] md:leading-[1.1] text-[color:var(--color-ink)] mb-4 md:mb-6 tracking-tight">
             {headlineParts[0]}<br />
             <span class="text-[color:var(--color-brand)]">{headlineParts[1]}</span>
           </h1>
@@ -112,32 +112,68 @@ const headlineParts: [string, string] = (() => {
   </section>
 
   <!-- ========== TRUST STRIP ========== -->
-  <section class="bg-[color:var(--color-brand-dark)] py-14">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-center text-white font-bold text-2xl md:text-3xl mb-10">
-        Trusted by growing businesses to generate:
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-        {PROOF_STATS.map((stat, i) => (
+  {service.id !== "software-development" && (
+    <section class="bg-[color:var(--color-brand-dark)] py-14">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-center text-white font-bold text-2xl md:text-3xl mb-10">
+          Trusted by growing businesses to generate:
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          {PROOF_STATS.map((stat, i) => (
+            <div class="bg-white rounded-xl p-6 text-center">
+              <div class="text-[color:var(--color-brand)] text-2xl mb-2">
+                {i === 0 && (
+                  <svg class="w-7 h-7 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2 12l5 5L20 5" /><path stroke-linecap="round" stroke-linejoin="round" d="M7 17l5-5" /></svg>
+                )}
+                {i === 1 && (
+                  <svg class="w-7 h-7 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                )}
+                {i === 2 && (
+                  <svg class="w-7 h-7 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" /></svg>
+                )}
+              </div>
+              <div class="text-3xl md:text-4xl font-bold text-[color:var(--color-brand)]" data-countup={stat.value}>{stat.value}</div>
+              <div class="mt-1 text-sm text-gray-800">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ========== SOFTWARE DEV: TRUST STRIP ========== -->
+  {service.id === "software-development" && (
+    <section class="bg-[color:var(--color-brand-dark)] py-14">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-center text-white font-bold text-2xl md:text-3xl mb-10">
+          Custom software that delivers real operational impact:
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           <div class="bg-white rounded-xl p-6 text-center">
             <div class="text-[color:var(--color-brand)] text-2xl mb-2">
-              {i === 0 && (
-                <svg class="w-7 h-7 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2 12l5 5L20 5" /><path stroke-linecap="round" stroke-linejoin="round" d="M7 17l5-5" /></svg>
-              )}
-              {i === 1 && (
-                <svg class="w-7 h-7 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-              )}
-              {i === 2 && (
-                <svg class="w-7 h-7 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" /></svg>
-              )}
+              <svg class="w-7 h-7 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
             </div>
-            <div class="text-3xl md:text-4xl font-bold text-[color:var(--color-brand)]" data-countup={stat.value}>{stat.value}</div>
-            <div class="mt-1 text-sm text-gray-800">{stat.label}</div>
+            <div class="text-3xl md:text-4xl font-bold text-[color:var(--color-brand)]" data-countup="60+">60+</div>
+            <div class="mt-1 text-sm text-gray-800">Hours Saved Per Month Per Client</div>
           </div>
-        ))}
+          <div class="bg-white rounded-xl p-6 text-center">
+            <div class="text-[color:var(--color-brand)] text-2xl mb-2">
+              <svg class="w-7 h-7 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7" /><rect x="3" y="4" width="18" height="16" rx="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </div>
+            <div class="text-3xl md:text-4xl font-bold text-[color:var(--color-brand)]" data-countup="30+">30+</div>
+            <div class="mt-1 text-sm text-gray-800">Apps & Automations Shipped</div>
+          </div>
+          <div class="bg-white rounded-xl p-6 text-center">
+            <div class="text-[color:var(--color-brand)] text-2xl mb-2">
+              <svg class="w-7 h-7 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 17h8m0 0v-8m0 8l-8-8-4 4-6-6" /></svg>
+            </div>
+            <div class="text-3xl md:text-4xl font-bold text-[color:var(--color-brand)]" data-countup="70%">70%</div>
+            <div class="mt-1 text-sm text-gray-800">Reduction In Manual Tasks</div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  )}
 
   <!-- ========== MAIN CONTENT ========== -->
   <section class="bg-gray-100 py-20 md:py-24">
@@ -147,6 +183,317 @@ const headlineParts: [string, string] = (() => {
       </div>
     </div>
   </section>
+
+  <!-- ========== SOFTWARE DEV: WHAT WE BUILD (2 PILLARS) ========== -->
+  {service.id === "software-development" && (
+    <section class="bg-white py-20 md:py-24">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="text-center mb-14">
+          <h2 class="text-3xl md:text-5xl font-bold text-[color:var(--color-ink)] mb-4 leading-tight">
+            What We Build
+          </h2>
+          <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+            Two categories of work, customized to your operation.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow">
+            <div class="w-12 h-12 rounded-xl bg-[color:var(--color-brand)]/10 flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-[color:var(--color-brand)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-6h13v6M9 17H4a1 1 0 01-1-1v-3a1 1 0 011-1h5m0 5v3a1 1 0 001 1h11a1 1 0 001-1v-3M9 7h13M9 7V4a1 1 0 011-1h11a1 1 0 011 1v3" /></svg>
+            </div>
+            <h3 class="text-xl font-bold text-[color:var(--color-ink)] mb-3">Internal Dashboards & Admin Tools</h3>
+            <p class="text-gray-700 mb-5 leading-relaxed">
+              Custom interfaces that give your team a single place to manage operations, view performance, and make decisions. Built around your actual workflow, not a generic template.
+            </p>
+            <ul class="space-y-2.5 text-gray-800">
+              <li class="flex items-start gap-3"><span class="text-[color:var(--color-brand)] font-bold mt-0.5">&#10003;</span><span>Multi-location operations dashboards</span></li>
+              <li class="flex items-start gap-3"><span class="text-[color:var(--color-brand)] font-bold mt-0.5">&#10003;</span><span>Custom reporting and analytics tools</span></li>
+              <li class="flex items-start gap-3"><span class="text-[color:var(--color-brand)] font-bold mt-0.5">&#10003;</span><span>Patient or customer management extensions</span></li>
+              <li class="flex items-start gap-3"><span class="text-[color:var(--color-brand)] font-bold mt-0.5">&#10003;</span><span>Team performance and KPI tracking</span></li>
+              <li class="flex items-start gap-3"><span class="text-[color:var(--color-brand)] font-bold mt-0.5">&#10003;</span><span>Inventory and resource management</span></li>
+            </ul>
+          </div>
+
+          <div class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow">
+            <div class="w-12 h-12 rounded-xl bg-[color:var(--color-brand)]/10 flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-[color:var(--color-brand)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+            </div>
+            <h3 class="text-xl font-bold text-[color:var(--color-ink)] mb-3">Workflow Automation</h3>
+            <p class="text-gray-700 mb-5 leading-relaxed">
+              Connect the tools you already use and automate the manual work in between. Lead routing, reporting, notifications, approvals, and the dozens of small handoffs that eat your team's time.
+            </p>
+            <ul class="space-y-2.5 text-gray-800">
+              <li class="flex items-start gap-3"><span class="text-[color:var(--color-brand)] font-bold mt-0.5">&#10003;</span><span>System integrations (EHR, CRM, scheduling, billing)</span></li>
+              <li class="flex items-start gap-3"><span class="text-[color:var(--color-brand)] font-bold mt-0.5">&#10003;</span><span>Automated lead routing and assignment</span></li>
+              <li class="flex items-start gap-3"><span class="text-[color:var(--color-brand)] font-bold mt-0.5">&#10003;</span><span>Scheduled reporting and data sync</span></li>
+              <li class="flex items-start gap-3"><span class="text-[color:var(--color-brand)] font-bold mt-0.5">&#10003;</span><span>Notification and alert workflows</span></li>
+              <li class="flex items-start gap-3"><span class="text-[color:var(--color-brand)] font-bold mt-0.5">&#10003;</span><span>Approval and escalation processes</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ========== SOFTWARE DEV: WHY IT WORKS (3 PILLARS) ========== -->
+  {service.id === "software-development" && (
+    <section class="bg-gray-100 py-20 md:py-24">
+      <div class="max-w-5xl mx-auto px-6">
+        <h2 class="text-3xl md:text-5xl font-bold text-[color:var(--color-ink)] mb-4 leading-tight text-center">
+          Why It Works
+        </h2>
+        <p class="text-center text-gray-700 mb-14 max-w-2xl mx-auto">
+          You're not hiring a developer. You're hiring an operations leader who can build.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white rounded-xl p-8 text-center shadow-sm">
+            <div class="w-14 h-14 rounded-lg border-2 border-[color:var(--color-brand)] flex items-center justify-center mx-auto mb-5">
+              <svg class="w-7 h-7 text-[color:var(--color-brand)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+            </div>
+            <h3 class="text-xl font-bold text-[color:var(--color-ink)] mb-3">Built By Someone Who's Run Operations</h3>
+            <p class="text-gray-700 text-sm leading-relaxed">Inc 5000 background running a multi-location healthcare practice. We've sat in your seat. Every tool we build solves a problem we've actually felt.</p>
+          </div>
+          <div class="bg-white rounded-xl p-8 text-center shadow-sm">
+            <div class="w-14 h-14 rounded-lg border-2 border-[color:var(--color-brand)] flex items-center justify-center mx-auto mb-5">
+              <svg class="w-7 h-7 text-[color:var(--color-brand)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            </div>
+            <h3 class="text-xl font-bold text-[color:var(--color-ink)] mb-3">Fast To Launch, Fast To Iterate</h3>
+            <p class="text-gray-700 text-sm leading-relaxed">Modern tooling and a tight scope mean working software in weeks, not months. Get value fast, then refine based on what your team actually uses.</p>
+          </div>
+          <div class="bg-white rounded-xl p-8 text-center shadow-sm">
+            <div class="w-14 h-14 rounded-lg border-2 border-[color:var(--color-brand)] flex items-center justify-center mx-auto mb-5">
+              <svg class="w-7 h-7 text-[color:var(--color-brand)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+            </div>
+            <h3 class="text-xl font-bold text-[color:var(--color-ink)] mb-3">No Vendor Lock-In</h3>
+            <p class="text-gray-700 text-sm leading-relaxed">It's your code, your data, your tool. We build on standard, well-supported platforms. No proprietary cages, no monthly hostage fees just to access your own systems.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ========== SOFTWARE DEV: CASE EXAMPLES ========== -->
+  {service.id === "software-development" && (
+    <div class="cs-scroll-container" data-cs-scroll>
+      <section class="cs-sticky bg-[color:var(--color-brand-dark)] min-h-screen flex items-center overflow-hidden">
+        <div class="max-w-5xl mx-auto px-6 w-full py-12">
+          <h2 class="cs-heading text-3xl md:text-5xl font-bold text-white leading-tight mb-4 text-center">
+            What This Looks Like <br /><span class="cs-underline-animate">In Practice</span>
+          </h2>
+          <p class="text-center text-gray-100 mb-14">Real projects, anonymized. Specifics available on request.</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="cs-card bg-white rounded-xl shadow-2xl p-8">
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-[color:var(--color-brand-dark)] text-white">Healthcare Practice</span>
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-[color:var(--color-brand-dark)] text-white">HIPAA-Compliant</span>
+              </div>
+              <h3 class="text-xl font-bold text-[color:var(--color-ink)] mb-4">Front Desk Operations & Reporting Dashboard</h3>
+              <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">The Challenge</p>
+              <p class="text-sm text-gray-800 mb-5">Front desk teams were juggling intakes, payments, leads, and stat reporting across multiple disconnected tools. Owners got performance reports days late, manually reconstructed from raw system exports, so decisions were always made on stale data.</p>
+              <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">The Results</p>
+              <div class="grid grid-cols-3 gap-4">
+                <div>
+                  <div class="text-2xl font-bold text-emerald-500" data-countup="15+">15+</div>
+                  <div class="text-xs text-gray-700 leading-tight mt-1">Front desk hours saved per week</div>
+                </div>
+                <div>
+                  <div class="text-lg font-bold text-[color:var(--color-brand)] leading-tight">HIPAA</div>
+                  <div class="text-xs text-gray-700 leading-tight mt-1">Compliant architecture</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-bold text-emerald-500">Live</div>
+                  <div class="text-xs text-gray-700 leading-tight mt-1">Real-time reporting</div>
+                </div>
+              </div>
+              <p class="text-xs text-gray-600 italic mt-5 pt-4 border-t border-gray-100">Three front desk employees got 5 to 6 hours back each week. Owners stopped reconstructing reports by hand and started spotting patterns the same day.</p>
+            </div>
+
+            <div class="cs-card bg-white rounded-xl shadow-2xl p-8">
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-[color:var(--color-brand-dark)] text-white">Construction</span>
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-[color:var(--color-brand-dark)] text-white">Daily Ops + Payroll</span>
+              </div>
+              <h3 class="text-xl font-bold text-[color:var(--color-ink)] mb-4">Field-to-Office Daily Reporting System</h3>
+              <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">The Challenge</p>
+              <p class="text-sm text-gray-800 mb-5">Supervisors were submitting daily hours, installed materials, and subcontractor time via paper, texts, and Friday spreadsheets. Office staff spent hours each week reconciling it all for payroll and job costing, often with bad data driving expensive decisions.</p>
+              <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">The Results</p>
+              <div class="grid grid-cols-3 gap-4">
+                <div>
+                  <div class="text-2xl font-bold text-emerald-500" data-countup="40+">40+</div>
+                  <div class="text-xs text-gray-700 leading-tight mt-1">Owner hours saved per week</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-bold text-[color:var(--color-brand)]" data-countup="8">8</div>
+                  <div class="text-xs text-gray-700 leading-tight mt-1">Jobsites reporting daily</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-bold text-emerald-500" data-countup="15+">15+</div>
+                  <div class="text-xs text-gray-700 leading-tight mt-1">Field hours saved per week</div>
+                </div>
+              </div>
+              <p class="text-xs text-gray-600 italic mt-5 pt-4 border-t border-gray-100">The owner used to spend an entire day every day reviewing field reports on paper. The system now checks them for him, flags issues, and tells him exactly what to look at, so he gets back nearly 8 hours a day.</p>
+            </div>
+          </div>
+          <div class="text-center mt-14">
+            <p class="text-gray-100 mb-4">Want results like these?</p>
+            <a href="/contact" class="inline-flex items-center px-8 py-4 bg-white text-[color:var(--color-brand-dark)] font-semibold rounded-md hover:bg-gray-100 transition-all shadow-xl hover:shadow-2xl text-base">
+              Book Your Free Consultation
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  )}
+
+  <!-- ========== SOFTWARE DEV: HOW IT WORKS (3-STEP PROCESS) ========== -->
+  {service.id === "software-development" && (
+    <section class="bg-gray-100 py-20 md:py-24">
+      <div class="max-w-5xl mx-auto px-6">
+        <h2 class="text-2xl md:text-4xl font-bold text-[color:var(--color-ink)] mb-4 text-center">
+          How We Build
+        </h2>
+        <p class="text-center text-gray-700 mb-16">Tight scope, fast launches, real partnership.</p>
+
+        <div class="relative grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6">
+          <!-- Connector line behind icon row (desktop only) -->
+          <div class="hidden md:block absolute top-7 left-[16.667%] right-[16.667%] h-0.5 bg-gray-300" aria-hidden="true"></div>
+
+          <!-- Step 1 -->
+          <div class="relative text-center">
+            <div class="relative w-14 h-14 mx-auto mb-5 rounded-full bg-white border-2 border-[color:var(--color-brand)] flex items-center justify-center shadow-md">
+              <svg class="w-6 h-6 text-[color:var(--color-brand)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+              <span class="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-[color:var(--color-brand-dark)] text-white text-xs font-bold flex items-center justify-center shadow-md">1</span>
+            </div>
+            <h3 class="text-xl font-bold text-[color:var(--color-brand-dark)] mb-3">Discovery Call</h3>
+            <p class="text-gray-800 text-sm leading-relaxed">A 30-minute conversation to understand your operation, your bottlenecks, and what's actually worth building. No obligation, no pressure.</p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="relative text-center">
+            <div class="relative w-14 h-14 mx-auto mb-5 rounded-full bg-white border-2 border-[color:var(--color-brand)] flex items-center justify-center shadow-md">
+              <svg class="w-6 h-6 text-[color:var(--color-brand)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+              <span class="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-[color:var(--color-brand-dark)] text-white text-xs font-bold flex items-center justify-center shadow-md">2</span>
+            </div>
+            <h3 class="text-xl font-bold text-[color:var(--color-brand-dark)] mb-3">Scope & Build</h3>
+            <p class="text-gray-800 text-sm leading-relaxed">Clear scope, fixed timeline, transparent pricing. Most projects launch in 2 to 6 weeks. You see progress as we build, not at the end.</p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="relative text-center">
+            <div class="relative w-14 h-14 mx-auto mb-5 rounded-full bg-white border-2 border-[color:var(--color-brand)] flex items-center justify-center shadow-md">
+              <svg class="w-6 h-6 text-[color:var(--color-brand)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+              <span class="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-[color:var(--color-brand-dark)] text-white text-xs font-bold flex items-center justify-center shadow-md">3</span>
+            </div>
+            <h3 class="text-xl font-bold text-[color:var(--color-brand-dark)] mb-3">Launch & Iterate</h3>
+            <p class="text-gray-800 text-sm leading-relaxed">Ship the working tool, then refine based on how your team actually uses it. Ongoing support available, but never required.</p>
+          </div>
+        </div>
+
+        <div class="text-center mt-16">
+          <a href="/contact" class="inline-flex items-center px-8 py-4 bg-[color:var(--color-brand-dark)] text-white font-semibold rounded-md hover:bg-[color:var(--color-brand-darker)] transition-all shadow-xl hover:shadow-2xl text-base">
+            Start With Step 1: Book Your Call
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ========== SOFTWARE DEV: FOUNDER CREDIBILITY ========== -->
+  {service.id === "software-development" && (
+    <section class="bg-[#D8D8D8] py-20 md:py-24">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <img
+              src="/images/hero/kevin-reggie-selfie.jpg"
+              alt="Kevin Dillon with his dog Reggie"
+              width="768"
+              height="1024"
+              loading="lazy"
+              class="w-full max-w-md h-auto rounded-xl shadow-lg mx-auto"
+            />
+          </div>
+          <div>
+            <h2 class="text-2xl md:text-4xl font-bold text-[color:var(--color-ink)] mb-6 leading-tight">
+              Built By An Operator, Not Just A Developer
+            </h2>
+            <div class="space-y-4 text-gray-700 leading-relaxed">
+              <p>Most software gets built by people who've never had to actually use it. They optimize for technical elegance, not operational reality.</p>
+              <p>Before building software for clients, I ran operations for a healthcare practice that scaled to 5 locations and earned Inc 5000 recognition. I know what it feels like to wait three days for a report that should take three minutes. I know the spreadsheets, the workarounds, the duct-taped processes that almost work.</p>
+              <p>Every tool I build starts with that perspective. What's actually slowing your team down? What would make their day 30% easier? That's where we start.</p>
+            </div>
+            <div class="mt-8">
+              <a
+                href="/about"
+                class="inline-flex items-center px-6 py-3 border-2 border-[color:var(--color-ink)] text-[color:var(--color-ink)] font-semibold rounded-md hover:bg-[color:var(--color-ink)] hover:text-white transition-all shadow-md hover:shadow-lg uppercase tracking-wider text-sm"
+              >
+                More About My Background
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ========== SOFTWARE DEV: FAQ ========== -->
+  {service.id === "software-development" && (
+    <section class="bg-gray-200 py-20 md:py-24">
+      <div class="max-w-3xl mx-auto px-6">
+        <h2 class="text-2xl md:text-4xl font-bold text-[color:var(--color-ink)] mb-10 text-center">
+          Common Questions
+        </h2>
+        <div class="space-y-1" data-faq>
+          <details class="bg-white rounded-lg group">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-[color:var(--color-ink)] hover:text-[color:var(--color-brand-dark)]">
+              What does a typical project cost?
+              <span class="text-[color:var(--color-brand)] text-xl transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-gray-800 leading-relaxed">
+              Pricing depends on scope, but most internal tools and automations land between $[X] and $[X]. We provide fixed pricing after the discovery call, no hourly billing surprises. For ongoing maintenance, we offer simple monthly retainers or pay-as-you-need support.
+            </div>
+          </details>
+          <details class="bg-white rounded-lg group">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-[color:var(--color-ink)] hover:text-[color:var(--color-brand-dark)]">
+              How long does it take to build something?
+              <span class="text-[color:var(--color-brand)] text-xl transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-gray-800 leading-relaxed">
+              Most projects launch in 2 to 6 weeks. Smaller automations can ship in days. Larger custom dashboards may take longer, but we break work into shippable phases so you see value early.
+            </div>
+          </details>
+          <details class="bg-white rounded-lg group">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-[color:var(--color-ink)] hover:text-[color:var(--color-brand-dark)]">
+              Do you only work with healthcare businesses?
+              <span class="text-[color:var(--color-brand)] text-xl transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-gray-800 leading-relaxed">
+              Healthcare is our specialty because of the operations background, but the same principles apply to any service business with operational complexity. Multi-location operations, regulated industries, and businesses with disconnected tools are our sweet spot.
+            </div>
+          </details>
+          <details class="bg-white rounded-lg group">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-[color:var(--color-ink)] hover:text-[color:var(--color-brand-dark)]">
+              What happens if I need changes after launch?
+              <span class="text-[color:var(--color-brand)] text-xl transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-gray-800 leading-relaxed">
+              We build with iteration in mind. Most projects include a refinement period after launch. Beyond that, we offer ongoing support on a flexible basis. You're never locked into a retainer, and you always own the code and data.
+            </div>
+          </details>
+          <details class="bg-white rounded-lg group">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-[color:var(--color-ink)] hover:text-[color:var(--color-brand-dark)]">
+              Can you integrate with the systems we already use?
+              <span class="text-[color:var(--color-brand)] text-xl transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-gray-800 leading-relaxed">
+              In most cases, yes. We work with standard platforms (EHR systems, CRMs, scheduling tools, billing systems, communication platforms) and build custom integrations when needed. Bring your stack to the discovery call and we'll tell you straight what's possible.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+  )}
 
   <!-- ========== PORTFOLIO (Website Design) ========== -->
   {service.id === "website-design" && (
@@ -818,20 +1165,43 @@ const headlineParts: [string, string] = (() => {
   )}
 
   <!-- ========== FINAL CTA ========== -->
-  <section class="bg-[color:var(--color-brand-dark)] py-20 md:py-24">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-3xl md:text-5xl font-bold text-white leading-tight mb-6">
-        Ready to Stop Guessing and Start Growing?
-      </h2>
-      <p class="text-lg text-gray-100 mb-10 max-w-2xl mx-auto">
-        Book a free consultation. Direct founder access — no account managers, no pitch-deck theater.
-      </p>
-      <a
-        href="/contact"
-        class="inline-flex items-center px-8 py-4 bg-white text-[color:var(--color-brand-dark)] font-semibold rounded-md hover:bg-gray-100 transition-all shadow-xl hover:shadow-2xl text-base"
-      >
-        Book A Free Consultation
-      </a>
-    </div>
-  </section>
+  {service.id !== "software-development" && (
+    <section class="bg-[color:var(--color-brand-dark)] py-20 md:py-24">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-5xl font-bold text-white leading-tight mb-6">
+          Ready to Stop Guessing and Start Growing?
+        </h2>
+        <p class="text-lg text-gray-100 mb-10 max-w-2xl mx-auto">
+          Book a free consultation. Direct founder access — no account managers, no pitch-deck theater.
+        </p>
+        <a
+          href="/contact"
+          class="inline-flex items-center px-8 py-4 bg-white text-[color:var(--color-brand-dark)] font-semibold rounded-md hover:bg-gray-100 transition-all shadow-xl hover:shadow-2xl text-base"
+        >
+          Book A Free Consultation
+        </a>
+      </div>
+    </section>
+  )}
+
+  <!-- ========== SOFTWARE DEV: FINAL CTA ========== -->
+  {service.id === "software-development" && (
+    <section class="bg-[color:var(--color-brand-dark)] py-20 md:py-24">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <p class="text-sm font-semibold uppercase tracking-wider text-[color:var(--color-brand)] mb-4">
+          Let's Build Something
+        </p>
+        <h2 class="text-3xl md:text-5xl font-bold text-white leading-tight mb-6">
+          Stop Paying People To Do Work Software Should Be Doing
+        </h2>
+        <p class="text-lg text-gray-100 mb-10 max-w-2xl mx-auto">Free 30-minute consultation. No pressure, no obligation. Just an honest look at what we could build and whether it's worth doing.</p>
+        <a
+          href="/contact"
+          class="inline-flex items-center px-8 py-4 bg-white text-[color:var(--color-brand-dark)] font-semibold rounded-md hover:bg-gray-100 transition-all shadow-xl hover:shadow-2xl text-base"
+        >
+          Book Your Free Consultation
+        </a>
+      </div>
+    </section>
+  )}
 </BaseLayout>
