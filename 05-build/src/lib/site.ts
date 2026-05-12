@@ -69,7 +69,7 @@ export const SERVICES = [
 export const PROOF_STATS = [
   { value: "63%+", label: "Paid Search Growth" },
   { value: "2,000+", label: "Conversions Managed" },
-  { value: "$100K+", label: "Ad Spend Managed" },
+  { value: "$250K", label: "Ad Spend Managed" },
 ];
 
 export const TESTIMONIAL = {
