@@ -57,7 +57,7 @@ const contactSchema = {
           </li>
         </ul>
 
-        <blockquote class="bg-gray-50 rounded-xl p-6 relative">
+        <blockquote class="bg-gray-50 rounded-xl p-6 relative hidden lg:block">
           <span class="text-[color:var(--color-brand)] text-5xl font-serif absolute top-3 left-4 leading-none">&ldquo;</span>
           <p class="text-gray-800 leading-relaxed pl-8 pr-6">
             {TESTIMONIAL.quote}
@@ -133,6 +133,18 @@ const contactSchema = {
           </p>
         </div>
       </div>
+
+      <blockquote class="bg-gray-50 rounded-xl p-6 relative lg:hidden">
+        <span class="text-[color:var(--color-brand)] text-5xl font-serif absolute top-3 left-4 leading-none">&ldquo;</span>
+        <p class="text-gray-800 leading-relaxed pl-8 pr-6">
+          {TESTIMONIAL.quote}
+        </p>
+        <span class="text-[color:var(--color-brand)] text-5xl font-serif absolute bottom-3 right-4 leading-none">&rdquo;</span>
+        <footer class="mt-4 pl-8">
+          <div class="font-bold text-[color:var(--color-ink)]">{TESTIMONIAL.author}</div>
+          <div class="text-sm text-[color:var(--color-brand-dark)]">Owner of Menon Regenerative Institute</div>
+        </footer>
+      </blockquote>
     </div>
   </section>
 
